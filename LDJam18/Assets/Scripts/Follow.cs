@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
+    public enum UpdateType
+    {
+        UPDATE,
+        LATE_UPDATE,
+        FIXED_UPDATE
+    }
+
 	[Header("Follow Position Parameters")]
 	[Tooltip("The target transform this object should follow")]
 	public Transform target;
@@ -13,8 +20,9 @@ public class Follow : MonoBehaviour
 	[Tooltip("The time it takes to this object to reach the followed object")]
 	[Range(0f,1f)]
 	public float smoothTime = 0.3f;
+    public UpdateType updateType = UpdateType.LATE_UPDATE;
 
-	[Space]
+    [Space]
 
 	[Header("Follow Orientation Parameters")]
 	public bool shareOrientation;
@@ -63,15 +71,14 @@ public class Follow : MonoBehaviour
 		return targetRot;
 	}
 
-	void MoveTowards()
+	void MoveTowards(float dt)
 	{
 		if(target)
 		{
 			transform.position = Vector3.SmoothDamp(transform.position, GetTargetPos(), ref velocity, smoothTime);
 			if (shareOrientation)
 			{
-				//transform.forward = target.forward;
-				Vector3 newDir = Vector3.RotateTowards(transform.forward, GetTargetRot(), rotateSpeed * Time.deltaTime, 0f);
+				Vector3 newDir = Vector3.RotateTowards(transform.forward, GetTargetRot(), rotateSpeed * dt, 0f);
 				transform.rotation = Quaternion.LookRotation(newDir);
 			}
 		}
@@ -79,10 +86,23 @@ public class Follow : MonoBehaviour
 		{
 			Debug.Log("No target to follow !!");
 		}
-	}
-	// Update is called once per frame
-	void Update ()
+    }
+
+    void Update()
+    {
+        if (updateType == UpdateType.UPDATE)
+            MoveTowards(Time.deltaTime);
+    }
+
+    void LateUpdate()
+    {
+        if (updateType == UpdateType.LATE_UPDATE)
+            MoveTowards(Time.deltaTime);
+    }
+
+    void FixedUpdate()
 	{
-		MoveTowards();
+        if(updateType == UpdateType.FIXED_UPDATE)
+		    MoveTowards(Time.fixedDeltaTime);
 	}
 }

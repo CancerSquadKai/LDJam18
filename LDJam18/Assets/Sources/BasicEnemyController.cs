@@ -47,8 +47,17 @@ public class BasicEnemyController : MonoBehaviour {
     public Vector3          folow_origin;
     public float rng;
 
+    private new Rigidbody rigidbody;
+
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+    
     public void Start()
     {
+        if (target)
+            target = FindObjectOfType<AvatarController>();
         SetState(State.FOLOWING);
     }
 
@@ -61,13 +70,11 @@ public class BasicEnemyController : MonoBehaviour {
             case State.FOLOWING:
                 {
                     // Move
-                    //position = Vector3.MoveTowards(
-                    //    position,
-                    //    target.transform.position,
-                    //    config.speed_movement * dt
-                    //);
-                    position = MoveTowardTarget(config.speed_movement * dt, rng);
-                    transform.position  = position;
+                    if(dt > 0)
+                    {
+                        position = MoveTowardTarget(config.speed_movement * dt, rng);
+                        rigidbody.position = position;
+                    }
 
                     // Check if can attack
                     float dist_to_target =
@@ -130,6 +137,7 @@ public class BasicEnemyController : MonoBehaviour {
         }
         if (state == State.ATTACKING)
         {
+            rigidbody.velocity = Vector3.zero;
             SetAttackPhase(Attack.Phase.WINDUP);
         }
     }

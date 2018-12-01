@@ -3,22 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(BasicEnemyController))]
+[CustomEditor(typeof(BasicEnemyController)), CanEditMultipleObjects]
 public class BasicEnemyEditor : Editor
 {
     BasicEnemyController t
     {
         get { return (BasicEnemyController)target; }
-    }
-
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        if(GUILayout.Button("Snap folow_origin"))
-        {
-            t.folow_origin = t.transform.position;
-        }
     }
 
     private void OnSceneGUI()
@@ -57,7 +47,6 @@ public class BasicEnemyEditor : Editor
                 current_position - folow_origin,
                 direction
             );
-            //dot /= diameter;
 
             Vector3 pos = current_position;
             const int STEP = 16;
