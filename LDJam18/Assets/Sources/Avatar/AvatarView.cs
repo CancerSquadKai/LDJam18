@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AvatarView : MonoBehaviour {
-
     public Vector2 position
     {
         get { return transform.position; }
@@ -15,5 +14,4 @@ public class AvatarView : MonoBehaviour {
             );
         }
     }
-
 }
