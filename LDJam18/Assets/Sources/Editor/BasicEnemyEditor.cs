@@ -3,22 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(BasicEnemyController))]
+[CustomEditor(typeof(BasicEnemyController)), CanEditMultipleObjects]
 public class BasicEnemyEditor : Editor
 {
     BasicEnemyController t
     {
         get { return (BasicEnemyController)target; }
-    }
-
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        if(GUILayout.Button("Snap folow_origin"))
-        {
-            t.folow_origin = t.transform.position;
-        }
     }
 
     private void OnSceneGUI()
