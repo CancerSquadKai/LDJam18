@@ -59,6 +59,7 @@ ModelImporter:
     400050: Wing2_R
     400052: Wing3_L
     400054: Wing3_R
+    7400000: Take 001
     11100000: //RootNode
   externalObjects: {}
   materials:
