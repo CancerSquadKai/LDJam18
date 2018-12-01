@@ -93,7 +93,7 @@
                 float len = length(uv);
 
                 color = circ(len, _Progress) * lerp(_ColorSafe, _ColorDanger, _Progress);
-                color = max(color, circ_filled(len, _Progress) * _ColorDanger * float4(1,1,1,_BackgroundOpacity));
+                color = max(color, circ_filled(len, _Progress) * _ColorDanger * _BackgroundOpacity);
                 color = max(color, circ(len, 1) * _ColorDanger);
 
 				return color;
