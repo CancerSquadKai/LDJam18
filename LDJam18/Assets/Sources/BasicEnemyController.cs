@@ -73,7 +73,10 @@ public class BasicEnemyController : MonoBehaviour {
                     if(dt > 0)
                     {
                         position = MoveTowardTarget(config.speed_movement * dt, rng);
-                        rigidbody.position = position;
+						if(rigidbody != null)
+						{
+							rigidbody.position = position;
+						}
                     }
 
                     // Check if can attack
