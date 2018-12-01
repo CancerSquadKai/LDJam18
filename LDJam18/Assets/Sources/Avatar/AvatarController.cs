@@ -8,6 +8,13 @@ public class AvatarController : MonoBehaviour {
     public AvatarConfig config;
     public AvatarModel  model;
 
+    private new Rigidbody rigidbody;
+
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
     private void Start()
     {
         model = new AvatarModel(config, view);
@@ -22,8 +29,21 @@ public class AvatarController : MonoBehaviour {
             left_stick_input.y       = Input.GetAxisRaw("Vertical");
             model.input_movement     = left_stick_input;
         }
+
+
+
         // model
-        model.Update(Time.deltaTime);
+        model.UpdateInput();
+    }
+
+    private void FixedUpdate()
+    {
+        model.UpdatePhysics(Time.fixedDeltaTime);
+        rigidbody.velocity = new Vector3(
+            model.velocity.x,
+            0,
+            model.velocity.y
+            );
     }
 
     public void Bump(Vector3 direction, float distance, float duration)

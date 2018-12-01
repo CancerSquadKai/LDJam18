@@ -5,11 +5,6 @@ using UnityEngine;
 public class AvatarModel
 {
     /// <summary>
-    /// Current position of the avatar.
-    /// </summary>
-    public Vector2 position;
-
-    /// <summary>
     /// Current movement velocity.
     /// </summary>
     public Vector2 velocity_movement;
@@ -18,6 +13,11 @@ public class AvatarModel
     /// Current bump velocity.
     /// </summary>
     public Vector2 velocity_bump;
+
+    /// <summary>
+    /// Packed total velocity.
+    /// </summary>
+    public Vector2 velocity;
 
     /// <summary>
     /// Current bump velocity.
@@ -47,13 +47,6 @@ public class AvatarModel
         this.view   = view;
     }
 
-    public void Update(float dt)
-    {
-        UpdateInput();
-        UpdatePhysics(dt);
-        UpdateView();
-    }
-
     /// <summary>
     /// Change model state depending on user inputs.
     /// </summary>
@@ -71,19 +64,11 @@ public class AvatarModel
             acceleration_bump * dt
         );
 
-        Vector2 velocity = Vector2.zero;
+        velocity = Vector2.zero;
         velocity += velocity_movement;
         velocity += velocity_bump;
-
-        // position
-        position += velocity * dt;
     }
-
-    public void UpdateView()
-    {
-        view.position = position;
-    }
-
+    
     public void Bump(Vector2 direction, float distance, float duration)
     {
         acceleration_bump = (2 * distance) / (duration * duration);

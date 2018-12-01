@@ -57,7 +57,6 @@ public class BasicEnemyEditor : Editor
                 current_position - folow_origin,
                 direction
             );
-            //dot /= diameter;
 
             Vector3 pos = current_position;
             const int STEP = 16;
