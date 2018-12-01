@@ -44,6 +44,13 @@ public class BasicEnemyController : MonoBehaviour {
     public AvatarController target;
     public State            state;
     public Attack           attack;
+    public Vector3          folow_origin;
+    public float rng;
+
+    public void Start()
+    {
+        SetState(State.FOLOWING);
+    }
 
     public void Update()
     {
@@ -54,11 +61,12 @@ public class BasicEnemyController : MonoBehaviour {
             case State.FOLOWING:
                 {
                     // Move
-                    position = Vector3.MoveTowards(
-                        position,
-                        target.transform.position,
-                        config.speed_movement * dt
-                    );
+                    //position = Vector3.MoveTowards(
+                    //    position,
+                    //    target.transform.position,
+                    //    config.speed_movement * dt
+                    //);
+                    position = MoveTowardTarget(config.speed_movement * dt, rng);
                     transform.position  = position;
 
                     // Check if can attack
@@ -111,6 +119,15 @@ public class BasicEnemyController : MonoBehaviour {
     public void SetState(State state)
     {
         this.state = state;
+        switch (state)
+        {
+            case State.FOLOWING:
+                {
+                    folow_origin= transform.position;
+                    rng = Random.Range(-1.0f, 1.0f);
+                }
+                break;
+        }
         if (state == State.ATTACKING)
         {
             SetAttackPhase(Attack.Phase.WINDUP);
@@ -160,5 +177,30 @@ public class BasicEnemyController : MonoBehaviour {
                 }
                 break;
         }
+    }
+
+    public Vector3 MoveTowardTarget(float speed, float rng)
+    {
+        Vector3 target_position  = target.transform.position;
+        Vector3 current_position = transform.position;
+        Vector3 folow_origin     = this.folow_origin;
+
+        Vector3 direction = (target_position - folow_origin).normalized;
+
+        float dot = Vector3.Dot(
+                current_position - folow_origin,
+                direction
+            );
+
+        float diameter = Vector3.Distance(target_position, folow_origin);
+        float radius = diameter * 0.5f;
+        float length = Mathf.MoveTowards(dot, diameter, speed);
+        length /= diameter;
+        float p = Mathf.Sqrt(1-Mathf.Pow((1-(length)*2), 2));
+        Vector3 direction_clockwise_perpendicular = Quaternion.Euler(0,90,0) * direction;
+        Vector3 new_pos =
+                    folow_origin + direction * length * diameter +
+                    direction_clockwise_perpendicular * p * radius * rng;
+        return new_pos;
     }
 }
