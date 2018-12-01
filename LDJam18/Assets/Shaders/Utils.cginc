@@ -7,3 +7,14 @@
 float remap(float fromMin, float fromMax, float toMin, float toMax, float value) {
 	return toMin + (value - fromMin) * (toMax - toMin) / (fromMax - fromMin);
 }
+
+inline float ease_out_quad(const float t)
+{
+    float t_minus_one = t - 1;
+    return 1 - (t_minus_one * t_minus_one);
+}
+inline float ease_out_circ(const float t)
+{
+    float one_minus_t = t - 1;
+    return sqrt(1 - one_minus_t * one_minus_t);
+}

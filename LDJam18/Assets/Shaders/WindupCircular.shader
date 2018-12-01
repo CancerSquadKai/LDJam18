@@ -62,10 +62,10 @@
 				return o;
 			}
 
-            float circ(float len, float progress)
+            float circ(float len, float progress, float width)
             {
                 float output = len;
-                output = output * (1 / _Width) - ((progress - (_Width)) / _Width);
+                output = output * (1 / width) - ((progress - (width)) / width);
                 output = output * 2 - 1;
                 output = -output * output + 1.0;
                 output = clamp(output, 0., 1.);
@@ -78,6 +78,7 @@
                 output = output * (1 / _Width) - ((progress - (_Width)) / _Width);
                 output = output * 2 - 1;
                 output = 1 - output;
+                output *= len;
                 output = clamp(output, 0., 1.);
                 return output;
             }
@@ -87,14 +88,12 @@
                 float4 color = (float4)0;
 
                 float2 uv = i.uv * 2 - 1;
-
-                float temp = sin(_Time.y) * 0.5 + 0.5;
-
                 float len = length(uv);
+                float p   = ease_out_quad(_Progress * 0.25 + 0.75);
 
-                color = circ(len, _Progress) * lerp(_ColorSafe, _ColorDanger, _Progress);
-                color = max(color, circ_filled(len, _Progress) * _ColorDanger * _BackgroundOpacity);
-                color = max(color, circ(len, 1) * _ColorDanger);
+                color = circ(len, _Progress, _Width) * lerp(_ColorSafe, _ColorDanger, _Progress);
+                color = max(color, circ_filled(len, _Progress) * _ColorDanger * _BackgroundOpacity * _Progress);
+                color = max(color, circ(len, p, _Width * p) * _ColorDanger * _Progress);
 
 				return color;
 			}
