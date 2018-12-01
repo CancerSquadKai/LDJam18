@@ -2,15 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Life : MonoBehaviour {
+public class Life : MonoBehaviour
+{
+	public int maxLife;
+	public int currentLife;
 
-	// Use this for initialization
-	void Start () {
-		
+	private void Awake ()
+	{
+		currentLife = maxLife;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public void UpdateLife(int amount)
+	{
+		currentLife += amount;
+		CheckLife();
+		LifeBarManager.instance.SetNewLifeValue(currentLife);
+	}
+
+	void CheckLife()
+	{
+		if(currentLife <= 0)
+		{
+			//RIP
+		}
+	}
+
+	private void Update ()
+	{
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			UpdateLife(-10);
+		}
 	}
 }
