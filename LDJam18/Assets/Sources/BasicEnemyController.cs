@@ -41,7 +41,7 @@ public class BasicEnemyController : MonoBehaviour {
 
     public BasicEnemyConfig config;
 
-    public Transform        target;
+    public AvatarController target;
     public State            state;
     public Attack           attack;
 
@@ -56,7 +56,7 @@ public class BasicEnemyController : MonoBehaviour {
                     // Move
                     position = Vector3.MoveTowards(
                         position,
-                        target.position,
+                        target.transform.position,
                         config.speed_movement * dt
                     );
                     transform.position  = position;
@@ -65,7 +65,7 @@ public class BasicEnemyController : MonoBehaviour {
                     float dist_to_target =
                         Vector3.Distance(
                             position,
-                            target.position
+                            target.transform.position
                         );
 
                     bool reached_agro_range = dist_to_target <= config.attack_agro_range;
@@ -133,6 +133,20 @@ public class BasicEnemyController : MonoBehaviour {
             case Attack.Phase.ACTIVE:
                 {
                     // Todo : hit people in range
+                    float dist_to_target =
+                        Vector3.Distance(
+                            transform.position,
+                            target.transform.position
+                        );
+                    bool target_in_attack_range = dist_to_target <= config.attack_range;
+                    if (target_in_attack_range)
+                    {
+                        target.Bump(
+                            (target.transform.position - transform.position).normalized,
+                            config.attack_bump_distance,
+                            config.attack_bump_duration
+                        );
+                    }
                 }
                 break;
             case Attack.Phase.RECOVERY:

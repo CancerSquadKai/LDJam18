@@ -25,4 +25,16 @@ public class AvatarController : MonoBehaviour {
         // model
         model.Update(Time.deltaTime);
     }
+
+    public void Bump(Vector3 direction, float distance, float duration)
+    {
+        model.Bump(
+            new Vector2(
+                direction.x,
+                direction.z
+            ),
+            distance,
+            duration 
+        );
+    }
 }
