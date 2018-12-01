@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-	[SerializeField] GameObject spawnedObject;
 	[SerializeField] bool shareOrientation;
 	[SerializeField] ParticleSystem spawnParticle;
 
-	public void SpawnObject()
+	public void SpawnObject(GameObject spawnedObject)
 	{
 		if(spawnedObject != null)
 		{
@@ -17,6 +16,7 @@ public class Spawner : MonoBehaviour
 			{
 				go.transform.forward = transform.forward;
 			}
+			Destroy(go, 3f);
 
 			if(spawnParticle != null)
 			{

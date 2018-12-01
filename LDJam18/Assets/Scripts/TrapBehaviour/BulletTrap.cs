@@ -7,7 +7,14 @@ public class BulletTrap : MonoBehaviour
 	[System.Serializable]
 	public class Burst
 	{
+		public GameObject spawnedObject;
+
+		[Space]
+
 		public Spawner[] spawners = new Spawner[1];
+
+		[Space]
+
 		public int shotAmount = 1;
 		public float shotCD = 0.3f;
 	}
@@ -38,7 +45,7 @@ public class BulletTrap : MonoBehaviour
 				Spawner spawner = bursts[ind].spawners[i];
 				if(spawner != null)
 				{
-					spawner.SpawnObject();
+					spawner.SpawnObject(bursts[ind].spawnedObject);
 				}		
 			}
 			yield return new WaitForSeconds(bursts[ind].shotCD);
