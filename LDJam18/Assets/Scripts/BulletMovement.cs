@@ -10,13 +10,13 @@ public class BulletMovement : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		rigid = GetComponent<Rigidbody>();
-		rigid.AddForce(transform.forward * bulletSpeed);
+		//rigid = GetComponent<Rigidbody>();
+		//rigid.AddForce(transform.forward * bulletSpeed);
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		//transform.Translate(Vector3.forward * bulletSpeed * Time.fixedDeltaTime, Space.Self);
+		transform.Translate(Vector3.forward * bulletSpeed * Time.fixedDeltaTime, Space.Self);
 	}
 }
