@@ -2082,8 +2082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198577717739784968}
 --- !u!114 &114130170147584534
@@ -2097,8 +2095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198141968736427266}
 --- !u!114 &114400436676077798
@@ -2113,7 +2109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bursts:
-  - spawners:
+  - spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
+      type: 2}
+    spawners:
     - {fileID: 114130170147584534}
     shotAmount: 10
     shotCD: 0.05
@@ -2129,8 +2127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198771512709231454}
 --- !u!114 &114545670696844728
@@ -2145,7 +2141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bursts:
-  - spawners:
+  - spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
+      type: 2}
+    spawners:
     - {fileID: 114540009434864638}
     shotAmount: 10
     shotCD: 0.05
@@ -2162,7 +2160,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bursts:
-  - spawners:
+  - spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
+      type: 2}
+    spawners:
     - {fileID: 114730870058304794}
     shotAmount: 10
     shotCD: 0.05
@@ -2178,8 +2178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198005311098239596}
 --- !u!114 &114954723354063062
@@ -2194,7 +2192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bursts:
-  - spawners:
+  - spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
+      type: 2}
+    spawners:
     - {fileID: 114095239906122992}
     shotAmount: 10
     shotCD: 0.05
