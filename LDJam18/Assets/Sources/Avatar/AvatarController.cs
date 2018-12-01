@@ -22,7 +22,6 @@ public class AvatarController : MonoBehaviour {
             left_stick_input.y       = Input.GetAxisRaw("Vertical");
             model.input_movement     = left_stick_input;
         }
-
         // model
         model.Update(Time.deltaTime);
     }

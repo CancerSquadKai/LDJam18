@@ -44,6 +44,9 @@ public class AvatarModel
         UpdateView();
     }
 
+    /// <summary>
+    /// Change model state depending on user inputs.
+    /// </summary>
     public void UpdateInput()
     {
         velocity_movement = input_movement.normalized * config.speed_movement;
