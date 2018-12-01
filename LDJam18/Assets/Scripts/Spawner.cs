@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
 			{
 				go.transform.forward = transform.forward;
 			}
-			Destroy(go, 3f);
+			Destroy(go, 5.1f);
 
 			if(spawnParticle != null)
 			{
