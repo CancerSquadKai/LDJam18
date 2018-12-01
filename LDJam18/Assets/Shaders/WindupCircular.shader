@@ -15,10 +15,12 @@
         Tags { "Queue" = "Transparent" "RenderType" = "Transparent" "IgnoreProjector" = "True" }
 
         // inside Pass
+        ZTest Always
         ZWrite Off
-        Blend SrcAlpha OneMinusSrcAlpha
-
-		Pass
+        // Blend SrcAlpha OneMinusSrcAlpha
+        Blend OneMinusDstColor One // Aditive
+		
+        Pass
 		{
 			CGPROGRAM
 			#pragma vertex vert

@@ -11,8 +11,11 @@ public class BasicEnemyConfig : ScriptableObject
 
     [Header("Attack")]
     [Tooltip("The distance to target required so enemy starts his attack.")]
+    public float attack_agro_range        =  1.0f;
     public float attack_range             = 1.0f;
     public float attack_windup_duration   = 1.0f;
     public float attack_recovery_duration = 1.0f;
 
+    [Header("Prefabs")]
+    public WindupCircularView prefab_windup_circular_view;
 }

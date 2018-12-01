@@ -68,8 +68,8 @@ public class BasicEnemyController : MonoBehaviour {
                             target.position
                         );
 
-                    bool reached_attack_range = dist_to_target <= config.attack_range;
-                    if (reached_attack_range)
+                    bool reached_agro_range = dist_to_target <= config.attack_agro_range;
+                    if (reached_agro_range)
                     {
                         SetState(State.ATTACKING);
                     }
@@ -113,7 +113,7 @@ public class BasicEnemyController : MonoBehaviour {
         this.state = state;
         if (state == State.ATTACKING)
         {
-            attack = new Attack();
+            SetAttackPhase(Attack.Phase.WINDUP);
         }
     }
 
@@ -125,6 +125,9 @@ public class BasicEnemyController : MonoBehaviour {
             case Attack.Phase.WINDUP:
                 {
                     // Play windup anim
+                    var windup_view = Instantiate(config.prefab_windup_circular_view);
+                    windup_view.transform.position = transform.position;
+                    windup_view.Init(config.attack_windup_duration, config.attack_range);
                 }
                 break;
             case Attack.Phase.ACTIVE:
