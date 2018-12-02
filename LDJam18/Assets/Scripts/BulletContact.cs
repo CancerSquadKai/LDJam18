@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletContact : MonoBehaviour
 {
 	[SerializeField] int damage = 5;
+	[SerializeField] GameObject hitParticle;
 	private void OnTriggerEnter (Collider other)
 	{
 		Life otherLife = other.GetComponent<Life>();
@@ -12,11 +13,11 @@ public class BulletContact : MonoBehaviour
 		{
 			// Do DMG
 			otherLife.UpdateLife(damage * -1);
-			Destroy(gameObject);
 		}
-		else
-		{
-			Destroy(gameObject);
-		}
+		GameObject hit = Instantiate(hitParticle, transform.position, hitParticle.transform.rotation);
+		Destroy(hit, 2f);
+
+		Destroy(gameObject);
+
 	}
 }

@@ -90,7 +90,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 17020c6006a077043b948d8193d3f8d7, type: 2}
+  - {fileID: 2100000, guid: 91290454e32aa8d46a4f0c6520591d5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -245,6 +245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  hitParticle: {fileID: 1025034659856570, guid: ef984085a5b34b44f955806aed7ac1df,
+    type: 2}
 --- !u!114 &114956257072840898
 MonoBehaviour:
   m_ObjectHideFlags: 1

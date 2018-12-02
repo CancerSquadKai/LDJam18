@@ -143,6 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  hitParticle: {fileID: 1270287506648636, guid: 51970c770a36a894b8bf7e42b1692fdb,
+    type: 2}
 --- !u!114 &114956257072840898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 7
+  bulletSpdMult: 1
 --- !u!135 &135312919589781230
 SphereCollider:
   m_ObjectHideFlags: 1
