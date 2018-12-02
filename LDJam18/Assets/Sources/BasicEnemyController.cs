@@ -69,6 +69,7 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
 
     private new Rigidbody rigidbody;
 
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();

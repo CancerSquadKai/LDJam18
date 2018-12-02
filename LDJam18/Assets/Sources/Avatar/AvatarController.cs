@@ -9,6 +9,9 @@ public class AvatarController : MonoBehaviour, IBumpable
     public AvatarConfig config;
     public AvatarModel  model;
 
+    public Transform oriented_direction;
+    public Transform oriented_shoot;
+
     private new Rigidbody rigidbody;
 
     private bool _lt = false;
@@ -16,6 +19,8 @@ public class AvatarController : MonoBehaviour, IBumpable
 
     private bool _rt = false;
     private float _rt_step = 0.5f;
+
+    public BulletTrap shoot;
 
     private List<AttackArc> attack_slash_group = new List<AttackArc>(32);
 
@@ -35,10 +40,21 @@ public class AvatarController : MonoBehaviour, IBumpable
 
         // inputs
         {
-            Vector2 left_stick_input = Vector2.zero;
-            left_stick_input.x       = Input.GetAxisRaw("Horizontal");
-            left_stick_input.y       = Input.GetAxisRaw("Vertical");
-            model.input_movement     = left_stick_input;
+            {
+                Vector2 left_stick_input = Vector2.zero;
+                left_stick_input.x       = Input.GetAxisRaw("Horizontal");
+                left_stick_input.y       = Input.GetAxisRaw("Vertical");
+                model.input_movement     = left_stick_input;
+            }
+
+            {
+                Vector2 right_stick_input = Vector2.zero;
+                right_stick_input.x       = Input.GetAxisRaw("RSX");
+                right_stick_input.y       = Input.GetAxisRaw("RSY");
+                model.input_shoot         = right_stick_input.normalized;
+                shoot.canShoot = model.input_shoot.magnitude > 0.125f;
+            }
+
             // model
             model.UpdateInput();
 
@@ -67,6 +83,26 @@ public class AvatarController : MonoBehaviour, IBumpable
                 }
                 _rt = rt_new;
             }
+
+            // orientation
+            oriented_direction.rotation = Quaternion.LookRotation(
+                new Vector3(
+                    model.direction.x,
+                    0,
+                    model.direction.y
+                ),
+                Vector3.up
+            );
+
+            if(model.input_shoot.magnitude > 0.85f)
+                oriented_shoot.rotation = Quaternion.LookRotation(
+                    new Vector3(
+                        model.input_shoot.x,
+                        0,
+                        model.input_shoot.y
+                    ),
+                    Vector3.up
+                );
         }
 
 
