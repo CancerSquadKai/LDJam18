@@ -278,6 +278,9 @@ MonoBehaviour:
     - {fileID: 114178478373877616}
     shotAmount: 1
     shotCD: 0
+    shotLifetime: 5.05
+    shotSpeedFactor: 1
+  canShoot: 1
   timeBetweenBursts: 2.5
 --- !u!114 &114178478373877616
 MonoBehaviour:
