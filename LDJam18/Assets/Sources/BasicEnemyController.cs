@@ -70,7 +70,7 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
     private new Rigidbody rigidbody;
 
     public Life life;
-
+    public Animator      animator;
 
     private void Awake()
     {
@@ -102,6 +102,21 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                     if (!float.IsNaN(position_new.x) && velocity_bump.magnitude <= 0.0625f)
                     {
                         position_new = Vector3.MoveTowards(position, position_new, config.speed_movement * dt);
+
+                        Vector3 direction = position_new - position;
+                        if(direction.magnitude > 0.01f)
+                        {
+                            direction = direction.normalized;
+                            transform.rotation = Quaternion.RotateTowards(
+                                transform.rotation,
+                                Quaternion.LookRotation(
+                                    direction,
+                                    Vector3.up
+                                ),
+                                270 * dt
+                            );
+                        }
+
                         position = position_new;
                     }
                     // Check if can attack
@@ -139,6 +154,10 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                             break;
                         case Attack.Phase.RECOVERY:
                             {
+                                if (life && life.currentLife <= 0)
+                                {
+                                    transform.position += -Vector3.up * dt;
+                                }
                                 if (attack.phase_lifetime >= config.attack_recovery_duration)
                                 {
                                     SetAttackPhase(Attack.Phase.COMPLETED);
@@ -202,6 +221,9 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                     var windup_view = Instantiate(config.prefab_windup_circular_view, transform);
                     windup_view.transform.position = transform.position;
                     windup_view.Init(config.attack_windup_duration, config.attack_range);
+
+                    if (animator)
+                        animator.SetTrigger("UseExplode");
                 }
                 break;
             case Attack.Phase.ACTIVE:
@@ -228,14 +250,20 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                 break;
             case Attack.Phase.RECOVERY:
                 {
-                    if (life && life.currentLife <= 0)
-                        Destroy(gameObject);
                     // Play recovery anim
+                    if (animator)
+                        animator.SetTrigger("Done");
+                    if (animator)
+                        animator.SetBool("Vibrate", true);
                 }
                 break;
             case Attack.Phase.COMPLETED:
                 {
+                    if (life && life.currentLife <= 0)
+                        Destroy(gameObject);
                     StateReset();
+                    if (animator)
+                        animator.SetBool("Vibrate", false);
                 }
                 break;
         }
