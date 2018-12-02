@@ -18,7 +18,7 @@ public class AvatarConfig : ScriptableObject {
     public float attack_bump_distance         = 1.0f;
     public float attack_bump_duration         = 1.0f;
     public int   slash_damage                 = 8;
-    public float   slash_input_bufer_duration = 0.25f;
+    public float slash_input_bufer_duration = 0.25f;
 
     [Header("Slash")]
     public AnimationCurve dash_curve      = AnimationCurve.Linear(0,0,1,1);

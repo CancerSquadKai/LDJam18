@@ -162,6 +162,11 @@ public class AvatarController : MonoBehaviour, IBumpable
         }
     }
 
+    private void LateUpdate()
+    {
+        model.UpdateView();
+    }
+
     public void SetAttackPhase(ref AttackArc attack, Attack.Phase phase)
     {
         attack.SetPhase(phase);

@@ -44,9 +44,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dash_distance: 6
+  dash_distance: 4
   dash_duration: 0.25
   dash_invulnerability: 1
-  dash_cooldown: 0.5
+  dash_cooldown: 6
   prefab_windup_arc_view: {fileID: 114202607520462438, guid: cb68ffb57809ce94f84c96d3635abdba,
     type: 2}

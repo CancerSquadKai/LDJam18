@@ -28,18 +28,39 @@ public class AvatarView : MonoBehaviour {
 
     public Material emisive_blue_mat;
 
+    public List<MeshRenderer> wings_renderer_group = new List<MeshRenderer>(6);
+
     private void Start()
     {
         trail_renderer.time = 0.0f;
         if (emisive_blue_mat)
             emisive_blue_mat.SetColor("_EmissionColor", color_base);
+        Shader.SetGlobalColor("_PlayerColor", color_base);
+
+        foreach(var wings_renderer in wings_renderer_group)
+        {
+            wings_renderer.materials[1] = new Material(wings_renderer.materials[1]);
+        }
+    }
+
+    public void UpdateDashCooldowns(List<float> dash_cooldow_progresses)
+    {
+        int dash_count = Mathf.Min(wings_renderer_group.Count, dash_cooldow_progresses.Count);
+        for (int dash_index = 0; dash_index < dash_count; ++dash_index)
+        {
+            var mr = wings_renderer_group[dash_index];
+            mr.materials[1].SetFloat("_Progress", dash_cooldow_progresses[dash_index]);
+        }
     }
 
     public void OnDashBegin()
     {
         trail_renderer.time = 0.2f;
-        if(animator)
+        if (animator)
+        {
+            animator.SetTrigger("UseDash");
             animator.SetBool("IsDashing", true);
+        }
     }
 
     public void OnDashEnd()
@@ -63,6 +84,7 @@ public class AvatarView : MonoBehaviour {
             mesh_renderer_hitbox.material.SetFloat("_BackgroundOpacity", 1 - hit_curve.Evaluate(progress));
             if(emisive_blue_mat)
                 emisive_blue_mat.SetColor("_EmissionColor", color);
+            Shader.SetGlobalColor("_PlayerColor", color);
             yield return new WaitForEndOfFrame();
         }
     }
