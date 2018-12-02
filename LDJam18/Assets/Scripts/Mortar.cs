@@ -7,6 +7,11 @@ public class Mortar : MonoBehaviour
 	[SerializeField] WindupCircularView aoEView;
 	[SerializeField] float windupDuration;
 	[SerializeField] float attackRange;
+
+	[SerializeField] int attackDamage = 30;
+	[SerializeField] float bumpDistance = 20f;
+	[SerializeField] float bumpDuration = 0.30f;
+
 	[SerializeField] float shakeDuration = 0.5f;
 	[SerializeField] float shakeIntensity = 1.5f;
 	[SerializeField] GameObject mortarParticle;
@@ -44,6 +49,21 @@ public class Mortar : MonoBehaviour
 			GameObject particle = Instantiate(mortarParticle, transform.position, mortarParticle.transform.rotation);
 			// Deal DMG + Bump
 			Destroy(particle, 2f);
+
+			AvatarController player = FindObjectOfType<AvatarController>();
+			Vector3 toPlayer = player.transform.position - targetPos;
+
+			if(toPlayer.magnitude < attackRange)
+			{
+				player.Bump(toPlayer, bumpDistance, bumpDuration);
+				Life playerLife = player.GetComponent<Life>();
+
+				if(playerLife != null)
+				{
+					playerLife.UpdateLife(attackDamage * -1);
+				}
+			}
+
 			Shaker.instance.Shake(shakeDuration, shakeIntensity);
 			hasSpawned = true;
 		}
