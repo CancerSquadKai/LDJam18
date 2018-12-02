@@ -156,7 +156,7 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                             {
                                 if (life && life.currentLife <= 0)
                                 {
-                                    transform.position += -Vector3.up * dt;
+                                    transform.position += -Vector3.up * dt * 4.0f;
                                 }
                                 if (attack.phase_lifetime >= config.attack_recovery_duration)
                                 {
@@ -223,11 +223,19 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                     windup_view.Init(config.attack_windup_duration, config.attack_range);
 
                     if (animator)
-                        animator.SetTrigger("UseExplode");
+                        animator.SetBool("Vibrate", true);
+                    if (life && life.currentLife <= 0)
+                    {
+                        if (animator)
+                            animator.SetTrigger("UseExplode");
+                    }
                 }
                 break;
             case Attack.Phase.ACTIVE:
                 {
+                    if (animator)
+                        animator.SetBool("Vibrate", false);
+
                     // Todo : hit people in range
                     float dist_to_target =
                         Vector3.Distance(
@@ -252,9 +260,7 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                 {
                     // Play recovery anim
                     if (animator)
-                        animator.SetTrigger("Done");
-                    if (animator)
-                        animator.SetBool("Vibrate", true);
+                        animator.SetTrigger("UseExplode");
                 }
                 break;
             case Attack.Phase.COMPLETED:
@@ -263,7 +269,7 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                         Destroy(gameObject);
                     StateReset();
                     if (animator)
-                        animator.SetBool("Vibrate", false);
+                        animator.SetTrigger("Done");
                 }
                 break;
         }
