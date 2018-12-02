@@ -11,13 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4046e9b951890114798e1dc86d3dcce5, type: 3}
   m_Name: AvatarConfig
   m_EditorClassIdentifier: 
-  speed_movement: 8
+  speed_movement: 10
   attack_range: 4
   attack_angle: 144.2
   attack_windup_duration: 0.25
-  attack_recovery_duration: 1
+  attack_recovery_duration: 0.33
   attack_bump_distance: 8
   attack_bump_duration: 0.25
+  slash_damage: 2
+  slash_input_bufer_duration: 0.3
   dash_curve:
     serializedVersion: 2
     m_Curve:
@@ -43,6 +45,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   dash_distance: 6
-  dash_duration: 0.33
+  dash_duration: 0.25
+  dash_invulnerability: 1
+  dash_cooldown: 0.5
   prefab_windup_arc_view: {fileID: 114202607520462438, guid: cb68ffb57809ce94f84c96d3635abdba,
     type: 2}

@@ -7,6 +7,7 @@ public struct AvatarDash
     public float progress_velocity;
     public float progress_position;
     public Vector2 direction;
+    public float cooldown;
 }
 
 public class AvatarModel
@@ -91,13 +92,14 @@ public class AvatarModel
             {
                 view.OnDashEnd();
             }
-            if(dash.progress_position > config.dash_invulnerability)
+            if(dash.progress_position >= config.dash_invulnerability)
             {
                 var life = view.GetComponent<Life>();
                 if (life)
                     life.isInvulnerableToBullet = false;
             }
         }
+        dash.cooldown += dt;
 
         // velocity
         // bump
@@ -128,6 +130,8 @@ public class AvatarModel
 
     public void Dash()
     {
+        if (dash.cooldown < config.dash_cooldown)
+            return;
         dash = new AvatarDash()
         {
             progress_velocity = 1f / config.dash_duration,
