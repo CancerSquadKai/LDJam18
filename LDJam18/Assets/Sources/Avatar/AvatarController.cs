@@ -186,19 +186,24 @@ public class AvatarController : MonoBehaviour, IBumpable
                                 transform.position,
                                 enemy.transform.position
                             );
-                        bool target_in_attack_range = dist_to_target <= config.attack_range;
+                        bool target_in_attack_range = dist_to_target <= config.attack_range * 1.33f;
                         if (target_in_attack_range)
                         {
                             Vector3 dir = (enemy.transform.position - transform.position).normalized;
                             float angle_to_target = Mathf.Atan2(dir.z, dir.x);
                             float avatar_angle = Mathf.Atan2(model.direction.y, model.direction.x);
 
-                            target_in_attack_range &=
+                            target_in_attack_range |=
                                 Mathf.Abs(Mathf.DeltaAngle(
                                     angle_to_target * Mathf.Rad2Deg,
                                     avatar_angle * Mathf.Rad2Deg
-                                )) < (config.attack_angle * 0.5f);
+                                )) < (config.attack_angle * 0.75f);
 
+                            target_in_attack_range |=
+                                Mathf.Abs(Mathf.DeltaAngle(
+                                    angle_to_target * Mathf.Rad2Deg,
+                                    attack.angle * Mathf.Rad2Deg
+                                )) < (config.attack_angle * 0.75f);
 
                             if (target_in_attack_range)
                             {
