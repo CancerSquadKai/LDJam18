@@ -59,6 +59,7 @@ public class AvatarController : MonoBehaviour, IBumpable
                 right_stick_input.y       = Input.GetAxisRaw("RSY");
                 model.input_shoot         = right_stick_input.normalized;
                 shoot.canShoot = model.input_shoot.magnitude > 0.125f;
+                view.UpdateAiming(shoot.canShoot);
             }
 
             // model
@@ -113,6 +114,7 @@ public class AvatarController : MonoBehaviour, IBumpable
 
 
         int attack_slash_count = attack_slash_group.Count;
+
         AttackArc attack_slash;
         for (int attack_slash_index = attack_slash_count - 1; attack_slash_index > 0; --attack_slash_index)
         {
@@ -159,6 +161,9 @@ public class AvatarController : MonoBehaviour, IBumpable
         {
             case Attack.Phase.WINDUP:
                 {
+                    // avatar anim
+                    view.OnAttack();
+
                     // Play arcwindup anim
                     var windup_view = Instantiate(config.prefab_windup_arc_view, this.transform);
                     windup_view.transform.position = transform.position;

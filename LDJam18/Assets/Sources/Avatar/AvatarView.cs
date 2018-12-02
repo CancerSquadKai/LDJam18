@@ -64,4 +64,22 @@ public class AvatarView : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
     }
+
+    public void OnAttack()
+    {
+        if (animator)
+            animator.SetTrigger("UseContactAttack");
+    }
+
+    public void UpdateAiming(bool isAiming)
+    {
+        if (animator)
+            animator.SetBool("IsAiming", isAiming);
+    }
+
+    public void OnShoot()
+    {
+        if (animator)
+            animator.SetTrigger("UseShoot");
+    }
 }
