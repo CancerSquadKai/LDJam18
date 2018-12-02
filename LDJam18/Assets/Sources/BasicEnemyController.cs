@@ -69,6 +69,7 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
 
     private new Rigidbody rigidbody;
 
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -203,6 +204,9 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                             config.attack_bump_distance,
                             config.attack_bump_duration
                         );
+                        var life = target.GetComponent<Life>();
+                        if (life)
+                            life.UpdateLife(-config.attack_damage);
                     }
                 }
                 break;

@@ -29,7 +29,7 @@ public class AvatarModel
 
     public Vector2 translation;
 
-    public Vector2 direction;
+    public Vector2 direction = Vector2.down;
 
     /// <summary>
     /// Current bump velocity.
@@ -40,6 +40,11 @@ public class AvatarModel
     /// Left stick input.
     /// </summary>
     public Vector2 input_movement;
+
+    /// <summary>
+    /// Right stick input.
+    /// </summary>
+    public Vector2 input_shoot;
 
     /// <summary>
     /// Serialized avatar configuration file.
@@ -100,7 +105,7 @@ public class AvatarModel
         velocity += velocity_movement;
         velocity += velocity_bump;
 
-        if(velocity.magnitude > 0.25)
+        if(velocity.magnitude > 0.125f)
         {
             direction = velocity.normalized;
         }
