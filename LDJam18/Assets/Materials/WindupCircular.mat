@@ -76,6 +76,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 1}
-    - _ColorDanger: {r: 1, g: 0.24661294, b: 0, a: 1}
+    - _ColorDanger: {r: 1, g: 0, b: 0.10917854, a: 1}
     - _ColorSafe: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
