@@ -8,6 +8,7 @@ public class Life : MonoBehaviour
 	public int currentLife;
 	public bool isPlayer = false;
 
+	[SerializeField] GameObject particleOnHit;
 	[SerializeField] float invFramesWhenHit = 0.2f;
 
 	float timer = 0f;
@@ -35,7 +36,15 @@ public class Life : MonoBehaviour
 				timer = 0f;
                 if (onUpdateLife != null)
                     onUpdateLife(currentLife, amount);
-            }
+
+				if(particleOnHit != null)
+				{
+					GameObject particle = Instantiate(particleOnHit, transform.position, particleOnHit.transform.rotation);
+					Destroy(particle, 2f);
+					particle.transform.parent = transform;
+				}
+
+			}
 		}
 		else
 		{
