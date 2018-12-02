@@ -18,5 +18,31 @@ MonoBehaviour:
   attack_recovery_duration: 1
   attack_bump_distance: 6
   attack_bump_duration: 0.25
+  dash_curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  dash_distance: 6
+  dash_duration: 0.33
   prefab_windup_arc_view: {fileID: 114202607520462438, guid: cb68ffb57809ce94f84c96d3635abdba,
     type: 2}

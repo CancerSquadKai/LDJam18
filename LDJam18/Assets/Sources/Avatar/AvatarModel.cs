@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct AvatarDash
+{
+    public float progress_velocity;
+    public float progress_position;
+    public Vector2 direction;
+}
+
 public class AvatarModel
 {
+
     /// <summary>
     /// Current movement velocity.
     /// </summary>
@@ -18,6 +26,8 @@ public class AvatarModel
     /// Packed total velocity.
     /// </summary>
     public Vector2 velocity;
+
+    public Vector2 translation;
 
     public Vector2 direction;
 
@@ -41,6 +51,8 @@ public class AvatarModel
     /// </summary>
     public AvatarView view;
 
+    public AvatarDash dash;
+
     public AvatarModel(AvatarConfig config, AvatarView view)
     {
         // feed config
@@ -59,12 +71,27 @@ public class AvatarModel
 
     public void UpdatePhysics(float dt)
     {
+        // tranlation
+        translation = Vector2.zero;
+        // dash
+        if (dash.progress_position < 1) {
+            float then = config.dash_curve.Evaluate(dash.progress_position);
+            dash.progress_position += dt * dash.progress_velocity;
+            dash.progress_position = Mathf.Clamp01(dash.progress_position);
+            float now  = config.dash_curve.Evaluate(dash.progress_position);
+            float delta = now - then;
+            translation += delta * direction * config.dash_distance;
+        }
+
         // velocity
-        velocity_bump = Vector2.MoveTowards(
-            velocity_bump,
-            Vector3.zero,
-            acceleration_bump * dt
-        );
+        // bump
+        {
+            velocity_bump = Vector2.MoveTowards(
+                velocity_bump,
+                Vector3.zero,
+                acceleration_bump * dt
+            );
+        }
 
         velocity = Vector2.zero;
         velocity += velocity_movement;
@@ -81,5 +108,15 @@ public class AvatarModel
         acceleration_bump = (2 * distance) / (duration * duration);
         Vector2 impulse_bump = direction * ((2 * distance) / duration);
         velocity_bump += impulse_bump;
+    }
+
+    public void Dash()
+    {
+        dash = new AvatarDash()
+        {
+            progress_velocity = 1f / config.dash_duration,
+            progress_position = 0,
+            direction         = direction
+        };
     }
 }

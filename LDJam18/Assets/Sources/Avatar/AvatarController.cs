@@ -14,6 +14,9 @@ public class AvatarController : MonoBehaviour, IBumpable
     private bool _lt = false;
     private float _lt_step = 0.5f;
 
+    private bool _rt = false;
+    private float _rt_step = 0.5f;
+
     private List<AttackArc> attack_slash_group = new List<AttackArc>(32);
 
     private void Awake()
@@ -36,23 +39,36 @@ public class AvatarController : MonoBehaviour, IBumpable
             left_stick_input.x       = Input.GetAxisRaw("Horizontal");
             left_stick_input.y       = Input.GetAxisRaw("Vertical");
             model.input_movement     = left_stick_input;
+            // model
+            model.UpdateInput();
+
+            // Left trigger
+            {
+                bool lt_new  = Input.GetAxisRaw("LT") > _lt_step;
+                bool lt_down = !_lt && lt_new;
+                bool lt_up   = _lt  && !lt_new;
+                if (lt_down)
+                { // dash
+                    model.Dash();
+                }
+                _lt = lt_new;
+            }
+
+            // Right trigger
+            {
+                bool rt_new  = Input.GetAxisRaw("RT") > _rt_step;
+                bool rt_down = !_rt &&  rt_new;
+                bool rt_up   =  _rt && !rt_new;
+                if (rt_down)
+                { // slash
+                    var attack_slash_new = new AttackArc(Mathf.Atan2(model.direction.y, model.direction.x));
+                    SetAttackPhase(ref attack_slash_new, Attack.Phase.WINDUP);
+                    attack_slash_group.Add(attack_slash_new);
+                }
+                _rt = rt_new;
+            }
         }
 
-        // model
-        model.UpdateInput();
-
-        bool lt_new  = Input.GetAxisRaw("LT") > _lt_step;
-        bool lt_down = !_lt && lt_new;
-        bool lt_up   = _lt  && !lt_new;
-        if (lt_down)
-        {
-            Debug.Log("Slash!");
-
-            var attack_slash_new = new AttackArc(Mathf.Atan2(model.direction.y, model.direction.x));
-            SetAttackPhase(ref attack_slash_new, Attack.Phase.WINDUP);
-            attack_slash_group.Add(attack_slash_new);
-        }
-        _lt = lt_new;
 
         int attack_slash_count = attack_slash_group.Count;
         AttackArc attack_slash;
@@ -162,6 +178,11 @@ public class AvatarController : MonoBehaviour, IBumpable
             model.velocity.x,
             0,
             model.velocity.y
+            );
+        rigidbody.position = rigidbody.position + new Vector3(
+            model.translation.x,
+            0,
+            model.translation.y
             );
     }
 
