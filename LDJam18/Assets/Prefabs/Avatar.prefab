@@ -639,7 +639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1506676169966100
 GameObject:
   m_ObjectHideFlags: 1
@@ -667,22 +667,6 @@ GameObject:
   - component: {fileID: 4372655432578068}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1540270965821122
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4120889536875358}
-  - component: {fileID: 135463848378809514}
-  m_Layer: 9
-  m_Name: Colider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1407,19 +1391,6 @@ Transform:
   m_Father: {fileID: 4324859151249562}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4120889536875358
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1540270965821122}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4661539499810148}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4128663052179936
 Transform:
   m_ObjectHideFlags: 1
@@ -2065,7 +2036,6 @@ Transform:
   - {fileID: 4315641531075518}
   - {fileID: 4510309418112842}
   - {fileID: 4630924440440620}
-  - {fileID: 4120889536875358}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4298,6 +4268,7 @@ MonoBehaviour:
   maxLife: 50
   currentLife: 50
   isPlayer: 1
+  isInvulnerableToBullet: 0
   particleOnHit: {fileID: 1187725664104204, guid: e72fa107921dd25409f42aa89e711a3a,
     type: 2}
   invFramesWhenHit: 0.2
@@ -4330,18 +4301,6 @@ MonoBehaviour:
   oriented_direction: {fileID: 4510309418112842}
   oriented_shoot: {fileID: 4630924440440620}
   shoot: {fileID: 114007471378138906}
---- !u!135 &135463848378809514
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1540270965821122}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135829655635649118
 SphereCollider:
   m_ObjectHideFlags: 1

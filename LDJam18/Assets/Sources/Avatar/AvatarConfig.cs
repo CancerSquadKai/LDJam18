@@ -23,6 +23,8 @@ public class AvatarConfig : ScriptableObject {
     public AnimationCurve dash_curve      = AnimationCurve.Linear(0,0,1,1);
     public float dash_distance            = 8f;
     public float dash_duration            = 0.125f;
+    [Range(0,1)]
+    public float dash_invulnerability     = 0.5f;
 
 
     [Header("Prefabs")]

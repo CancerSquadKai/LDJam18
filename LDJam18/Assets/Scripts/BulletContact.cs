@@ -11,11 +11,18 @@ public class BulletContact : MonoBehaviour
 		Life otherLife = other.GetComponent<Life>();
 		if(otherLife != null)
 		{
-			// Do DMG
-			otherLife.UpdateLife(damage * -1);
+            // Do DMG
+            if (!otherLife.isInvulnerableToBullet)
+                otherLife.UpdateLife(damage * -1);
+            else
+                return;
 		}
-		GameObject hit = Instantiate(hitParticle, transform.position, hitParticle.transform.rotation);
-		Destroy(hit, 2f);
+
+        if (hitParticle != null)
+        {
+            GameObject hit = Instantiate(hitParticle, transform.position, hitParticle.transform.rotation);
+		    Destroy(hit, 2f);
+        }
 
 		Destroy(gameObject);
 

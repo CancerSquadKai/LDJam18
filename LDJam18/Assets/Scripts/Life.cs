@@ -7,6 +7,7 @@ public class Life : MonoBehaviour
 	public int maxLife;
 	public int currentLife;
 	public bool isPlayer = false;
+    public bool isInvulnerableToBullet = false;
 
 	[SerializeField] GameObject particleOnHit;
 	[SerializeField] float invFramesWhenHit = 0.2f;

@@ -39,12 +39,14 @@ public class AvatarView : MonoBehaviour {
     {
         trail_renderer.time = 0.2f;
         if(animator)
-            animator.SetTrigger("UseDash");
+            animator.SetBool("IsDashing", true);
     }
 
     public void OnDashEnd()
     {
         trail_renderer.time = 0.0f;
+        if (animator)
+            animator.SetBool("IsDashing", false);
     }
 
     public IEnumerator GotHitCoroutine()

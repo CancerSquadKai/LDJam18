@@ -88,7 +88,15 @@ public class AvatarModel
             translation += delta * direction * config.dash_distance;
 
             if(dash.progress_position >= 1)
+            {
                 view.OnDashEnd();
+            }
+            if(dash.progress_position > config.dash_invulnerability)
+            {
+                var life = view.GetComponent<Life>();
+                if (life)
+                    life.isInvulnerableToBullet = false;
+            }
         }
 
         // velocity
@@ -127,5 +135,8 @@ public class AvatarModel
             direction         = direction
         };
         view.OnDashBegin();
+        var life = view.GetComponent<Life>();
+        if (life)
+            life.isInvulnerableToBullet = true;
     }
 }

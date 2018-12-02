@@ -15,10 +15,10 @@ public class AvatarController : MonoBehaviour, IBumpable
     private new Rigidbody rigidbody;
 
     private bool _lt = false;
-    private float _lt_step = 0.5f;
+    private float _lt_step = 0.25f;
 
     private bool _rt = false;
-    private float _rt_step = 0.5f;
+    private float _rt_step = 0.25f;
 
     public BulletTrap shoot;
 
@@ -111,7 +111,6 @@ public class AvatarController : MonoBehaviour, IBumpable
                     Vector3.up
                 );
         }
-
 
         int attack_slash_count = attack_slash_group.Count;
 
