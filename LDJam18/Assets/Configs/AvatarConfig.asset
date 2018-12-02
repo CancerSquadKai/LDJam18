@@ -14,9 +14,9 @@ MonoBehaviour:
   speed_movement: 8
   attack_range: 4
   attack_angle: 144.2
-  attack_windup_duration: 0.125
+  attack_windup_duration: 0.25
   attack_recovery_duration: 1
-  attack_bump_distance: 6
+  attack_bump_distance: 8
   attack_bump_duration: 0.25
   dash_curve:
     serializedVersion: 2

@@ -19,9 +19,8 @@ public class WindupArcView : MonoBehaviour {
     public void Init(float lifespan, float radius, Vector3 direction, float angle)
     {
         this.lifespan = lifespan;
-        float size = radius * 1.0f;
-        transform.localScale = Vector3.one * size;
-        mesh_renderer.material.SetFloat("_Width", (1f / size) * _WIDTH);
+        transform.localScale = Vector3.one * radius;
+        mesh_renderer.material.SetFloat("_Width", (1f / (radius * 2)) * _WIDTH);
 
         direction.Normalize();
         float start_angle = Mathf.Atan2(direction.z, direction.x);

@@ -69,34 +69,38 @@
 				return o;
 			}
 			
+            float arc(float distance_field, float progress)
+            {
+                return round_quad((distance_field / _Width) + 1 - (progress / _Width) );
+            }
+
 			fixed4 frag (v2f i) : SV_Target
 			{
 				// sample the texture
                 i.uv.y = i.uv.y / i.uv.x;
-                float2 uv = i.uv * 2 - 1;
+                i.uv = clamp(i.uv, 0, 1);
+                float p = ease_out_quad(_Progress * 0.25 + 0.75);
+                float len = arc(i.uv.x, p);
 
-                float one_minus_width = 1 - _Width;
-                //float len = length(i.uv);
-                float len = round_quad((abs(uv.x) - one_minus_width) / _Width) * i.uv.x;
-                len = clamp(len, 0, 1);
-                //_Width *= 0.5;
-                //one_minus_width = 1 - _Width;
-                //clamp(len, 0, 1);
+                // progress line
+                len = max(len, arc(i.uv.x , _Progress));
+
+                // side lines
+                len = max(len, arc(abs(i.uv.y * 2 - 1), 1) * round_quad(clamp(i.uv.x * 2 - 1, 0, 1)));
+
+                // fade on the side
+                len *= round_quad(i.uv.y) * 0.75 + 0.25;
+
+                // background
                 len = max(len,
-                    round_quad((abs(uv.y) - one_minus_width) / _Width) * round_quad(i.uv.x)
+                    (1 - step(_Progress - _Width * 0.5, i.uv.x)) * i.uv.x * _BackgroundOpacity
                 );
 
-
-                len = max(len,
-                    round_quad((i.uv.x / (_Width * 0.5)) - ((_Progress - _Width * 0.25)/ (_Width * 0.5)))
-                );
-                len = max(len,
-                    (1 - step(_Progress,i.uv.x)) * i.uv.x * _BackgroundOpacity
-                );
-
-                len *= round_quad(i.uv.y);
-                // * clamp(round_quad(i.uv.x),0,1) * i.uv.x)
+                // contrast
                 len = ease_out_quad(len);
+                // global fade depending on progress
+                len *= _Progress;
+
 				return float4(len, 0.0, 0.0,0.0);
 			}
 			ENDCG
