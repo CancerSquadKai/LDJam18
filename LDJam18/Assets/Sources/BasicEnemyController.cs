@@ -228,6 +228,8 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                 break;
             case Attack.Phase.RECOVERY:
                 {
+                    if (life && life.currentLife <= 0)
+                        Destroy(gameObject);
                     // Play recovery anim
                 }
                 break;
