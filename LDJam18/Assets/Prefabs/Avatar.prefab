@@ -4298,6 +4298,8 @@ MonoBehaviour:
   maxLife: 50
   currentLife: 50
   isPlayer: 1
+  particleOnHit: {fileID: 1187725664104204, guid: e72fa107921dd25409f42aa89e711a3a,
+    type: 2}
   invFramesWhenHit: 0.2
 --- !u!114 &114401428620146216
 MonoBehaviour:
