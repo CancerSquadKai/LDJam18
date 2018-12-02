@@ -208,7 +208,9 @@ public class AvatarController : MonoBehaviour, IBumpable
                                     config.attack_bump_distance,
                                     config.attack_bump_duration
                                 );
-                            }
+
+								Shaker.instance.Shake(config.attack_bump_duration, config.attack_bump_distance / 40f);
+							}
                         }
                     }
                 }
@@ -241,6 +243,8 @@ public class AvatarController : MonoBehaviour, IBumpable
             distance,
             duration 
         );
+
+		Shaker.instance.Shake(duration * 4f, distance / 10f);
     }
 
     private void OnHealthUpdate(int health, int delta)
