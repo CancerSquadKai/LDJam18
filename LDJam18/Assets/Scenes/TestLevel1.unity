@@ -287,10 +287,6 @@ Prefab:
       propertyPath: m_Name
       value: Wall (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 4456103506183794, guid: 7ecd61f77fe9caf4e849aa0e1a39e1bf, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90.00001
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ecd61f77fe9caf4e849aa0e1a39e1bf, type: 2}
   m_IsPrefabAsset: 0
@@ -2892,10 +2888,6 @@ Prefab:
     - target: {fileID: 1434167758055768, guid: 87988f4687181c74db4b604713b0537e, type: 2}
       propertyPath: m_Name
       value: WallCorner (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774634804745288, guid: 87988f4687181c74db4b604713b0537e, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -180.00002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87988f4687181c74db4b604713b0537e, type: 2}
