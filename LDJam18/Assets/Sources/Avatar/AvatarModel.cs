@@ -29,7 +29,7 @@ public class AvatarModel
 
     public Vector2 translation;
 
-    public Vector2 direction;
+    public Vector2 direction = Vector2.down;
 
     /// <summary>
     /// Current bump velocity.
@@ -40,6 +40,11 @@ public class AvatarModel
     /// Left stick input.
     /// </summary>
     public Vector2 input_movement;
+
+    /// <summary>
+    /// Right stick input.
+    /// </summary>
+    public Vector2 input_shoot;
 
     /// <summary>
     /// Serialized avatar configuration file.
@@ -81,6 +86,9 @@ public class AvatarModel
             float now  = config.dash_curve.Evaluate(dash.progress_position);
             float delta = now - then;
             translation += delta * direction * config.dash_distance;
+
+            if(dash.progress_position >= 1)
+                view.OnDashEnd();
         }
 
         // velocity
@@ -97,7 +105,7 @@ public class AvatarModel
         velocity += velocity_movement;
         velocity += velocity_bump;
 
-        if(velocity.magnitude > 0.25)
+        if(velocity.magnitude > 0.125f)
         {
             direction = velocity.normalized;
         }
@@ -118,5 +126,6 @@ public class AvatarModel
             progress_position = 0,
             direction         = direction
         };
+        view.OnDashBegin();
     }
 }

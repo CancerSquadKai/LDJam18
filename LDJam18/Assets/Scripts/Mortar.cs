@@ -8,6 +8,8 @@ public class Mortar : MonoBehaviour
 	[SerializeField] float windupDuration;
 	[SerializeField] float attackRange;
 
+	[SerializeField] GameObject mortarParticle;
+
 	//[SerializeField] Animator anim;
 
 	float timer = 0f;
@@ -16,6 +18,8 @@ public class Mortar : MonoBehaviour
 	Vector3 targetPos;
 
 	AvatarController player;
+
+	bool hasSpawned = false;
 	// Use this for initialization
 	void Start ()
 	{
@@ -26,7 +30,7 @@ public class Mortar : MonoBehaviour
 		var windup_view = Instantiate(aoEView);
 		windup_view.transform.position = targetPos;
 		windup_view.Init(windupDuration, attackRange);
-
+		//Destroy(gameObject, 6.01f);
 	}
 	
 	// Update is called once per frame
@@ -34,5 +38,12 @@ public class Mortar : MonoBehaviour
 	{
 		timer += Time.deltaTime;
 		transform.position = Vector3.Lerp(initialPos, targetPos, timer / windupDuration);
+		if(transform.position == targetPos && !hasSpawned)
+		{
+			GameObject particle = Instantiate(mortarParticle, transform.position, mortarParticle.transform.rotation);
+			// Deal DMG + Bump
+			Destroy(particle, 2f);
+			hasSpawned = true;
+		}
 	}
 }

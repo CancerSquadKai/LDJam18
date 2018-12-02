@@ -378,7 +378,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768859801372892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4956096968157024}
@@ -735,12 +735,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bursts:
-  - spawners:
+  - spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
+      type: 2}
+    spawners:
     - {fileID: 114261433304222828}
     - {fileID: 114821357469999392}
     shotAmount: 5
     shotCD: 0.1
-  - spawners:
+  - spawnedObject: {fileID: 0}
+    spawners:
     - {fileID: 114955400083640946}
     - {fileID: 114350226455677864}
     shotAmount: 5
@@ -757,8 +760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198146010933068684}
 --- !u!114 &114350226455677864
@@ -772,8 +773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198222834885546882}
 --- !u!114 &114582623437562460
@@ -787,8 +786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198452703437256124}
 --- !u!114 &114821357469999392
@@ -802,8 +799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198241121118652930}
 --- !u!114 &114955400083640946
@@ -817,8 +812,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198535036497777538}
 --- !u!198 &198146010933068684

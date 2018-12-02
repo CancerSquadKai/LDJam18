@@ -17,11 +17,13 @@ public class BulletTrap : MonoBehaviour
 
 		public int shotAmount = 1;
 		public float shotCD = 0.3f;
+		public float shotLifetime = 3f;
 	}
 
 	public Burst[] bursts;
+    public bool canShoot = true;
 
-	[SerializeField] float timeBetweenBursts = 1f;
+    [SerializeField] float timeBetweenBursts = 1f;
 
 	float timer = 0.0f;
 	int index = 0;
@@ -45,9 +47,10 @@ public class BulletTrap : MonoBehaviour
 				Spawner spawner = bursts[ind].spawners[i];
 				if(spawner != null)
 				{
-					spawner.SpawnObject(bursts[ind].spawnedObject);
+					spawner.SpawnObject(bursts[ind].spawnedObject, bursts[ind].shotLifetime);
 				}		
 			}
+            if (!canShoot) break;
 			yield return new WaitForSeconds(bursts[ind].shotCD);
 		}
 		isFiring = false;
@@ -56,7 +59,7 @@ public class BulletTrap : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if(!isFiring)
+		if(!isFiring && canShoot)
 		{
 			/*if(Input.GetKeyDown(KeyCode.Space))
 			{
@@ -89,4 +92,5 @@ public class BulletTrap : MonoBehaviour
 			
 		}
 	}
+
 }
