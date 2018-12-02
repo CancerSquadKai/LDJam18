@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: BasicEnemyConfig
   m_EditorClassIdentifier: 
   health: 10
-  speed_movement: 8
+  speed_movement: 12
   attack_agro_range: 3
   attack_range: 6
   attack_windup_duration: 1

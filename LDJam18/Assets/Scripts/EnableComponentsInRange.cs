@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class EnableComponentsInRange : MonoBehaviour
 {
-	public float range;
-	public Transform specificTarget;
-	public string targetTagName;
-	public bool disableInRange = false;
-	public Behaviour[] components;
-	[Tooltip("Which layers do we want to affect ?")]
-	public LayerMask layerMask;
+	public bool disableInstead = false;
 	public bool revertWhenOutOfRange = true;
+	public float range;
+	[Space]
+	public Transform specificTarget;
+	[Space]
+	public Behaviour[] components;
+
+	//public string targetTagName;
+	[Tooltip("Which layers do we want to affect ?")]
+	//public LayerMask layerMask;
 
 	bool isInRange = false;
 	int targetsInRange = 0;
@@ -19,7 +22,10 @@ public class EnableComponentsInRange : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-
+		if(specificTarget == null)
+		{
+			specificTarget = FindObjectOfType<AvatarController>().transform;
+		}
 	}
 
 	void ComponentManagement(bool isEnabled)
@@ -43,7 +49,7 @@ public class EnableComponentsInRange : MonoBehaviour
 				targetsInRange = 1;
 			}
 		}
-		else
+		/*else
 		{
 			Collider[] hitColliders = Physics.OverlapSphere(transform.position, range, layerMask);
 			if (hitColliders.Length >= 1)
@@ -64,13 +70,13 @@ public class EnableComponentsInRange : MonoBehaviour
 
 				}
 			}
-		}
+		}*/
 
 		if(targetsInRange > 0)
 		{
 			if(!isInRange)
 			{
-				ComponentManagement(!disableInRange);
+				ComponentManagement(!disableInstead);
 				isInRange = true;
 			}
 		}
@@ -80,7 +86,7 @@ public class EnableComponentsInRange : MonoBehaviour
 			{
 				if(revertWhenOutOfRange)
 				{
-					ComponentManagement(disableInRange);
+					ComponentManagement(disableInstead);
 				}
 				isInRange = false;
 			}

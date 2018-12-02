@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4486672921519206}
   - component: {fileID: 114025799193833804}
+  - component: {fileID: 114266518729176802}
   m_Layer: 0
   m_Name: Trap_Mortar
   m_TagString: Untagged
@@ -266,7 +267,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1077150739786094}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73bf7737f92b9664f8904d4f05c69525, type: 3}
   m_Name: 
@@ -295,6 +296,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shareOrientation: 1
   spawnParticle: {fileID: 198799371152293066}
+--- !u!114 &114266518729176802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077150739786094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5720c6a2974e7bb489b57249e7140f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableInstead: 0
+  revertWhenOutOfRange: 1
+  range: 20
+  specificTarget: {fileID: 0}
+  components:
+  - {fileID: 114025799193833804}
 --- !u!198 &198799371152293066
 ParticleSystem:
   m_ObjectHideFlags: 1
