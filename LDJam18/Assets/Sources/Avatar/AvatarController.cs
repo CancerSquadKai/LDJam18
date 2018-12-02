@@ -210,6 +210,12 @@ public class AvatarController : MonoBehaviour, IBumpable
                                 );
 
 								Shaker.instance.Shake(config.attack_bump_duration, config.attack_bump_distance / 40f);
+
+                                var life = enemy.life;
+                                if (life)
+                                {
+                                    life.UpdateLife(-config.slash_damage);
+                                }
 							}
                         }
                     }
