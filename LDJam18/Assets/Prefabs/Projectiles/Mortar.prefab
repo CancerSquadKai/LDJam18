@@ -249,6 +249,11 @@ MonoBehaviour:
   aoEView: {fileID: 114845534869268682, guid: 99d5689e4df308b418f9311e1df782a3, type: 2}
   windupDuration: 5
   attackRange: 10
+  attackDamage: 30
+  bumpDistance: 10
+  bumpDuration: 0.25
+  shakeDuration: 0.5
+  shakeIntensity: 1.5
   mortarParticle: {fileID: 1778274356993292, guid: 6925cf6ef86353a4b8e02ffe5a0f396e,
     type: 2}
 --- !u!135 &135246189578692002

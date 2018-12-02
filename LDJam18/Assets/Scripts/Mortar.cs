@@ -9,11 +9,12 @@ public class Mortar : MonoBehaviour
 	[SerializeField] float attackRange;
 
 	[SerializeField] int attackDamage = 30;
-	[SerializeField] float bumpDistance = 20f;
-	[SerializeField] float bumpDuration = 0.30f;
+	[SerializeField] float bumpDistance = 15f;
+	[SerializeField] float bumpDuration = 0.25f;
 
 	[SerializeField] float shakeDuration = 0.5f;
 	[SerializeField] float shakeIntensity = 1.5f;
+	[SerializeField] float shakeRange = 20f;
 	[SerializeField] GameObject mortarParticle;
 
 	//[SerializeField] Animator anim;
@@ -53,9 +54,10 @@ public class Mortar : MonoBehaviour
 			AvatarController player = FindObjectOfType<AvatarController>();
 			Vector3 toPlayer = player.transform.position - targetPos;
 
+			Debug.Log("To Player : " + toPlayer);
 			if(toPlayer.magnitude < attackRange)
 			{
-				player.Bump(toPlayer, bumpDistance, bumpDuration);
+				player.Bump(toPlayer.normalized, bumpDistance, bumpDuration);
 				Life playerLife = player.GetComponent<Life>();
 
 				if(playerLife != null)
@@ -64,7 +66,10 @@ public class Mortar : MonoBehaviour
 				}
 			}
 
-			Shaker.instance.Shake(shakeDuration, shakeIntensity);
+			if(toPlayer.magnitude < shakeRange)
+			{
+				Shaker.instance.Shake(shakeDuration, shakeIntensity);
+			}
 			hasSpawned = true;
 		}
 	}

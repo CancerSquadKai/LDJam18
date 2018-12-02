@@ -3408,7 +3408,7 @@ Prefab:
     - target: {fileID: 114025799193833804, guid: 3ee4aaaa9d3382c468d714b573953886,
         type: 2}
       propertyPath: timeBetweenBursts
-      value: 10
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee4aaaa9d3382c468d714b573953886, type: 2}
