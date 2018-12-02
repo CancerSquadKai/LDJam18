@@ -19,7 +19,9 @@ public class AvatarView : MonoBehaviour {
     public Animator      animator;
     public MeshRenderer  mesh_renderer_hitbox;
 
+    [ColorUsage(false, true)]
     public Color color_base;
+    [ColorUsage(false, true)]
     public Color color_hit;
     public AnimationCurve hit_curve;
     public float progress_base = 0.755f;
@@ -29,6 +31,8 @@ public class AvatarView : MonoBehaviour {
     private void Start()
     {
         trail_renderer.time = 0.0f;
+        if (emisive_blue_mat)
+            emisive_blue_mat.SetColor("_EmissionColor", color_base);
     }
 
     public void OnDashBegin()
@@ -55,7 +59,8 @@ public class AvatarView : MonoBehaviour {
             mesh_renderer_hitbox.material.SetColor("_ColorDanger", color);
             mesh_renderer_hitbox.material.SetFloat("_Progress", hit_curve.Evaluate(progress) * progress_base);
             mesh_renderer_hitbox.material.SetFloat("_BackgroundOpacity", 1 - hit_curve.Evaluate(progress));
-            emisive_blue_mat.SetColor("_Color", color);
+            if(emisive_blue_mat)
+                emisive_blue_mat.SetColor("_EmissionColor", color);
             yield return new WaitForEndOfFrame();
         }
     }
