@@ -165,16 +165,13 @@ public class AvatarController : MonoBehaviour, IBumpable
                     view.OnAttack();
 
                     // Play arcwindup anim
-                    var windup_view = Instantiate(config.prefab_windup_arc_view, this.transform);
+                    var windup_view = Instantiate(config.prefab_windup_arc_view, this.oriented_direction);
                     windup_view.transform.position = transform.position;
+                    windup_view.transform.localRotation = Quaternion.Euler(90, 0, 0);
                     windup_view.Init(
                         config.attack_windup_duration,
                         config.attack_range,
-                        new Vector3(
-                            Mathf.Cos(attack.angle),
-                            0,
-                            Mathf.Sin(attack.angle)
-                        ),
+                        Vector3.forward,
                         config.attack_angle * Mathf.Deg2Rad
                         );
                 }
@@ -195,11 +192,12 @@ public class AvatarController : MonoBehaviour, IBumpable
                         {
                             Vector3 dir = (enemy.transform.position - transform.position).normalized;
                             float angle_to_target = Mathf.Atan2(dir.z, dir.x);
+                            float avatar_angle = Mathf.Atan2(model.direction.y, model.direction.x);
 
                             target_in_attack_range &=
                                 Mathf.Abs(Mathf.DeltaAngle(
                                     angle_to_target * Mathf.Rad2Deg,
-                                    attack.angle * Mathf.Rad2Deg
+                                    avatar_angle * Mathf.Rad2Deg
                                 )) < (config.attack_angle * 0.5f);
 
 
