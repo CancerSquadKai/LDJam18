@@ -19,6 +19,9 @@ public class AvatarController : MonoBehaviour, IBumpable
 
     private bool _rt = false;
     private float _rt_step = 0.25f;
+    private float _rt_down_time = 0;
+
+    float can_slash_time = 0;
 
     public BulletTrap shoot;
 
@@ -83,7 +86,13 @@ public class AvatarController : MonoBehaviour, IBumpable
                 bool rt_down = !_rt &&  rt_new;
                 bool rt_up   =  _rt && !rt_new;
                 if (rt_down)
-                { // slash
+                {
+                    _rt_down_time = Time.time;
+                }
+                if(Time.time > can_slash_time &&
+                    _rt_down_time + config.slash_input_bufer_duration > can_slash_time)
+                {
+                    // slash
                     var attack_slash_new = new AttackArc(Mathf.Atan2(model.direction.y, model.direction.x));
                     SetAttackPhase(ref attack_slash_new, Attack.Phase.WINDUP);
                     attack_slash_group.Add(attack_slash_new);
@@ -115,7 +124,7 @@ public class AvatarController : MonoBehaviour, IBumpable
         int attack_slash_count = attack_slash_group.Count;
 
         AttackArc attack_slash;
-        for (int attack_slash_index = attack_slash_count - 1; attack_slash_index > 0; --attack_slash_index)
+        for (int attack_slash_index = attack_slash_count - 1; attack_slash_index >= 0; --attack_slash_index)
         {
             attack_slash = attack_slash_group[attack_slash_index];
             // Advance attack phases
@@ -160,6 +169,7 @@ public class AvatarController : MonoBehaviour, IBumpable
         {
             case Attack.Phase.WINDUP:
                 {
+                    can_slash_time = Time.time + config.attack_recovery_duration;
                     // avatar anim
                     view.OnAttack();
 
