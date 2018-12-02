@@ -7,7 +7,6 @@ public struct AvatarDash
     public float progress_velocity;
     public float progress_position;
     public Vector2 direction;
-    public float cooldown;
 }
 
 public class AvatarModel
@@ -59,12 +58,25 @@ public class AvatarModel
 
     public AvatarDash dash;
 
+    public List<float> dash_cooldown_progresses;
+
     public AvatarModel(AvatarConfig config, AvatarView view)
     {
         // feed config
         this.config = config;
         // feed view
         this.view   = view;
+
+        // refill all dash charges
+        dash_cooldown_progresses = new List<float>(6);
+        int dash_count = dash_cooldown_progresses.Capacity;
+        for (int dash_index = 0; dash_index < dash_count; ++dash_index)
+            dash_cooldown_progresses.Add(1.0f);
+    }
+
+    public void UpdateView()
+    {
+        view.UpdateDashCooldowns(dash_cooldown_progresses);
     }
 
     /// <summary>
@@ -80,6 +92,7 @@ public class AvatarModel
         // tranlation
         translation = Vector2.zero;
         // dash
+        RefillDashes(dt / config.dash_cooldown);
         if (dash.progress_position < 1) {
             float then = config.dash_curve.Evaluate(dash.progress_position);
             dash.progress_position += dt * dash.progress_velocity;
@@ -99,7 +112,6 @@ public class AvatarModel
                     life.isInvulnerableToBullet = false;
             }
         }
-        dash.cooldown += dt;
 
         // velocity
         // bump
@@ -128,10 +140,32 @@ public class AvatarModel
         velocity_bump += impulse_bump;
     }
 
+    public void RefillDashes(float amounth)
+    {
+        int dash_count = dash_cooldown_progresses.Count;
+        for (int dash_index = 0; dash_index < dash_count; ++dash_index)
+            dash_cooldown_progresses[dash_index] += amounth;
+    }
+
     public void Dash()
     {
-        if (dash.cooldown < config.dash_cooldown)
+        int available_dash_index = -1;
+        // find available charge
+        int dash_count = dash_cooldown_progresses.Count;
+        for (int dash_index = 0; dash_index < dash_count; ++dash_index)
+        {
+            if(dash_cooldown_progresses[dash_index] >= 1.0f)
+            {
+                available_dash_index = dash_index;
+                break;
+            }
+        }
+        if (available_dash_index == -1) // no dash charge found
             return;
+
+        // put charge on cooldown
+        dash_cooldown_progresses[available_dash_index] = 0.0f;
+
         dash = new AvatarDash()
         {
             progress_velocity = 1f / config.dash_duration,
