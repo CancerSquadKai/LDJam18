@@ -14,4 +14,21 @@ public class AvatarView : MonoBehaviour {
             );
         }
     }
+
+    public TrailRenderer trail_renderer;
+
+    private void Start()
+    {
+        trail_renderer.time = 0.0f;
+    }
+
+    public void OnDashBegin()
+    {
+        trail_renderer.time = 0.2f;
+    }
+
+    public void OnDashEnd()
+    {
+        trail_renderer.time = 0.0f;
+    }
 }

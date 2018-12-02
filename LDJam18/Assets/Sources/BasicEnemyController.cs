@@ -251,7 +251,6 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
 
     public void Bump(Vector3 direction, float distance, float duration)
     {
-        Debug.Log("Bumped");
         acceleration_bump = (2 * distance) / (duration * duration);
         Vector3 impulse_bump = direction * ((2 * distance) / duration);
         velocity_bump += impulse_bump;

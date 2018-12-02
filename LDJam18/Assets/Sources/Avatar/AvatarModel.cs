@@ -81,6 +81,9 @@ public class AvatarModel
             float now  = config.dash_curve.Evaluate(dash.progress_position);
             float delta = now - then;
             translation += delta * direction * config.dash_distance;
+
+            if(dash.progress_position >= 1)
+                view.OnDashEnd();
         }
 
         // velocity
@@ -118,5 +121,6 @@ public class AvatarModel
             progress_position = 0,
             direction         = direction
         };
+        view.OnDashBegin();
     }
 }
