@@ -5297,29 +5297,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1465445640}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1492742811 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1121866642918250, guid: 4c1e2dc21a9a5c74aa6adc510bc6a572,
-    type: 2}
-  m_PrefabInternal: {fileID: 1560621173}
---- !u!114 &1492742816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1492742811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1f6859fc6fa324b8cc2d771d58d0fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeDuration: 1
-  intensity: 3
-  inputName: Fire1
-  useCooldown: 1
-  cooldown: 0.5
-  onlyOnce: 0
-  targetToShake: {fileID: 0}
 --- !u!1 &1501221156
 GameObject:
   m_ObjectHideFlags: 0
