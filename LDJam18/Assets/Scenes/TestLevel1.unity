@@ -6439,7 +6439,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4774634804745288, guid: 87988f4687181c74db4b604713b0537e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -48
+      value: -47.975
       objectReference: {fileID: 0}
     - target: {fileID: 4774634804745288, guid: 87988f4687181c74db4b604713b0537e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6447,7 +6447,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4774634804745288, guid: 87988f4687181c74db4b604713b0537e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -22.5
+      value: -25.475
       objectReference: {fileID: 0}
     - target: {fileID: 4774634804745288, guid: 87988f4687181c74db4b604713b0537e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6472,10 +6472,6 @@ Prefab:
     - target: {fileID: 1434167758055768, guid: 87988f4687181c74db4b604713b0537e, type: 2}
       propertyPath: m_Name
       value: WallCorner (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774634804745288, guid: 87988f4687181c74db4b604713b0537e, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -270
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87988f4687181c74db4b604713b0537e, type: 2}
