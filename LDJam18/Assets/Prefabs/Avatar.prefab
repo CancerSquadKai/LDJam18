@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 114550365247718840}
   - component: {fileID: 135829655635649118}
   - component: {fileID: 54680720773106412}
+  - component: {fileID: 114110406943122126}
   m_Layer: 9
   m_Name: Avatar
   m_TagString: Player
@@ -291,7 +292,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1121866642918250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4315641531075518}
@@ -529,12 +530,12 @@ MonoBehaviour:
   - spawnedObject: {fileID: 1431544234271590, guid: 1bfce39345500f347ad9f4e6e975cdcf,
       type: 2}
     spawners:
-    - {fileID: 0}
     - {fileID: 114401428620146216}
     shotAmount: 3
     shotCD: 0.0625
+    shotLifetime: 3
   canShoot: 1
-  timeBetweenBursts: 0.0625
+  timeBetweenBursts: 0.2
 --- !u!114 &114068252547430500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -547,6 +548,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trail_renderer: {fileID: 96899700991041714}
+--- !u!114 &114110406943122126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1121866642918250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93e2a94aa0671840b22df2c8e66940b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 50
+  currentLife: 50
+  invFramesWhenHit: 0.2
 --- !u!114 &114401428620146216
 MonoBehaviour:
   m_ObjectHideFlags: 1
