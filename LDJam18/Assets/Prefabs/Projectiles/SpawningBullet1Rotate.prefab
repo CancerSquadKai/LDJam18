@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 2
+  bulletSpdMult: 1
 --- !u!114 &114642131254383436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,7 +291,10 @@ MonoBehaviour:
     - {fileID: 114823967824529970}
     shotAmount: 1
     shotCD: 0.1
-  timeBetweenBursts: 0.3
+    shotLifetime: 8
+    shotSpeedFactor: 0.5
+  canShoot: 1
+  timeBetweenBursts: 0.4
 --- !u!114 &114823967824529970
 MonoBehaviour:
   m_ObjectHideFlags: 1
