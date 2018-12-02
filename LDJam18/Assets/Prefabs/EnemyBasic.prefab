@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114637025128355180}
   - component: {fileID: 54435497553516450}
   - component: {fileID: 135564889923361832}
+  - component: {fileID: 114654956134186666}
   m_Layer: 0
   m_Name: EnemyBasic
   m_TagString: Untagged
@@ -146,6 +147,23 @@ MonoBehaviour:
   state: 0
   folow_origin: {x: -0.61, y: 0, z: -10}
   rng: 0
+  acceleration_bump: 0
+  velocity_bump: {x: 0, y: 0, z: 0}
+  life: {fileID: 0}
+--- !u!114 &114654956134186666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995449292933830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93e2a94aa0671840b22df2c8e66940b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 0
+  currentLife: 0
+  invFramesWhenHit: 0.2
 --- !u!135 &135564889923361832
 SphereCollider:
   m_ObjectHideFlags: 1

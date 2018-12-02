@@ -69,14 +69,19 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
 
     private new Rigidbody rigidbody;
 
+    public Life life;
+
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        life = GetComponent<Life>();
     }
     
     public void Start()
     {
+        if(life)
+            life.currentLife = life.maxLife = config.health;
         if (!target)
             target = FindObjectOfType<AvatarController>();
         SetState(State.FOLOWING);

@@ -18,6 +18,7 @@ public class BulletTrap : MonoBehaviour
 		public int shotAmount = 1;
 		public float shotCD = 0.3f;
 		public float shotLifetime = 3f;
+		public float shotSpeedFactor = 1f;
 	}
 
 	public Burst[] bursts;
@@ -47,7 +48,7 @@ public class BulletTrap : MonoBehaviour
 				Spawner spawner = bursts[ind].spawners[i];
 				if(spawner != null)
 				{
-					spawner.SpawnObject(bursts[ind].spawnedObject, bursts[ind].shotLifetime);
+					spawner.SpawnObject(bursts[ind].spawnedObject, bursts[ind].shotLifetime, bursts[ind].shotSpeedFactor);
 				}		
 			}
             if (!canShoot) break;
@@ -60,20 +61,7 @@ public class BulletTrap : MonoBehaviour
 	void Update ()
 	{
 		if(!isFiring && canShoot)
-		{
-			/*if(Input.GetKeyDown(KeyCode.Space))
-			{
-				StartCoroutine(BurstTrigger(index));
-				if (index < bursts.Length - 1 && bursts.Length > 1)
-				{
-					index++;
-				}
-				else
-				{
-					index = 0;
-				}
-			}*/
-			
+		{	
 			timer += Time.deltaTime;
 			if(timer >= timeBetweenBursts)
 			{
@@ -87,9 +75,7 @@ public class BulletTrap : MonoBehaviour
 				{
 					index = 0;
 				}
-			}
-
-			
+			}		
 		}
 	}
 
