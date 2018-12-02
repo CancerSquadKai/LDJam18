@@ -211,6 +211,9 @@ MonoBehaviour:
     - {fileID: 114916474726170046}
     shotAmount: 7
     shotCD: 0.1
+    shotLifetime: 6
+    shotSpeedFactor: 1
+  canShoot: 1
   timeBetweenBursts: 0.8
 --- !u!114 &114510635982442904
 MonoBehaviour:
@@ -249,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 2
+  bulletSpdMult: 1
 --- !u!114 &114916474726170046
 MonoBehaviour:
   m_ObjectHideFlags: 1

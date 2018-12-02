@@ -6,6 +6,7 @@ public class Life : MonoBehaviour
 {
 	public int maxLife;
 	public int currentLife;
+	public bool isPlayer = false;
 
 	[SerializeField] float invFramesWhenHit = 0.2f;
 
@@ -25,7 +26,10 @@ public class Life : MonoBehaviour
 			{
 				currentLife += amount;
 				CheckLife();
-				LifeBarManager.instance.SetNewLifeValue(currentLife);
+				if(isPlayer)
+				{
+					LifeBarManager.instance.SetNewLifeValue(currentLife);
+				}
 				timer = 0f;
 			}
 		}
@@ -33,7 +37,10 @@ public class Life : MonoBehaviour
 		{
 			currentLife += amount;
 			CheckLife();
-			LifeBarManager.instance.SetNewLifeValue(currentLife);
+			if (isPlayer)
+			{
+				LifeBarManager.instance.SetNewLifeValue(currentLife);
+			}
 		}
 
 	}
@@ -56,10 +63,5 @@ public class Life : MonoBehaviour
 		{
 			timer += Time.deltaTime;
 		}
-
-		/*if(Input.GetKeyDown(KeyCode.Space))
-		{
-			UpdateLife(-10);
-		}*/
 	}
 }
