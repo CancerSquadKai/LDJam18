@@ -69,17 +69,22 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
 
     private new Rigidbody rigidbody;
 
+    public Life life;
+
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        life = GetComponent<Life>();
     }
     
     public void Start()
     {
+        if(life)
+            life.currentLife = life.maxLife = config.health;
         if (!target)
             target = FindObjectOfType<AvatarController>();
-        SetState(State.FOLOWING);
+        StateReset();
     }
 
     public void Update()
@@ -155,6 +160,17 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
         rigidbody.velocity = velocity_bump;
         if (rigidbody != null)
             rigidbody.position = position;
+
+        if(life && life.currentLife <= 0 && state != State.ATTACKING)
+            SetState(State.ATTACKING);
+    }
+
+    public void StateReset()
+    {
+        if (life && life.currentLife > 0)
+            SetState(State.FOLOWING);
+        else
+            Destroy(gameObject);
     }
 
     public void SetState(State state)
@@ -217,7 +233,7 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                 break;
             case Attack.Phase.COMPLETED:
                 {
-                    SetState(State.FOLOWING);
+                    StateReset();
                 }
                 break;
         }
