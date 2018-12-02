@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4569820059551162}
   - component: {fileID: 114959870216583846}
   m_Layer: 0
-  m_Name: Spawner (1)
+  m_Name: SpawnerL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4702362713002030}
   - component: {fileID: 114568939511431598}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: SpawnerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4694464806070082}
   - component: {fileID: 114247405839174558}
   m_Layer: 0
-  m_Name: Spawner (2)
+  m_Name: SpawnerFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 4563550926520980}
   - component: {fileID: 114755460124021762}
   m_Layer: 0
-  m_Name: Spawner (1)
+  m_Name: SpawnerBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +282,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277559068649622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4244842498987346}
@@ -716,10 +716,10 @@ MonoBehaviour:
   - spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
       type: 2}
     spawners:
-    - {fileID: 114959870216583846}
+    - {fileID: 114755460124021762}
     - {fileID: 114568939511431598}
+    - {fileID: 114959870216583846}
     - {fileID: 114247405839174558}
-    - {fileID: 0}
     shotAmount: 5
     shotCD: 0.1
   timeBetweenBursts: 0.5

@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
 	[SerializeField] bool shareOrientation;
 	[SerializeField] ParticleSystem spawnParticle;
 
-	public void SpawnObject(GameObject spawnedObject)
+	public void SpawnObject(GameObject spawnedObject, float timeBeforeDestroy)
 	{
 		if(spawnedObject != null)
 		{
@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
 			{
 				go.transform.forward = transform.forward;
 			}
-			Destroy(go, 5.1f);
+			Destroy(go, timeBeforeDestroy);
 
 			if(spawnParticle != null)
 			{

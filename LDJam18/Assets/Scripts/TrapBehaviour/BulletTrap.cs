@@ -17,6 +17,7 @@ public class BulletTrap : MonoBehaviour
 
 		public int shotAmount = 1;
 		public float shotCD = 0.3f;
+		public float shotLifetime = 3f;
 	}
 
 	public Burst[] bursts;
@@ -46,7 +47,7 @@ public class BulletTrap : MonoBehaviour
 				Spawner spawner = bursts[ind].spawners[i];
 				if(spawner != null)
 				{
-					spawner.SpawnObject(bursts[ind].spawnedObject);
+					spawner.SpawnObject(bursts[ind].spawnedObject, bursts[ind].shotLifetime);
 				}		
 			}
             if (!canShoot) break;
