@@ -673,8 +673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198740895434005714}
 --- !u!114 &114568939511431598
@@ -688,8 +686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198481789400578212}
 --- !u!114 &114755460124021762
@@ -703,8 +699,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198655549670126684}
 --- !u!114 &114866576207665558
@@ -719,7 +713,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bursts:
-  - spawners:
+  - spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
+      type: 2}
+    spawners:
     - {fileID: 114959870216583846}
     - {fileID: 114568939511431598}
     - {fileID: 114247405839174558}
@@ -738,8 +734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c7010cb0a01684999e39c4ccf2c068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 1431544234271590, guid: a9c49a26fd6a24246a736a17a3049abd,
-    type: 2}
   shareOrientation: 1
   spawnParticle: {fileID: 198170843218849438}
 --- !u!198 &198170843218849438
