@@ -19,6 +19,8 @@ public class AvatarModel
     /// </summary>
     public Vector2 velocity;
 
+    public Vector2 direction;
+
     /// <summary>
     /// Current bump velocity.
     /// </summary>
@@ -67,6 +69,11 @@ public class AvatarModel
         velocity = Vector2.zero;
         velocity += velocity_movement;
         velocity += velocity_bump;
+
+        if(velocity.magnitude > 0.25)
+        {
+            direction = velocity.normalized;
+        }
     }
     
     public void Bump(Vector2 direction, float distance, float duration)

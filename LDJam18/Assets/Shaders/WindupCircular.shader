@@ -62,16 +62,6 @@
 				return o;
 			}
 
-            float circ(float len, float progress, float width)
-            {
-                float output = len;
-                output = output * (1 / width) - ((progress - (width)) / width);
-                output = output * 2 - 1;
-                output = -output * output + 1.0;
-                output = clamp(output, 0., 1.);
-                return output;
-            }
-
             float circ_filled(float len, float progress)
             {
                 float output = len;

@@ -2,7 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemyController : MonoBehaviour {
+/// <summary>
+/// Basic enemy attack
+/// </summary>
+public struct Attack
+{
+    /// <summary>
+    /// Attack phase
+    /// </summary>
+    public enum Phase
+    {
+        WINDUP = 0,
+        ACTIVE = 1,
+        RECOVERY = 2,
+        COMPLETED = 3
+    }
+
+    public Phase phase;
+    public float phase_lifetime;
+
+    public void SetPhase(Phase phase)
+    {
+        this.phase          = phase;
+        this.phase_lifetime = 0.0f;
+    }
+}
+
+public struct AttackArc
+{
+    public Attack attack;
+    public float angle;
+    public AttackArc(float angle)
+    {
+        this.attack = new Attack();
+        this.angle = angle;
+    }
+
+    public void SetPhase(Attack.Phase phase)
+    {
+        this.attack.SetPhase(phase);
+    }
+}
+
+public class BasicEnemyController : MonoBehaviour, IBumpable
+{
 
     /// <summary>
     /// Basic enemy state
@@ -13,32 +56,6 @@ public class BasicEnemyController : MonoBehaviour {
         ATTACKING // Windup, attack target if in attack range, recover then back to folowing.
     }
 
-    /// <summary>
-    /// Basic enemy attack
-    /// </summary>
-    public struct Attack
-    {
-        /// <summary>
-        /// Attack phase
-        /// </summary>
-        public enum Phase
-        {
-            WINDUP    = 0,
-            ACTIVE    = 1,
-            RECOVERY  = 2,
-            COMPLETED = 3
-        }
-
-        public Phase phase;
-        public float phase_lifetime;
-
-        public void SetPhase(Phase phase)
-        {
-            this.phase          = phase;
-            this.phase_lifetime = 0.0f;
-        }
-    }
-
     public BasicEnemyConfig config;
 
     public AvatarController target;
@@ -46,6 +63,9 @@ public class BasicEnemyController : MonoBehaviour {
     public Attack           attack;
     public Vector3          folow_origin;
     public float rng;
+
+    public float acceleration_bump;
+    public Vector3 velocity_bump;
 
     private new Rigidbody rigidbody;
 
@@ -56,29 +76,28 @@ public class BasicEnemyController : MonoBehaviour {
     
     public void Start()
     {
-        if (target)
+        if (!target)
             target = FindObjectOfType<AvatarController>();
         SetState(State.FOLOWING);
     }
 
     public void Update()
     {
+
         float dt         = Time.deltaTime;
         Vector3 position = transform.position;
         switch (state)
         {
             case State.FOLOWING:
                 {
-                    // Move
-                    if(dt > 0)
-                    {
-                        position = MoveTowardTarget(config.speed_movement * dt, rng);
-						if(rigidbody != null)
-						{
-							rigidbody.position = position;
-						}
-                    }
 
+                    // Move
+                    Vector3 position_new = MoveTowardTarget(config.speed_movement * dt, rng);
+                    if (!float.IsNaN(position_new.x) && velocity_bump.magnitude <= 0.0625f)
+                    {
+                        position_new = Vector3.MoveTowards(position, position_new, config.speed_movement * dt);
+                        position = position_new;
+                    }
                     // Check if can attack
                     float dist_to_target =
                         Vector3.Distance(
@@ -124,6 +143,17 @@ public class BasicEnemyController : MonoBehaviour {
                 }
                 break;
         }
+
+        velocity_bump = Vector3.MoveTowards(
+            velocity_bump,
+            Vector3.zero,
+            acceleration_bump * dt
+        );
+
+        //position += velocity_bump * dt;
+        rigidbody.velocity = velocity_bump;
+        if (rigidbody != null)
+            rigidbody.position = position;
     }
 
     public void SetState(State state)
@@ -140,7 +170,6 @@ public class BasicEnemyController : MonoBehaviour {
         }
         if (state == State.ATTACKING)
         {
-            rigidbody.velocity = Vector3.zero;
             SetAttackPhase(Attack.Phase.WINDUP);
         }
     }
@@ -153,7 +182,7 @@ public class BasicEnemyController : MonoBehaviour {
             case Attack.Phase.WINDUP:
                 {
                     // Play windup anim
-                    var windup_view = Instantiate(config.prefab_windup_circular_view);
+                    var windup_view = Instantiate(config.prefab_windup_circular_view, transform);
                     windup_view.transform.position = transform.position;
                     windup_view.Init(config.attack_windup_duration, config.attack_range);
                 }
@@ -204,6 +233,11 @@ public class BasicEnemyController : MonoBehaviour {
             );
 
         float diameter = Vector3.Distance(target_position, folow_origin);
+        if(dot < 0 || dot > diameter)
+        {
+            return Vector3.MoveTowards(current_position, target_position, speed);
+        }
+
         float radius = diameter * 0.5f;
         float length = Mathf.MoveTowards(dot, diameter, speed);
         length /= diameter;
@@ -213,5 +247,13 @@ public class BasicEnemyController : MonoBehaviour {
                     folow_origin + direction * length * diameter +
                     direction_clockwise_perpendicular * p * radius * rng;
         return new_pos;
+    }
+
+    public void Bump(Vector3 direction, float distance, float duration)
+    {
+        Debug.Log("Bumped");
+        acceleration_bump = (2 * distance) / (duration * duration);
+        Vector3 impulse_bump = direction * ((2 * distance) / duration);
+        velocity_bump += impulse_bump;
     }
 }

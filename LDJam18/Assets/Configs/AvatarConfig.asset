@@ -12,3 +12,11 @@ MonoBehaviour:
   m_Name: AvatarConfig
   m_EditorClassIdentifier: 
   speed_movement: 8
+  attack_range: 4
+  attack_angle: 144.2
+  attack_windup_duration: 0.125
+  attack_recovery_duration: 1
+  attack_bump_distance: 6
+  attack_bump_duration: 0.25
+  prefab_windup_arc_view: {fileID: 114202607520462438, guid: cb68ffb57809ce94f84c96d3635abdba,
+    type: 2}

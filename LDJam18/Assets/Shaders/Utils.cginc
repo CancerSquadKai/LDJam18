@@ -7,6 +7,10 @@
 float remap(float fromMin, float fromMax, float toMin, float toMax, float value) {
 	return toMin + (value - fromMin) * (toMax - toMin) / (fromMax - fromMin);
 }
+inline float ease_in_quad(const float t)
+{
+    return t * t;
+}
 
 inline float ease_out_quad(const float t)
 {
@@ -17,4 +21,20 @@ inline float ease_out_circ(const float t)
 {
     float one_minus_t = t - 1;
     return sqrt(1 - one_minus_t * one_minus_t);
+}
+
+inline float round_quad(float t)
+{
+    t = t * 2 - 1;
+    t = -t * t + 1.0;
+    return t;
+}
+
+float circ(float len, float progress, float width)
+{
+    float output = len;
+    output = output * (1 / width) - ((progress - (width)) / width);
+    output = round_quad(output);
+    output = clamp(output, 0., 1.);
+    return output;
 }
