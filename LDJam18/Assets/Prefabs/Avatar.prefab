@@ -534,6 +534,7 @@ MonoBehaviour:
     shotAmount: 3
     shotCD: 0.0625
     shotLifetime: 3
+    shotSpeedFactor: 1
   canShoot: 1
   timeBetweenBursts: 0.2
 --- !u!114 &114068252547430500
@@ -561,6 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLife: 50
   currentLife: 50
+  isPlayer: 1
   invFramesWhenHit: 0.2
 --- !u!114 &114401428620146216
 MonoBehaviour:

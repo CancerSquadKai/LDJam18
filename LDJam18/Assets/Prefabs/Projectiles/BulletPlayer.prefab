@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24de2aa935096bb4d96eb80d022ecefd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 1
 --- !u!114 &114956257072840898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 30
+  bulletSpdMult: 1
 --- !u!135 &135312919589781230
 SphereCollider:
   m_ObjectHideFlags: 1
