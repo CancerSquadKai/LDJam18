@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
 	[SerializeField] bool shareOrientation;
 	[SerializeField] ParticleSystem spawnParticle;
 
-	public void SpawnObject(GameObject spawnedObject, float timeBeforeDestroy)
+	public void SpawnObject(GameObject spawnedObject, float timeBeforeDestroy, float speedFactor)
 	{
 		if(spawnedObject != null)
 		{
@@ -16,7 +16,17 @@ public class Spawner : MonoBehaviour
 			{
 				go.transform.forward = transform.forward;
 			}
-			Destroy(go, timeBeforeDestroy);
+
+			BulletMovement bMvt = go.GetComponent<BulletMovement>();
+			if(bMvt != null)
+			{
+				bMvt.bulletSpdMult = speedFactor;
+			}
+
+			if(timeBeforeDestroy != 0)
+			{
+				Destroy(go, timeBeforeDestroy);
+			}
 
 			if(spawnParticle != null)
 			{
