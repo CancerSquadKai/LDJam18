@@ -53,7 +53,8 @@
             float         _Width;
             float         _Progress;
             float         _BackgroundOpacity;
-			
+            float4        _ColorDanger;
+
 			v2f vert (appdata v)
 			{
 				v2f o;
@@ -101,7 +102,7 @@
                 // global fade depending on progress
                 len *= _Progress;
 
-				return float4(len, 0.0, 0.0,0.0);
+				return len * _ColorDanger;
 			}
 			ENDCG
 		}

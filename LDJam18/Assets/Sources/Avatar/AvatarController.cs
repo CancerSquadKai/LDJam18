@@ -27,6 +27,12 @@ public class AvatarController : MonoBehaviour, IBumpable
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+
+        var life= GetComponent<Life>();
+        if (life)
+        {
+            life.onUpdateLife += OnHealthUpdate;
+        }
     }
 
     private void Start()
@@ -232,5 +238,10 @@ public class AvatarController : MonoBehaviour, IBumpable
             distance,
             duration 
         );
+    }
+
+    private void OnHealthUpdate(int health, int delta)
+    {
+        view.StartCoroutine(view.GotHitCoroutine());
     }
 }

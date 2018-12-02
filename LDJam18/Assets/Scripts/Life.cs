@@ -12,6 +12,8 @@ public class Life : MonoBehaviour
 
 	float timer = 0f;
 
+    public System.Action<int,int> onUpdateLife;
+
 
 	private void Awake ()
 	{
@@ -31,7 +33,9 @@ public class Life : MonoBehaviour
 					LifeBarManager.instance.SetNewLifeValue(currentLife);
 				}
 				timer = 0f;
-			}
+                if (onUpdateLife != null)
+                    onUpdateLife(currentLife, amount);
+            }
 		}
 		else
 		{
@@ -43,7 +47,7 @@ public class Life : MonoBehaviour
 			}
 		}
 
-	}
+    }
 
 	void CheckLife()
 	{
