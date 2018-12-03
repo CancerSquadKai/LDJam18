@@ -15,9 +15,10 @@ public class AvatarView : MonoBehaviour {
         }
     }
 
-    public TrailRenderer trail_renderer;
-    public Animator      animator;
-    public MeshRenderer  mesh_renderer_hitbox;
+    public TrailRenderer  trail_renderer;
+    public Animator       animator;
+    public MeshRenderer   mesh_renderer_hitbox;
+    public MeshRenderer[] swords;
 
     [ColorUsage(false, true)]
     public Color color_base;
@@ -105,5 +106,29 @@ public class AvatarView : MonoBehaviour {
     {
         if (animator)
             animator.SetTrigger("UseShoot");
+    }
+
+    public void OnNerfSlash(int index)
+    {
+        foreach (var sword in swords)
+        {
+            sword.enabled = false;
+            var sub_renderers = swords[index].GetComponentsInChildren<MeshRenderer>();
+            foreach(var sub_renderer in sub_renderers)
+                sub_renderer.enabled = false;
+        }
+
+        if (swords.Length <= index) return;
+
+        swords[index].enabled = true;
+        var sub_rnd = swords[index].GetComponentsInChildren<MeshRenderer>();
+        foreach (var sub_renderer in sub_rnd)
+            sub_renderer.enabled = true;
+    }
+
+    public void OnNerfDash(int index)
+    {
+        for (int wing_index = 0; wing_index < Mathf.Min(wings_renderer_group.Count, index * 2); ++wing_index)
+            wings_renderer_group[wing_index].enabled = false;
     }
 }

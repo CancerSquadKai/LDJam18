@@ -82,8 +82,11 @@ public class AvatarModel
         for (int dash_index = 0; dash_index < dash_count; ++dash_index)
             dash_cooldown_progresses.Add(1.0f);
         
-        slash_level = config.slash.Length - 1;
+        slash_level = config.slash.Length;
+        NerfSlash();
+
         dash_level  = config.dash.Length - 1;
+
         shot_level  = config.shot.Length;
         NerfShot();
     }
@@ -209,12 +212,16 @@ public class AvatarModel
     {
         --slash_level;
         slash_level = Mathf.Clamp(slash_level, 0, config.slash.Length - 1);
+
+        view.OnNerfSlash(slash_level);
     }
 
     public void NerfDash()
     {
         --dash_level;
         dash_level = Mathf.Clamp(dash_level, 0, config.dash.Length - 1);
+
+        view.OnNerfDash(dash_level);
     }
 
     public void NerfShot()
