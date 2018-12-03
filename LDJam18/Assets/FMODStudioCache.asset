@@ -31,8 +31,23 @@ MonoBehaviour:
   - {fileID: 114729202154478904}
   MasterBankRef: {fileID: 114244657327705400}
   StringsBankRef: {fileID: 114165761889102946}
-  stringsBankWriteTime: 636794772586708163
+  stringsBankWriteTime: 636794789055237982
   cacheVersion: 2
+--- !u!114 &114003443075880914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114060793694429328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,11 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\StreamingAssets\Desktop\Master Bank.strings.bank
-  lastModified: 636794772586708163
+  lastModified: 636794789055237982
   LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 1268
+  FileSizes: []
   Exists: 1
 --- !u!114 &114230347329254362
 MonoBehaviour:
@@ -151,11 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\Projets\LDJam18\LDJam18\LDJam18\Assets\StreamingAssets\Desktop\Master Bank.bank
-  lastModified: 636794772586678902
+  lastModified: 636794789055198971
   LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 1904000
+  FileSizes: []
   Exists: 1
 --- !u!114 &114421649649235326
 MonoBehaviour:
@@ -198,7 +209,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 114851634647380340}
+  - {fileID: 114719555069055904}
   MinDistance: 1
   MaxDistance: 20
   Length: 128000
@@ -246,6 +257,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2500
+--- !u!114 &114719555069055904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114721730535182860
 MonoBehaviour:
   m_ObjectHideFlags: 0
