@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: SlashConfig1
   m_EditorClassIdentifier: 
   range: 8
-  angle: 120
-  anticipation_duration: 1
-  recovery_duration: 1
-  bump_distance: 1
-  bump_duration: 1
+  angle: 130
+  anticipation_duration: 0.33
+  recovery_duration: 0.66
+  bump_distance: 6
+  bump_duration: 0.5
   damage: 8
   input_bufer_duration: 0.25
