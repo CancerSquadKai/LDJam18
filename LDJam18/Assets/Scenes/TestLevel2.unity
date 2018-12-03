@@ -27559,7 +27559,6 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
-  - component: {fileID: 534669907}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -27639,18 +27638,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: f6771d934f1e288479e7f07af87d0511, type: 2}
---- !u!114 &534669907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ListenerNumber: 0
 --- !u!1 &542016746
 GameObject:
   m_ObjectHideFlags: 0
@@ -37803,6 +37790,7 @@ GameObject:
   - component: {fileID: 636265719}
   - component: {fileID: 636265718}
   - component: {fileID: 636265722}
+  - component: {fileID: 636265723}
   m_Layer: 5
   m_Name: Lifebar
   m_TagString: Untagged
@@ -37907,6 +37895,30 @@ MonoBehaviour:
   initialColor: {r: 0, g: 0, b: 0, a: 0.5176471}
   hurtColor: {r: 1, g: 0, b: 0, a: 1}
   maxChromaticIntensity: 0.3
+--- !u!114 &636265723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 636265717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Music
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: Health
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &636409359
 GameObject:
   m_ObjectHideFlags: 0
@@ -48328,6 +48340,23 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ecd61f77fe9caf4e849aa0e1a39e1bf, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &800432785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1121866642918250, guid: 4c1e2dc21a9a5c74aa6adc510bc6a572,
+    type: 2}
+  m_PrefabInternal: {fileID: 1560621173}
+--- !u!114 &800432790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 800432785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!1 &805591257
 GameObject:
   m_ObjectHideFlags: 0
@@ -81967,6 +81996,11 @@ Prefab:
     - target: {fileID: 4292357576982218, guid: 4c1e2dc21a9a5c74aa6adc510bc6a572, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114550365247718840, guid: 4c1e2dc21a9a5c74aa6adc510bc6a572,
+        type: 2}
+      propertyPath: AttackEvent
+      value: event:/SFX_Melee
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c1e2dc21a9a5c74aa6adc510bc6a572, type: 2}

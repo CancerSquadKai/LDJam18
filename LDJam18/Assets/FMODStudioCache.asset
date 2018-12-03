@@ -31,9 +31,24 @@ MonoBehaviour:
   - {fileID: 114729202154478904}
   MasterBankRef: {fileID: 114244657327705400}
   StringsBankRef: {fileID: 114165761889102946}
-  stringsBankWriteTime: 636794789055237982
+  stringsBankWriteTime: 636794807397599349
   cacheVersion: 2
 --- !u!114 &114003443075880914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114019649587939088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,7 +83,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 60
   Length: 2000
 --- !u!114 &114067106588644548
 MonoBehaviour:
@@ -90,7 +105,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 60
   Length: 2000
 --- !u!114 &114068415310353518
 MonoBehaviour:
@@ -112,7 +127,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 60
   Length: 400
 --- !u!114 &114165761889102946
 MonoBehaviour:
@@ -126,10 +141,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\StreamingAssets\Desktop\Master Bank.strings.bank
-  lastModified: 636794789055237982
+  lastModified: 636794807397599349
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &114211764628698768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114230347329254362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +180,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 60
   Length: 2000
 --- !u!114 &114244657327705400
 MonoBehaviour:
@@ -164,10 +194,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\Projets\LDJam18\LDJam18\LDJam18\Assets\StreamingAssets\Desktop\Master Bank.bank
-  lastModified: 636794789055198971
+  lastModified: 636794807397531070
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &114253996273591782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114259626079654944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114274175468517934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114421649649235326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,12 +281,12 @@ MonoBehaviour:
   Banks:
   - {fileID: 114244657327705400}
   IsStream: 1
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114719555069055904}
-  MinDistance: 1
-  MaxDistance: 20
+  - {fileID: 114621741116987938}
+  MinDistance: 0
+  MaxDistance: 0
   Length: 128000
 --- !u!114 &114560512712921532
 MonoBehaviour:
@@ -235,6 +310,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 50
   Length: 1250
+--- !u!114 &114621741116987938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114680672293934864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +345,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 60
   Length: 2500
 --- !u!114 &114719555069055904
 MonoBehaviour:
@@ -292,7 +382,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 60
   Length: 2000
 --- !u!114 &114729202154478904
 MonoBehaviour:
@@ -314,8 +404,23 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 60
   Length: 505
+--- !u!114 &114776970873336760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114851634647380340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,11 +452,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 114244657327705400}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 445
 --- !u!114 &114875482913721690
 MonoBehaviour:
@@ -373,7 +478,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 60
   Length: 510
 --- !u!114 &114997872282419702
 MonoBehaviour:
@@ -395,7 +500,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 60
   Length: 2000
 --- !u!114 &114999535811441518
 MonoBehaviour:
@@ -417,5 +522,5 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 60
   Length: 2500
