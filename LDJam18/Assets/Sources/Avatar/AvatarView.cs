@@ -128,7 +128,7 @@ public class AvatarView : MonoBehaviour {
 
     public void OnNerfDash(int index)
     {
-        for (int wing_index = 0; wing_index < Mathf.Min(wings_renderer_group.Count, index * 2); ++wing_index)
+        for (int wing_index = 0; wing_index < Mathf.Min(wings_renderer_group.Count, (wings_renderer_group.Count / 2) - (index * 2) + 1); ++wing_index)
             wings_renderer_group[wing_index].enabled = false;
     }
 }
