@@ -67,6 +67,8 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
     public float acceleration_bump;
     public Vector3 velocity_bump;
 
+	[SerializeField] GameObject deathParticle;
+
     private new Rigidbody rigidbody;
 
     public Life life;
@@ -90,7 +92,7 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
     public void Update()
     {
 
-        float dt         = Time.deltaTime;
+        float dt = Time.deltaTime;
         Vector3 position = transform.position;
         switch (state)
         {
@@ -106,6 +108,7 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                         Vector3 direction = position_new - position;
                         if(direction.magnitude > 0.01f)
                         {
+							direction.y = 0f;
                             direction = direction.normalized;
                             transform.rotation = Quaternion.RotateTowards(
                                 transform.rotation,
@@ -189,7 +192,9 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
         if (life && life.currentLife > 0)
             SetState(State.FOLOWING);
         else
+		{
             Destroy(gameObject);
+		}
     }
 
     public void SetState(State state)
@@ -236,8 +241,11 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                     if (animator)
                         animator.SetBool("Vibrate", false);
 
-                    // Todo : hit people in range
-                    float dist_to_target =
+					GameObject go = Instantiate(deathParticle, transform.position, deathParticle.transform.rotation);
+					Destroy(go, 5f);
+
+					// Todo : hit people in range
+					float dist_to_target =
                         Vector3.Distance(
                             transform.position,
                             target.transform.position
@@ -266,7 +274,9 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
             case Attack.Phase.COMPLETED:
                 {
                     if (life && life.currentLife <= 0)
+					{
                         Destroy(gameObject);
+					}
                     StateReset();
                     if (animator)
                         animator.SetTrigger("Done");

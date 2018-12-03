@@ -2030,7 +2030,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1121866642918250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -40.55}
+  m_LocalPosition: {x: 0, y: 0, z: 66.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4315641531075518}
@@ -4278,7 +4278,7 @@ MonoBehaviour:
   isInvulnerableToBullet: 0
   particleOnHit: {fileID: 1187725664104204, guid: e72fa107921dd25409f42aa89e711a3a,
     type: 2}
-  invFramesWhenHit: 0.2
+  invFramesWhenHit: 0.8
 --- !u!114 &114401428620146216
 MonoBehaviour:
   m_ObjectHideFlags: 1

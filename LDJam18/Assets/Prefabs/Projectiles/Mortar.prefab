@@ -254,6 +254,7 @@ MonoBehaviour:
   bumpDuration: 0.25
   shakeDuration: 0.5
   shakeIntensity: 1.5
+  shakeRange: 20
   mortarParticle: {fileID: 1778274356993292, guid: 6925cf6ef86353a4b8e02ffe5a0f396e,
     type: 2}
 --- !u!135 &135246189578692002
