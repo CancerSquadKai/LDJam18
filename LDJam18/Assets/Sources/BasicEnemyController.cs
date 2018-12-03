@@ -91,7 +91,6 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
 
     public void Update()
     {
-
         float dt = Time.deltaTime;
         Vector3 position = transform.position;
         switch (state)

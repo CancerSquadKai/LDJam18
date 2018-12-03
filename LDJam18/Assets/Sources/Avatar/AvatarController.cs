@@ -8,6 +8,7 @@ public class AvatarController : MonoBehaviour, IBumpable
     public AvatarView   view;
     public AvatarConfig config;
     public AvatarModel  model;
+    public BulletTrap   shot;
 
     public Transform oriented_direction;
     public Transform oriented_shoot;
@@ -40,7 +41,7 @@ public class AvatarController : MonoBehaviour, IBumpable
 
     private void Start()
     {
-        model = new AvatarModel(config, view);
+        model = new AvatarModel(config, view, shot);
     }
 
     private void Update ()
@@ -90,7 +91,7 @@ public class AvatarController : MonoBehaviour, IBumpable
                     _rt_down_time = Time.time;
                 }
                 if(Time.time > can_slash_time &&
-                    _rt_down_time + config.slash_input_bufer_duration > can_slash_time)
+                    _rt_down_time + config.slash[model.slash_level].input_bufer_duration > can_slash_time)
                 {
                     // slash
                     var attack_slash_new = new AttackArc(Mathf.Atan2(model.direction.y, model.direction.x));
@@ -101,16 +102,35 @@ public class AvatarController : MonoBehaviour, IBumpable
             }
 
             // orientation
-            oriented_direction.rotation = Quaternion.LookRotation(
-                new Vector3(
-                    model.direction.x,
-                    0,
-                    model.direction.y
-                ),
-                Vector3.up
-            );
+            if (
+                model.input_shoot.magnitude < 0.85f ||
+                attack_slash_group.Count > 0 ||
+                model.dash.progress_position < 1.0f
+            )
+                oriented_direction.rotation =
+                    Quaternion.LookRotation(
+                        new Vector3(
+                            model.direction.x,
+                            0,
+                            model.direction.y
+                        ),
+                        Vector3.up
+                    );
+            else
+                oriented_direction.rotation = Quaternion.RotateTowards(
+                    oriented_direction.rotation,
+                    Quaternion.LookRotation(
+                        new Vector3(
+                            model.input_shoot.x,
+                            0,
+                            model.input_shoot.y
+                        ),
+                        Vector3.up
+                    ),
+                    Time.deltaTime * 360f * 2f
+                );
 
-            if(model.input_shoot.magnitude > 0.85f)
+            if (model.input_shoot.magnitude > 0.85f)
                 oriented_shoot.rotation = Quaternion.LookRotation(
                     new Vector3(
                         model.input_shoot.x,
@@ -133,7 +153,7 @@ public class AvatarController : MonoBehaviour, IBumpable
             {
                 case Attack.Phase.WINDUP:
                     {
-                        if (attack_slash.attack.phase_lifetime >= config.attack_windup_duration)
+                        if (attack_slash.attack.phase_lifetime >= config.slash[model.slash_level].anticipation_duration)
                         {
                             SetAttackPhase(ref attack_slash, Attack.Phase.ACTIVE);
                         }
@@ -146,7 +166,7 @@ public class AvatarController : MonoBehaviour, IBumpable
                     break;
                 case Attack.Phase.RECOVERY:
                     {
-                        if (attack_slash.attack.phase_lifetime >= config.attack_recovery_duration)
+                        if (attack_slash.attack.phase_lifetime >= config.slash[model.slash_level].recovery_duration)
                         {
                             SetAttackPhase(ref attack_slash, Attack.Phase.COMPLETED);
                         }
@@ -174,7 +194,7 @@ public class AvatarController : MonoBehaviour, IBumpable
         {
             case Attack.Phase.WINDUP:
                 {
-                    can_slash_time = Time.time + config.attack_recovery_duration;
+                    can_slash_time = Time.time + config.slash[model.slash_level].recovery_duration;
                     // avatar anim
                     view.OnAttack();
 
@@ -183,10 +203,10 @@ public class AvatarController : MonoBehaviour, IBumpable
                     windup_view.transform.position = transform.position;
                     windup_view.transform.localRotation = Quaternion.Euler(90, 0, 0);
                     windup_view.Init(
-                        config.attack_windup_duration,
-                        config.attack_range,
+                        config.slash[model.slash_level].anticipation_duration,
+                        config.slash[model.slash_level].range,
                         Vector3.forward,
-                        config.attack_angle * Mathf.Deg2Rad
+                        config.slash[model.slash_level].angle * Mathf.Deg2Rad
                         );
                 }
                 break;
@@ -201,39 +221,40 @@ public class AvatarController : MonoBehaviour, IBumpable
                                 transform.position,
                                 enemy.transform.position
                             );
-                        bool target_in_attack_range = dist_to_target <= config.attack_range * 1.33f;
+                        bool target_in_attack_range = dist_to_target <= config.slash[model.slash_level].range * 1.25f;
                         if (target_in_attack_range)
                         {
                             Vector3 dir = (enemy.transform.position - transform.position).normalized;
                             float angle_to_target = Mathf.Atan2(dir.z, dir.x);
-                            float avatar_angle = Mathf.Atan2(model.direction.y, model.direction.x);
+                            float avatar_angle    = Mathf.Atan2(model.direction.y, model.direction.x);
 
+                            target_in_attack_range = false;
                             target_in_attack_range |=
                                 Mathf.Abs(Mathf.DeltaAngle(
                                     angle_to_target * Mathf.Rad2Deg,
                                     avatar_angle * Mathf.Rad2Deg
-                                )) < (config.attack_angle * 0.75f);
+                                )) < (config.slash[model.slash_level].angle * 0.5f);
 
                             target_in_attack_range |=
                                 Mathf.Abs(Mathf.DeltaAngle(
                                     angle_to_target * Mathf.Rad2Deg,
                                     attack.angle * Mathf.Rad2Deg
-                                )) < (config.attack_angle * 0.75f);
+                                )) < (config.slash[model.slash_level].angle * 0.75f);
 
                             if (target_in_attack_range)
                             {
                                 enemy.Bump(
                                     (enemy.transform.position - transform.position).normalized,
-                                    config.attack_bump_distance,
-                                    config.attack_bump_duration
+                                    config.slash[model.slash_level].bump_distance,
+                                    config.slash[model.slash_level].bump_duration
                                 );
 
-								Shaker.instance.Shake(config.attack_bump_duration, config.attack_bump_distance / 40f);
+								Shaker.instance.Shake(config.slash[model.slash_level].bump_duration, config.slash[model.slash_level].bump_distance / 40f);
 
                                 var life = enemy.life;
                                 if (life)
                                 {
-                                    life.UpdateLife(-config.slash_damage);
+                                    life.UpdateLife(-config.slash[model.slash_level].damage);
                                 }
 							}
                         }

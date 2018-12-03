@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f934e89f130bf4d99def857e00a8e5, type: 3}
+  m_Name: SlashConfig2
+  m_EditorClassIdentifier: 
+  range: 8
+  angle: 210
+  anticipation_duration: 0.25
+  recovery_duration: 0.5
+  bump_distance: 8
+  bump_duration: 0.25
+  damage: 1
+  input_bufer_duration: 0.25
