@@ -222,6 +222,7 @@ public class AvatarModel
         --shot_level;
         shot_level = Mathf.Clamp(shot_level, 0, config.shot.Length - 1);
 
+        if (!shot) return;
         foreach(var burst in shot.bursts)
         {
             burst.spawnedObject = config.shot[shot_level].prefab;
