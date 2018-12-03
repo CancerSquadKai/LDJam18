@@ -18,6 +18,11 @@ public class AvatarController : MonoBehaviour, IBumpable
 	[FMODUnity.EventRef]
 	public string AttackEvent;
 	FMOD.Studio.EventInstance AttackSnd;
+
+	[FMODUnity.EventRef]
+	public string DashEvent;
+	FMOD.Studio.EventInstance DashSnd;
+
 	private new Rigidbody rigidbody;
 
 	private bool _lt = false;
@@ -81,6 +86,8 @@ public class AvatarController : MonoBehaviour, IBumpable
 				bool lt_up = _lt && !lt_new;
 				if (lt_down)
 				{ // dash
+					DashSnd = FMODUnity.RuntimeManager.CreateInstance(DashEvent);
+					DashSnd.start();
 					model.Dash();
 				}
 				_lt = lt_new;
