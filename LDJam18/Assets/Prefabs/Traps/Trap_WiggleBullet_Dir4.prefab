@@ -202,6 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4395557818460394}
   - component: {fileID: 114672143247364314}
+  - component: {fileID: 114405939964028826}
   m_Layer: 0
   m_Name: Trap_WiggleBullet_Dir4
   m_TagString: Untagged
@@ -337,7 +338,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831297025682484}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -43.017, y: 0, z: -1.3278}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4099353000619560}
@@ -701,6 +702,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114405939964028826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831297025682484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5720c6a2974e7bb489b57249e7140f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableInstead: 0
+  revertWhenOutOfRange: 1
+  range: 25
+  specificTarget: {fileID: 0}
+  components:
+  - {fileID: 114672143247364314}
 --- !u!114 &114545823975788576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -733,7 +751,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831297025682484}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73bf7737f92b9664f8904d4f05c69525, type: 3}
   m_Name: 

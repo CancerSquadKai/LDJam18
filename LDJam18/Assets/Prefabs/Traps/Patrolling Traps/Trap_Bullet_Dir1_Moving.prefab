@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 4804321091437288}
   - component: {fileID: 114053510753818364}
   - component: {fileID: 114561551233896704}
+  - component: {fileID: 114570839730866876}
   m_Layer: 0
   m_Name: Trap_Bullet_Dir1
   m_TagString: Untagged
@@ -329,7 +330,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1418272688367620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73bf7737f92b9664f8904d4f05c69525, type: 3}
   m_Name: 
@@ -364,7 +365,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1418272688367620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8bae210bd34ba9438faa6c3904a5078, type: 3}
   m_Name: 
@@ -382,6 +383,24 @@ MonoBehaviour:
     lockXRotation: 0
     lockYRotation: 0
     lockZRotation: 0
+--- !u!114 &114570839730866876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1418272688367620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5720c6a2974e7bb489b57249e7140f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableInstead: 0
+  revertWhenOutOfRange: 1
+  range: 30
+  specificTarget: {fileID: 0}
+  components:
+  - {fileID: 114053510753818364}
+  - {fileID: 114561551233896704}
 --- !u!198 &198556847807069836
 ParticleSystem:
   m_ObjectHideFlags: 1

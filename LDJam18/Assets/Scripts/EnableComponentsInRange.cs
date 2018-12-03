@@ -6,7 +6,7 @@ public class EnableComponentsInRange : MonoBehaviour
 {
 	public bool disableInstead = false;
 	public bool revertWhenOutOfRange = true;
-	public float range;
+	public float range = 25f;
 	[Space]
 	public Transform specificTarget;
 	[Space]

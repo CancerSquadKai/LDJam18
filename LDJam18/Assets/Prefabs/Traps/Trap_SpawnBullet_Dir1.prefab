@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4434945880506982}
   - component: {fileID: 114599359779649502}
+  - component: {fileID: 114618517691042164}
   m_Layer: 0
   m_Name: Trap_SpawnBullet_Dir1
   m_TagString: Untagged
@@ -145,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1110350488127552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.976185, y: -0.38382888, z: -0.71453285}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4413230373958728}
@@ -312,7 +313,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1110350488127552}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73bf7737f92b9664f8904d4f05c69525, type: 3}
   m_Name: 
@@ -328,6 +329,23 @@ MonoBehaviour:
     shotSpeedFactor: 1
   canShoot: 1
   timeBetweenBursts: 6
+--- !u!114 &114618517691042164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1110350488127552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5720c6a2974e7bb489b57249e7140f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableInstead: 0
+  revertWhenOutOfRange: 1
+  range: 30
+  specificTarget: {fileID: 0}
+  components:
+  - {fileID: 114599359779649502}
 --- !u!198 &198127948223247872
 ParticleSystem:
   m_ObjectHideFlags: 1
