@@ -6,6 +6,8 @@ using UnityEngine;
 public class RoomController : MonoBehaviour
 {
 	[SerializeField] GameObject door;
+	[SerializeField] float shakeDurationOnOpen = 2f;
+	[SerializeField] float shakeIntensity = 0.2f;
 	public List<EnemyKillDetection> enemies = new List<EnemyKillDetection>();
 	int enemyAmount = 0;
 	// Use this for initialization
@@ -38,6 +40,7 @@ public class RoomController : MonoBehaviour
 
 			if(enemyAmount == 0)
 			{
+				Shaker.instance.Shake(2f, 0.2f);
 				door.SetActive(false);
 			}
 		}
