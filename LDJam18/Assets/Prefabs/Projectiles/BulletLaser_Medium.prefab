@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  hitParticle: {fileID: 1025034659856570, guid: ef984085a5b34b44f955806aed7ac1df,
+  hitParticle: {fileID: 1409649687448970, guid: 8e801de2c99267c478a8efcb8ca6f0c1,
     type: 2}
 --- !u!135 &135255605766646012
 SphereCollider:

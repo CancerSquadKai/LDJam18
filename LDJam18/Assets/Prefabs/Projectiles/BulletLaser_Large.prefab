@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  hitParticle: {fileID: 1025034659856570, guid: ef984085a5b34b44f955806aed7ac1df,
+  hitParticle: {fileID: 1920389011676698, guid: db1acb6b28fbead42805dd3a2e0b34b0,
     type: 2}
 --- !u!114 &114758519757176990
 MonoBehaviour:
