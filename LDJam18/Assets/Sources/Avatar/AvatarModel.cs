@@ -182,7 +182,7 @@ public class AvatarModel
         int available_dash_index = -1;
         // find available charge
         int dash_count = dash_cooldown_progresses.Count;
-        for (int dash_index = 0; dash_index < dash_count; ++dash_index)
+        for (int dash_index = ((config.dash.Length - 1) - dash_level) * 2; dash_index < dash_count; ++dash_index)
         {
             if(dash_cooldown_progresses[dash_index] >= 1.0f)
             {
@@ -222,6 +222,9 @@ public class AvatarModel
         dash_level = Mathf.Clamp(dash_level, 0, config.dash.Length - 1);
 
         view.OnNerfDash(dash_level);
+
+        for (int i = 0; i < Mathf.Min(dash_cooldown_progresses.Count, dash_level * 2); ++i)
+            dash_cooldown_progresses[i] = 0f;
     }
 
     public void NerfShot()
