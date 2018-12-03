@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 135564889923361832}
   - component: {fileID: 114654956134186666}
   - component: {fileID: 114701773096566564}
+  - component: {fileID: 114909299321169648}
   m_Layer: 11
   m_Name: EnemyBasic
   m_TagString: Untagged
@@ -224,8 +225,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1995449292933830}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -23.2, y: 0, z: -7.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4161847193377090}
@@ -535,6 +536,8 @@ MonoBehaviour:
   rng: 0
   acceleration_bump: 0
   velocity_bump: {x: 0, y: 0, z: 0}
+  deathParticle: {fileID: 1361274677085522, guid: dc37ba5a7a4149140a7929d584f03a73,
+    type: 2}
   life: {fileID: 114654956134186666}
   animator: {fileID: 95411844445886780}
 --- !u!114 &114654956134186666
@@ -573,6 +576,18 @@ MonoBehaviour:
   components:
   - {fileID: 114637025128355180}
   - {fileID: 114654956134186666}
+--- !u!114 &114909299321169648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995449292933830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26afa738064196c42b1d455e9cb27b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomController: {fileID: 0}
 --- !u!135 &135564889923361832
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -583,5 +598,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0.7, z: 0}
+  m_Radius: 1.2
+  m_Center: {x: 0, y: 0.25, z: -0.3}

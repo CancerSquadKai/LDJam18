@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Name: BasicEnemyConfig
   m_EditorClassIdentifier: 
   health: 10
-  speed_movement: 12
+  speed_movement: 25
   attack_agro_range: 3
   attack_range: 6
   attack_windup_duration: 1
   attack_recovery_duration: 1
   attack_bump_distance: 4
   attack_bump_duration: 0.25
-  attack_damage: 33
+  attack_damage: 10
   prefab_windup_circular_view: {fileID: 114845534869268682, guid: 99d5689e4df308b418f9311e1df782a3,
     type: 2}
