@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Name: AvatarConfig
   m_EditorClassIdentifier: 
   speed_movement: 10
-  attack_range: 4
-  attack_angle: 144.2
-  attack_windup_duration: 0.25
-  attack_recovery_duration: 0.33
-  attack_bump_distance: 8
-  attack_bump_duration: 0.25
-  slash_damage: 2
-  slash_input_bufer_duration: 0.3
+  slash:
+  - {fileID: 11400000, guid: 54869ea5e692e1f48a6da9451656afa8, type: 2}
+  - {fileID: 11400000, guid: c2924d8d39b75e04b91d77fc34ddce80, type: 2}
+  - {fileID: 11400000, guid: 30e96e205edd82c4f925e8cc1051326f, type: 2}
+  prefab_windup_arc_view: {fileID: 114202607520462438, guid: cb68ffb57809ce94f84c96d3635abdba,
+    type: 2}
   dash_curve:
     serializedVersion: 2
     m_Curve:
@@ -44,9 +42,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dash_distance: 4
-  dash_duration: 0.25
-  dash_invulnerability: 1
-  dash_cooldown: 6
-  prefab_windup_arc_view: {fileID: 114202607520462438, guid: cb68ffb57809ce94f84c96d3635abdba,
-    type: 2}
+  dash:
+  - {fileID: 11400000, guid: ccabab4899ebe0c42b64beab04055b0f, type: 2}
+  - {fileID: 11400000, guid: beb2b929bc3ea0946be53ddf61e4c0cd, type: 2}
+  - {fileID: 11400000, guid: b9da1318001511e4397969ba2838449a, type: 2}
+  shot:
+  - {fileID: 11400000, guid: a3aec7a7012b5d24f8c70fab533ab44f, type: 2}
+  - {fileID: 11400000, guid: 3e62bc1f5df93a548b07ded358e1443c, type: 2}
+  - {fileID: 11400000, guid: ef758908250704f42b65fb69de9fca45, type: 2}

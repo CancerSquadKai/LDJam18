@@ -11,7 +11,6 @@ public struct AvatarDash
 
 public class AvatarModel
 {
-
     /// <summary>
     /// Current movement velocity.
     /// </summary>
@@ -60,18 +59,33 @@ public class AvatarModel
 
     public List<float> dash_cooldown_progresses;
 
-    public AvatarModel(AvatarConfig config, AvatarView view)
+    public int slash_level;
+
+    public int dash_level;
+
+    public int shot_level;
+
+    public BulletTrap shot;
+
+    public AvatarModel(AvatarConfig config, AvatarView view, BulletTrap shot)
     {
         // feed config
         this.config = config;
         // feed view
         this.view   = view;
 
+        this.shot = shot;
+
         // refill all dash charges
         dash_cooldown_progresses = new List<float>(6);
         int dash_count = dash_cooldown_progresses.Capacity;
         for (int dash_index = 0; dash_index < dash_count; ++dash_index)
             dash_cooldown_progresses.Add(1.0f);
+        
+        slash_level = config.slash.Length - 1;
+        dash_level  = config.dash.Length - 1;
+        shot_level  = config.shot.Length;
+        NerfShot();
     }
 
     public void UpdateView()
@@ -85,6 +99,19 @@ public class AvatarModel
     public void UpdateInput()
     {
         velocity_movement = input_movement.normalized * config.speed_movement;
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            NerfDash();
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            NerfSlash();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            NerfShot();
+        }
     }
 
     public void UpdatePhysics(float dt)
@@ -92,20 +119,20 @@ public class AvatarModel
         // tranlation
         translation = Vector2.zero;
         // dash
-        RefillDashes(dt / config.dash_cooldown);
+        RefillDashes(dt / config.dash[dash_level].cooldown);
         if (dash.progress_position < 1) {
             float then = config.dash_curve.Evaluate(dash.progress_position);
             dash.progress_position += dt * dash.progress_velocity;
             dash.progress_position = Mathf.Clamp01(dash.progress_position);
             float now  = config.dash_curve.Evaluate(dash.progress_position);
             float delta = now - then;
-            translation += delta * direction * config.dash_distance;
+            translation += delta * direction * config.dash[dash_level].distance;
 
             if(dash.progress_position >= 1)
             {
                 view.OnDashEnd();
             }
-            if(dash.progress_position >= config.dash_invulnerability)
+            if(dash.progress_position >= config.dash[dash_level].invulnerability)
             {
                 var life = view.GetComponent<Life>();
                 if (life)
@@ -168,7 +195,7 @@ public class AvatarModel
 
         dash = new AvatarDash()
         {
-            progress_velocity = 1f / config.dash_duration,
+            progress_velocity = 1f / config.dash[dash_level].duration,
             progress_position = 0,
             direction         = direction
         };
@@ -176,5 +203,29 @@ public class AvatarModel
         var life = view.GetComponent<Life>();
         if (life)
             life.isInvulnerableToBullet = true;
+    }
+
+    public void NerfSlash()
+    {
+        --slash_level;
+        slash_level = Mathf.Clamp(slash_level, 0, config.slash.Length - 1);
+    }
+
+    public void NerfDash()
+    {
+        --dash_level;
+        dash_level = Mathf.Clamp(dash_level, 0, config.dash.Length - 1);
+    }
+
+    public void NerfShot()
+    {
+        --shot_level;
+        shot_level = Mathf.Clamp(shot_level, 0, config.shot.Length - 1);
+
+        foreach(var burst in shot.bursts)
+        {
+            burst.spawnedObject = config.shot[shot_level].prefab;
+        }
+        shot.timeBetweenBursts = config.shot[shot_level].cooldown;
     }
 }

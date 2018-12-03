@@ -24,7 +24,7 @@ public class BulletTrap : MonoBehaviour
 	public Burst[] bursts;
     public bool canShoot = true;
 
-    [SerializeField] float timeBetweenBursts = 1f;
+    public float timeBetweenBursts = 1f;
 
 	float timer = 0.0f;
 	int index = 0;
