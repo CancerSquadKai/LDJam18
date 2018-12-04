@@ -14,8 +14,11 @@ public class AvatarView : MonoBehaviour {
             );
         }
     }
+	[FMODUnity.EventRef]
+	public string DashEvent = "event:/SFX_Dash";
+	FMOD.Studio.EventInstance DashSnd;
 
-    public TrailRenderer  trail_renderer;
+	public TrailRenderer  trail_renderer;
     public Animator       animator;
     public MeshRenderer   mesh_renderer_hitbox;
     public MeshRenderer[] swords;
@@ -66,7 +69,9 @@ public class AvatarView : MonoBehaviour {
 
     public void OnDashBegin()
     {
-        trail_renderer.time = 0.2f;
+		DashSnd = FMODUnity.RuntimeManager.CreateInstance(DashEvent);
+		DashSnd.start();
+		trail_renderer.time = 0.2f;
         if (animator)
         {
             animator.SetTrigger("UseDash");

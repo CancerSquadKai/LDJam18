@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,14 +15,15 @@ public class AvatarController : MonoBehaviour, IBumpable
 	public Transform oriented_shoot;
 	
 	[Space]
+	[FMODUnity.EventRef]
+	public string DashRefillEvent = "event:/SFX_Dash_Refill";
+	FMOD.Studio.EventInstance RefillSnd;
 
 	[FMODUnity.EventRef]
-	public string AttackEvent;
+	public string AttackEvent = "event:/SFX_Melee";
 	FMOD.Studio.EventInstance AttackSnd;
 
-	[FMODUnity.EventRef]
-	public string DashEvent;
-	FMOD.Studio.EventInstance DashSnd;
+
 
 	private new Rigidbody rigidbody;
 
@@ -52,6 +54,14 @@ public class AvatarController : MonoBehaviour, IBumpable
 	private void Start ()
 	{
 		model = new AvatarModel(config, view, shot);
+
+		model.onDashRefill += OnDashRefill;
+	}
+
+	private void OnDashRefill ()
+	{
+		RefillSnd = FMODUnity.RuntimeManager.CreateInstance(DashRefillEvent);
+		RefillSnd.start();
 	}
 
 	private void Update ()
@@ -86,8 +96,6 @@ public class AvatarController : MonoBehaviour, IBumpable
 				bool lt_up = _lt && !lt_new;
 				if (lt_down)
 				{ // dash
-					DashSnd = FMODUnity.RuntimeManager.CreateInstance(DashEvent);
-					DashSnd.start();
 					model.Dash();
 				}
 				_lt = lt_new;
