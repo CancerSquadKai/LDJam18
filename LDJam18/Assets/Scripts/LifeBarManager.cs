@@ -8,7 +8,7 @@ public class LifeBarManager : MonoBehaviour
 {
 	[FMODUnity.EventRef]
 	public string MusicEvent = "event:/Music";
-	FMOD.Studio.EventInstance MusicSnd;
+	public static FMOD.Studio.EventInstance MusicSnd;
 
 	[SerializeField] Life playerLife;
 	[SerializeField] Slider greenLifeSlider;
@@ -33,19 +33,14 @@ public class LifeBarManager : MonoBehaviour
 	{
 		instance = this;
 
-		/*FMOD.Studio.PLAYBACK_STATE playbackState;
-		MusicSnd.getPlaybackState(out playbackState);
-		bool isPlaying = playbackState != FMOD.Studio.PLAYBACK_STATE.STOPPED;
+        if (!MusicSnd.isValid())
+        {
+            MusicSnd = FMODUnity.RuntimeManager.CreateInstance(MusicEvent);
+            MusicSnd.start();
+        }
+        MusicSnd.setParameterValue("Health", 0f);
 
-		if(isPlaying)
-		{
-			//MusicSnd = FMOD.Studio.
-		}*/
-		MusicSnd = FMODUnity.RuntimeManager.CreateInstance(MusicEvent);
-		MusicSnd.setParameterValue("Health", 0f);
-		MusicSnd.start();
-
-		postProcess = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
+        postProcess = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
 
 		if(playerLife != null)
 		{
