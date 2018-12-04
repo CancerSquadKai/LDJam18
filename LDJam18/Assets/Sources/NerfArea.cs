@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NerfArea : MonoBehaviour {
-
-    private MeshRenderer mesh_renderer;
+public class NerfArea : MonoBehaviour
+{
+	public GameObject deactivateDoor;
+	public GameObject otherNerfArea;
+	private MeshRenderer mesh_renderer;
 
     AvatarController avatar;
 
@@ -81,6 +83,14 @@ public class NerfArea : MonoBehaviour {
                     }
                     break;
             }
-        }
+			if(otherNerfArea != null)
+			{
+				otherNerfArea.SetActive(false);
+			}
+			if(deactivateDoor != null)
+			{
+				deactivateDoor.SetActive(false);
+			}
+		}
     }
 }
