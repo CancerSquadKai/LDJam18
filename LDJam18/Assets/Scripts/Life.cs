@@ -9,7 +9,9 @@ public class Life : MonoBehaviour
 	public bool isPlayer = false;
     public bool isInvulnerableToBullet = false;
 
+	[SerializeField] GameObject[] toDisable;
 	[SerializeField] GameObject particleOnHit;
+	[SerializeField] GameObject particleOnPlayerDeath;
 	[SerializeField] float invFramesWhenHit = 0.2f;
 
 	float timer = 0f;
@@ -41,7 +43,7 @@ public class Life : MonoBehaviour
 				if(particleOnHit != null)
 				{
 					GameObject particle = Instantiate(particleOnHit, transform.position, particleOnHit.transform.rotation);
-					Destroy(particle, 2f);
+					Destroy(particle, 4f);
 					particle.transform.parent = transform;
 				}
 
@@ -61,9 +63,21 @@ public class Life : MonoBehaviour
 
 	void CheckLife()
 	{
+		Debug.Log("CurrentLife : " + currentLife);
 		if(currentLife <= 0)
 		{
-			//RIP
+			if(isPlayer)
+			{
+				GameObject go = Instantiate(particleOnPlayerDeath, transform.position, particleOnPlayerDeath.transform.rotation);
+				Transform[] children = GetComponentsInChildren<Transform>();
+
+				foreach(Transform g in children)
+				{
+					g.gameObject.SetActive(false);
+				}
+				SceneMgr sceneMgr = FindObjectOfType<SceneMgr>();
+				sceneMgr.LoadScene();
+			}
 		}
 		else if (currentLife > maxLife)
 		{

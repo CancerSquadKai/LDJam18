@@ -32,7 +32,10 @@ public class Mortar : MonoBehaviour
 	{
 		initialPos = transform.position;
 		player = FindObjectOfType<AvatarController>();
-		targetPos = player.transform.position;
+		if(player != null)
+		{
+			targetPos = player.transform.position;
+		}
 
 		var windup_view = Instantiate(aoEView);
 		windup_view.transform.position = targetPos;
@@ -52,23 +55,26 @@ public class Mortar : MonoBehaviour
 			Destroy(particle, 2f);
 
 			AvatarController player = FindObjectOfType<AvatarController>();
-			Vector3 toPlayer = player.transform.position - targetPos;
-
-			Debug.Log("To Player : " + toPlayer);
-			if(toPlayer.magnitude < attackRange)
+			if(player != null)
 			{
-				player.Bump(toPlayer.normalized, bumpDistance, bumpDuration);
-				Life playerLife = player.GetComponent<Life>();
+				Vector3 toPlayer = player.transform.position - targetPos;
 
-				if(playerLife != null)
+				Debug.Log("To Player : " + toPlayer);
+				if(toPlayer.magnitude < attackRange)
 				{
-					playerLife.UpdateLife(attackDamage * -1);
-				}
-			}
+					player.Bump(toPlayer.normalized, bumpDistance, bumpDuration);
+					Life playerLife = player.GetComponent<Life>();
 
-			if(toPlayer.magnitude < shakeRange)
-			{
-				Shaker.instance.Shake(shakeDuration, shakeIntensity);
+					if(playerLife != null)
+					{
+						playerLife.UpdateLife(attackDamage * -1);
+					}
+				}
+
+				if(toPlayer.magnitude < shakeRange)
+				{
+					Shaker.instance.Shake(shakeDuration, shakeIntensity);
+				}
 			}
 			hasSpawned = true;
 		}

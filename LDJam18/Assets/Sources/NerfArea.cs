@@ -6,6 +6,8 @@ public class NerfArea : MonoBehaviour
 {
 	public GameObject deactivateDoor;
 	public GameObject otherNerfArea;
+	[SerializeField] GameObject particleOnActivate;
+
 	private MeshRenderer mesh_renderer;
 
     AvatarController avatar;
@@ -83,6 +85,15 @@ public class NerfArea : MonoBehaviour
                     }
                     break;
             }
+
+			AvatarController player = FindObjectOfType<AvatarController>();
+			if(player != null)
+			{
+				GameObject go = Instantiate(particleOnActivate, player.transform.position, particleOnActivate.transform.rotation);
+				Destroy(go, 5f);
+			}
+
+			Shaker.instance.Shake(2f, 0.5f);
 			if(otherNerfArea != null)
 			{
 				otherNerfArea.SetActive(false);
