@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class NerfArea : MonoBehaviour
 {
+	[FMODUnity.EventRef]
+	public string DoorOpenEvent = "event:/DoorOpen";
+	FMOD.Studio.EventInstance DoorSnd;
+
+	[Space]
+
 	public GameObject deactivateDoor;
 	public GameObject otherNerfArea;
 	[SerializeField] GameObject particleOnActivate;
@@ -94,7 +100,10 @@ public class NerfArea : MonoBehaviour
 			}
 
 			Shaker.instance.Shake(2f, 0.5f);
-			if(otherNerfArea != null)
+
+			DoorSnd = FMODUnity.RuntimeManager.CreateInstance(DoorOpenEvent);
+			DoorSnd.start();
+			if (otherNerfArea != null)
 			{
 				otherNerfArea.SetActive(false);
 			}

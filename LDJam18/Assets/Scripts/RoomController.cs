@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
+	[Space]
+	[FMODUnity.EventRef]
+	public string DoorOpenEvent = "event:/DoorOpen";
+	FMOD.Studio.EventInstance DoorSnd;
+
 	[SerializeField] GameObject door;
 	[SerializeField] float shakeDurationOnOpen = 2f;
 	[SerializeField] float shakeIntensity = 0.2f;
@@ -40,8 +45,11 @@ public class RoomController : MonoBehaviour
 
 			if(enemyAmount == 0)
 			{
-				Shaker.instance.Shake(2f, 0.2f);
+				Shaker.instance.Shake(2f, 0.35f);
 				door.SetActive(false);
+
+				DoorSnd = FMODUnity.RuntimeManager.CreateInstance(DoorOpenEvent);
+				DoorSnd.start();
 			}
 		}
 		else

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5399b5e2788a441bc65e3578a8ee8b, type: 3}
   m_Name: DashConfig0
   m_EditorClassIdentifier: 
-  distance: 8
-  duration: 0.125
+  distance: 5
+  duration: 0.33
   invulnerability: 0.5
   cooldown: 6

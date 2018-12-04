@@ -63,7 +63,7 @@ MonoBehaviour:
   Params: []
   OverrideAttenuation: 1
   OverrideMinDistance: 1
-  OverrideMaxDistance: 40
+  OverrideMaxDistance: 50
 --- !u!198 &198491307345824006
 ParticleSystem:
   m_ObjectHideFlags: 1
