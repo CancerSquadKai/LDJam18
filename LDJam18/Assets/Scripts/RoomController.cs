@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-	[Space]
 	[FMODUnity.EventRef]
 	public string DoorOpenEvent = "event:/DoorOpen";
 	FMOD.Studio.EventInstance DoorSnd;
+
+	[Space]
 
 	[SerializeField] GameObject door;
 	[SerializeField] float shakeDurationOnOpen = 2f;

@@ -6,6 +6,10 @@ using UnityEngine.PostProcessing;
 
 public class LifeBarManager : MonoBehaviour
 {
+	[FMODUnity.EventRef]
+	public string MusicEvent = "event:/Music";
+	FMOD.Studio.EventInstance MusicSnd;
+
 	[SerializeField] Life playerLife;
 	[SerializeField] Slider greenLifeSlider;
 	[SerializeField] Slider redLifeSlider;
@@ -28,6 +32,18 @@ public class LifeBarManager : MonoBehaviour
 	void Start ()
 	{
 		instance = this;
+
+		/*FMOD.Studio.PLAYBACK_STATE playbackState;
+		MusicSnd.getPlaybackState(out playbackState);
+		bool isPlaying = playbackState != FMOD.Studio.PLAYBACK_STATE.STOPPED;
+
+		if(isPlaying)
+		{
+			//MusicSnd = FMOD.Studio.
+		}*/
+		MusicSnd = FMODUnity.RuntimeManager.CreateInstance(MusicEvent);
+		MusicSnd.setParameterValue("Health", 0f);
+		MusicSnd.start();
 
 		postProcess = Camera.main.GetComponent<PostProcessingBehaviour>().profile;
 
@@ -82,6 +98,7 @@ public class LifeBarManager : MonoBehaviour
 			if(currentLifeValue != playerLifeValue)
 			{
 				currentLifeValue = Mathf.MoveTowards(currentLifeValue, playerLifeValue, lerpSpeed * Time.deltaTime);
+				MusicSnd.setParameterValue("Health", 1f - (currentLifeValue/maxLife));
 				redLifeSlider.value = currentLifeValue;
 			}
 		}

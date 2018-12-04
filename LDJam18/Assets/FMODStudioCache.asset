@@ -32,7 +32,7 @@ MonoBehaviour:
   - {fileID: 114801738941929606}
   MasterBankRef: {fileID: 114244657327705400}
   StringsBankRef: {fileID: 114165761889102946}
-  stringsBankWriteTime: 636795340242494776
+  stringsBankWriteTime: 636795350082754773
   cacheVersion: 2
 --- !u!114 &114003443075880914
 MonoBehaviour:
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\StreamingAssets\Desktop\Master Bank.strings.bank
-  lastModified: 636795340242494776
+  lastModified: 636795350082754773
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\Projets\LDJam18\LDJam18\LDJam18\Assets\StreamingAssets\Desktop\Master Bank.bank
-  lastModified: 636795340242436243
+  lastModified: 636795350082706002
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -341,6 +341,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 40
   Length: 1800
+--- !u!114 &114474997127619948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114502766703039226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +375,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114670359780380748}
+  - {fileID: 114932936752018100}
   MinDistance: 0
   MaxDistance: 0
   Length: 128000
@@ -684,6 +699,21 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 510
 --- !u!114 &114920480359749292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114932936752018100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
