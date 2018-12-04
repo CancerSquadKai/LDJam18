@@ -2080,7 +2080,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1121866642918250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0, z: 0}
+  m_LocalPosition: {x: -0.15, y: 0, z: 30.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4315641531075518}
@@ -4293,6 +4293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde56e75df988e840b0b91e11ec4cda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DashEvent: event:/SFX_Dash
   trail_renderer: {fileID: 96899700991041714}
   animator: {fileID: 95586482954637760}
   mesh_renderer_hitbox: {fileID: 23069121565696964}
@@ -4463,6 +4464,8 @@ MonoBehaviour:
   shot: {fileID: 114007471378138906}
   oriented_direction: {fileID: 4510309418112842}
   oriented_shoot: {fileID: 4630924440440620}
+  DashRefillEvent: event:/SFX_Dash_Refill
+  AttackEvent: event:/SFX_Melee
   shoot: {fileID: 114007471378138906}
 --- !u!135 &135829655635649118
 SphereCollider:

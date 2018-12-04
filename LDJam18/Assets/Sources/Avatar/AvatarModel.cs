@@ -11,6 +11,7 @@ public struct AvatarDash
 
 public class AvatarModel
 {
+	public System.Action onDashRefill;
     /// <summary>
     /// Current movement velocity.
     /// </summary>
@@ -174,7 +175,19 @@ public class AvatarModel
     {
         int dash_count = dash_cooldown_progresses.Count;
         for (int dash_index = 0; dash_index < dash_count; ++dash_index)
-            dash_cooldown_progresses[dash_index] += amounth;
+		{
+			if(dash_cooldown_progresses[dash_index]<1)
+			{
+				dash_cooldown_progresses[dash_index] += amounth;
+				if(dash_cooldown_progresses[dash_index]>=1)
+				{
+					if(onDashRefill != null)
+					{
+						onDashRefill.Invoke();
+					}
+				}
+			}
+		}
     }
 
     public void Dash()

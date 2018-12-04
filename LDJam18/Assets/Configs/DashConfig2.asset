@@ -14,4 +14,4 @@ MonoBehaviour:
   distance: 10
   duration: 0.33
   invulnerability: 0.5
-  cooldown: 3
+  cooldown: 6

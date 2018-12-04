@@ -14,8 +14,11 @@ public class AvatarView : MonoBehaviour {
             );
         }
     }
+	[FMODUnity.EventRef]
+	public string DashEvent = "event:/SFX_Dash";
+	FMOD.Studio.EventInstance DashSnd;
 
-    public TrailRenderer  trail_renderer;
+	public TrailRenderer  trail_renderer;
     public Animator       animator;
     public MeshRenderer   mesh_renderer_hitbox;
     public MeshRenderer[] swords;
@@ -51,12 +54,24 @@ public class AvatarView : MonoBehaviour {
         {
             var mr = wings_renderer_group[dash_index];
             mr.materials[1].SetFloat("_Progress", dash_cooldow_progresses[dash_index]);
+            mr.transform.localRotation = Quaternion.RotateTowards(
+                    mr.transform.localRotation,
+                    dash_cooldow_progresses[dash_index] >= 1.0f ?
+                        (dash_index % 2 == 0 ?
+                            Quaternion.Euler(30 + 20 * (dash_index / 2), 40,  40) :
+                            Quaternion.Euler(30 + 20 * (dash_index / 2), -40, -40)
+                        ) :
+                        Quaternion.Euler(0, 0, dash_index % 2 == 0 ? 30 : - 30),
+                    360 * Time.deltaTime
+                );
         }
     }
 
     public void OnDashBegin()
     {
-        trail_renderer.time = 0.2f;
+		DashSnd = FMODUnity.RuntimeManager.CreateInstance(DashEvent);
+		DashSnd.start();
+		trail_renderer.time = 0.2f;
         if (animator)
         {
             animator.SetTrigger("UseDash");
