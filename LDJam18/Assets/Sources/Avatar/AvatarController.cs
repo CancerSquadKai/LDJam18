@@ -6,41 +6,87 @@ using UnityEngine;
 public class AvatarController : MonoBehaviour, IBumpable
 {
 
-	public AvatarView view;
-	public AvatarConfig config;
-	public AvatarModel model;
-	public BulletTrap shot;
+    public enum InputMode
+    {
+        GAMEPAD,
+        MOUSE_AND_KEYBOARD
+    }
 
-	public Transform oriented_direction;
-	public Transform oriented_shoot;
-	
-	[Space]
-	[FMODUnity.EventRef]
-	public string DashRefillEvent = "event:/SFX_Dash_Refill";
-	FMOD.Studio.EventInstance RefillSnd;
+    public AvatarView view;
+    public AvatarConfig config;
+    public AvatarModel model;
+    public BulletTrap shot;
 
-	[FMODUnity.EventRef]
-	public string AttackEvent = "event:/SFX_Melee";
-	FMOD.Studio.EventInstance AttackSnd;
+    public Transform oriented_direction;
+    public Transform oriented_shoot;
+
+    [Space]
+    [FMODUnity.EventRef]
+    public string DashRefillEvent = "event:/SFX_Dash_Refill";
+    FMOD.Studio.EventInstance RefillSnd;
+
+    [FMODUnity.EventRef]
+    public string AttackEvent = "event:/SFX_Melee";
+    FMOD.Studio.EventInstance AttackSnd;
 
 
 
-	private new Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
-	private bool _lt = false;
-	private float _lt_step = 0.25f;
+    private bool _lt = false;
+    private float _lt_step = 0.25f;
 
-	private bool _rt = false;
-	private float _rt_step = 0.25f;
-	private float _rt_down_time = 0;
+    private bool _rt = false;
+    private float _rt_step = 0.25f;
+    private float _rt_down_time = 0;
 
-	float can_slash_time = 0;
+    float can_slash_time = 0;
 
-	public BulletTrap shoot;
+    public BulletTrap shoot;
 
-	private List<AttackArc> attack_slash_group = new List<AttackArc>(32);
+    private List<AttackArc> attack_slash_group = new List<AttackArc>(32);
 
-	private void Awake ()
+
+    private static class InputModeChoser
+    {
+        private static Vector2 mousePosition;
+
+        private static InputMode inputMode;
+
+        public static InputMode GetInputMode()
+        {
+            int gamepadScore          = 0;
+            int mouseAndKeyboardScore = 0;
+            var mousePositionNew = Input.mousePosition;
+            if(Vector2.Distance(mousePosition, mousePositionNew) > 5)
+                ++mouseAndKeyboardScore;
+            mousePosition = mousePositionNew;
+
+            Vector2 right_stick_input = Vector2.zero;
+            right_stick_input.x = Input.GetAxisRaw("RSX");
+            right_stick_input.y = Input.GetAxisRaw("RSY");
+
+            if (right_stick_input.magnitude > 0.25f)
+                ++gamepadScore;
+
+            if(Mathf.Abs(Input.GetAxisRaw("LT")) > 0.25f)
+                ++gamepadScore;
+
+            if (Mathf.Abs(Input.GetAxisRaw("RT")) > 0.25f)
+                ++gamepadScore;
+
+            if (Input.anyKeyDown)
+                ++mouseAndKeyboardScore;
+
+            if (mouseAndKeyboardScore > gamepadScore)
+                inputMode = InputMode.MOUSE_AND_KEYBOARD;
+            else if (gamepadScore > mouseAndKeyboardScore)
+                inputMode = InputMode.GAMEPAD;
+            return inputMode;
+        }
+    }
+
+    private void Awake ()
 	{
 		rigidbody = GetComponent<Rigidbody>();
 
@@ -66,7 +112,10 @@ public class AvatarController : MonoBehaviour, IBumpable
 
 	private void Update ()
 	{
-		float dt = Time.deltaTime;
+
+        InputMode inputMode = InputModeChoser.GetInputMode();
+
+        float dt = Time.deltaTime;
 
 		// inputs
 		{
@@ -78,12 +127,31 @@ public class AvatarController : MonoBehaviour, IBumpable
 			}
 
 			{
-				Vector2 right_stick_input = Vector2.zero;
-				right_stick_input.x = Input.GetAxisRaw("RSX");
-				right_stick_input.y = Input.GetAxisRaw("RSY");
-				model.input_shoot = right_stick_input.normalized;
-				shoot.canShoot = model.input_shoot.magnitude > 0.125f;
+                if(inputMode == InputMode.GAMEPAD)
+                {
+                    Vector2 right_stick_input = Vector2.zero;
+                    right_stick_input.x = Input.GetAxisRaw("RSX");
+                    right_stick_input.y = Input.GetAxisRaw("RSY");
+                    shoot.canShoot    = right_stick_input.magnitude > 0.125f;
+                    if (shoot.canShoot)
+                    {
+                        model.input_shoot = right_stick_input;
+                        model.input_shoot.Normalize();
+                    }
+
+                }
+                else
+                {
+                    shoot.canShoot      = Input.GetMouseButton(1);
+                    if (shoot.canShoot)
+                    {
+                        model.input_shoot.x = Input.mousePosition.x - Screen.width * 0.5f;
+                        model.input_shoot.y = Input.mousePosition.y - Screen.height * 0.5f;
+                        model.input_shoot.Normalize();
+                    }
+                }
 				view.UpdateAiming(shoot.canShoot);
+
 			}
 
 			// model
@@ -91,8 +159,12 @@ public class AvatarController : MonoBehaviour, IBumpable
 
 			// Left trigger
 			{
-				bool lt_new = Input.GetAxisRaw("LT") > _lt_step;
-				bool lt_down = !_lt && lt_new;
+                bool lt_new;
+                if (inputMode == InputMode.GAMEPAD)
+                    lt_new = Input.GetAxisRaw("LT") > _lt_step;
+                else
+                    lt_new = Input.GetKeyDown(KeyCode.Space);
+                bool lt_down = !_lt && lt_new;
 				bool lt_up = _lt && !lt_new;
 				if (lt_down)
 				{ // dash
@@ -103,8 +175,12 @@ public class AvatarController : MonoBehaviour, IBumpable
 
 			// Right trigger
 			{
-				bool rt_new = Input.GetAxisRaw("RT") > _rt_step;
-				bool rt_down = !_rt && rt_new;
+                bool rt_new;
+                if (inputMode == InputMode.GAMEPAD)
+                    rt_new = Input.GetAxisRaw("RT") > _rt_step;
+                else
+                    rt_new = Input.GetMouseButtonDown(0);
+                bool rt_down = !_rt && rt_new;
 				bool rt_up = _rt && !rt_new;
 				if (rt_down)
 				{
@@ -123,7 +199,7 @@ public class AvatarController : MonoBehaviour, IBumpable
 
 			// orientation
 			if (
-				model.input_shoot.magnitude < 0.85f ||
+				!shoot.canShoot ||
 				attack_slash_group.Count > 0 ||
 				model.dash.progress_position < 1.0f
 			)
@@ -205,8 +281,10 @@ public class AvatarController : MonoBehaviour, IBumpable
 	}
 
 	private void LateUpdate ()
-	{
-		model.UpdateView();
+    {
+        if (model.input_movement.magnitude < 0.25f && shoot.canShoot)
+            model.direction = model.input_shoot.normalized;
+        model.UpdateView();
 	}
 
 	public void SetAttackPhase (ref AttackArc attack, Attack.Phase phase)
@@ -289,7 +367,11 @@ public class AvatarController : MonoBehaviour, IBumpable
 	private void FixedUpdate ()
 	{
 		model.UpdatePhysics(Time.fixedDeltaTime);
-		rigidbody.velocity = new Vector3(
+
+        if (model.input_movement.magnitude < 0.25f && shoot.canShoot)
+            model.direction = model.input_shoot.normalized;
+
+        rigidbody.velocity = new Vector3(
 			model.velocity.x,
 			0,
 			model.velocity.y

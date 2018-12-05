@@ -90,6 +90,9 @@ public class AvatarModel
 
         shot_level  = config.shot.Length;
         NerfShot();
+
+        // rs dash
+        dash.progress_position = 1f;
     }
 
     public void UpdateView()
