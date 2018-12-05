@@ -107,18 +107,18 @@ public class AvatarModel
     {
         velocity_movement = input_movement.normalized * config.speed_movement;
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            NerfDash();
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            NerfSlash();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            NerfShot();
-        }
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    NerfDash();
+        //}
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    NerfSlash();
+        //}
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    NerfShot();
+        //}
     }
 
     public void UpdatePhysics(float dt)
