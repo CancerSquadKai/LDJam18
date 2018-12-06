@@ -13,6 +13,9 @@ public class NerfArea : MonoBehaviour
 	public GameObject deactivateDoor;
 	public GameObject otherNerfArea;
 	[SerializeField] GameObject particleOnActivate;
+	[SerializeField] ParticleSystem statueParticleOnActivate;
+	[SerializeField] ParticleSystem statueChannelParticle;
+	[SerializeField] ParticleSystem playerChannelParticle;
 
 	private MeshRenderer mesh_renderer;
 
@@ -63,9 +66,41 @@ public class NerfArea : MonoBehaviour
             );
 
         if(dist < range)
+		{
             progress += Time.deltaTime / duration;
+			if (playerChannelParticle != null)
+			{
+				if(!playerChannelParticle.isPlaying)
+				{
+					playerChannelParticle.Play();
+				}
+			}
+			if (statueChannelParticle != null)
+			{
+				if (!statueChannelParticle.isPlaying)
+				{
+					statueChannelParticle.Play();
+				}
+			}
+		}
         else
+		{
             progress -= Time.deltaTime / duration;
+			if (playerChannelParticle != null)
+			{
+				if (playerChannelParticle.isPlaying)
+				{
+					playerChannelParticle.Stop();
+				}
+			}
+			if (statueChannelParticle != null)
+			{
+				if (statueChannelParticle.isPlaying)
+				{
+					statueChannelParticle.Stop();
+				}
+			}
+		}
 
         progress = Mathf.Clamp01(progress);
 
@@ -73,6 +108,19 @@ public class NerfArea : MonoBehaviour
 
         if(progress >= 1f)
         {
+			if(playerChannelParticle != null)
+			{
+				playerChannelParticle.Stop();
+			}
+			if(statueChannelParticle != null)
+			{
+				statueChannelParticle.Stop();
+			}
+
+			if(statueParticleOnActivate != null)
+			{
+				statueParticleOnActivate.Play();
+			}
             switch (nerfType)
             {
                 case NerfType.SLASH:

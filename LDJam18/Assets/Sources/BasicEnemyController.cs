@@ -318,6 +318,6 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
     {
         acceleration_bump = (2 * distance) / (duration * duration);
         Vector3 impulse_bump = direction * ((2 * distance) / duration);
-        velocity_bump += impulse_bump;
+        velocity_bump = impulse_bump;
     }
 }

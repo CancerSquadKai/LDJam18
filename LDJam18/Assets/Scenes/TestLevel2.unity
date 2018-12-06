@@ -2296,79 +2296,6 @@ Transform:
   m_Father: {fileID: 1522564825}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
---- !u!1001 &58430136
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1097174213}
-    m_Modifications:
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -7.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 38.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: otherNerfArea
-      value: 
-      objectReference: {fileID: 96771662}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: deactivateDoor
-      value: 
-      objectReference: {fileID: 151572014}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: particleOnActivate
-      value: 
-      objectReference: {fileID: 1187725664104204, guid: e72fa107921dd25409f42aa89e711a3a,
-        type: 2}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: duration
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-  m_IsPrefabAsset: 0
---- !u!1 &58430137 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 58430136}
---- !u!4 &58430138 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 58430136}
 --- !u!1 &58986581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3572,88 +3499,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 96224952}
   m_Mesh: {fileID: 4300000, guid: 90042cfcfff2a0e43a0794920783d5d5, type: 3}
---- !u!1001 &96771660
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1097174213}
-    m_Modifications:
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 8.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 38.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_Name
-      value: Nerf Area (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: nerfType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: otherNerfArea
-      value: 
-      objectReference: {fileID: 58430137}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: deactivateDoor
-      value: 
-      objectReference: {fileID: 151572014}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: particleOnActivate
-      value: 
-      objectReference: {fileID: 1187725664104204, guid: e72fa107921dd25409f42aa89e711a3a,
-        type: 2}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: duration
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-  m_IsPrefabAsset: 0
---- !u!4 &96771661 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 96771660}
---- !u!1 &96771662 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 96771660}
 --- !u!1 &97835969
 GameObject:
   m_ObjectHideFlags: 0
@@ -6374,9 +6219,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114867884718013400, guid: 637c1875b8857a141bd0830802dec031,
+        type: 2}
+      propertyPath: deactivateDoor
+      value: 
+      objectReference: {fileID: 151572014}
+    - target: {fileID: 114867884718013400, guid: 637c1875b8857a141bd0830802dec031,
+        type: 2}
+      propertyPath: otherNerfArea
+      value: 
+      objectReference: {fileID: 443937773}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 637c1875b8857a141bd0830802dec031, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &163407251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1544133945145536, guid: 637c1875b8857a141bd0830802dec031,
+    type: 2}
+  m_PrefabInternal: {fileID: 163407250}
 --- !u!1 &165441941
 GameObject:
   m_ObjectHideFlags: 0
@@ -11398,6 +11258,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114867884718013400, guid: 637c1875b8857a141bd0830802dec031,
+        type: 2}
+      propertyPath: deactivateDoor
+      value: 
+      objectReference: {fileID: 217448940}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 637c1875b8857a141bd0830802dec031, type: 2}
   m_IsPrefabAsset: 0
@@ -14766,12 +14631,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114858269346427764, guid: 9e5ff6018c3cad24195cd6a68678bc16,
+        type: 2}
+      propertyPath: otherNerfArea
+      value: 
+      objectReference: {fileID: 163407251}
+    - target: {fileID: 114858269346427764, guid: 9e5ff6018c3cad24195cd6a68678bc16,
+        type: 2}
+      propertyPath: deactivateDoor
+      value: 
+      objectReference: {fileID: 151572014}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e5ff6018c3cad24195cd6a68678bc16, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &443937772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4121202667038516, guid: 9e5ff6018c3cad24195cd6a68678bc16,
+    type: 2}
+  m_PrefabInternal: {fileID: 443937771}
+--- !u!1 &443937773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495238690307594, guid: 9e5ff6018c3cad24195cd6a68678bc16,
     type: 2}
   m_PrefabInternal: {fileID: 443937771}
 --- !u!1001 &445198843
@@ -15795,83 +15675,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 479893491}
   m_Mesh: {fileID: 4300000, guid: c04e0aad479d691448684dd929700d42, type: 3}
---- !u!1001 &480906049
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2059598468}
-    m_Modifications:
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -7.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 7.349991
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: otherNerfArea
-      value: 
-      objectReference: {fileID: 546624959}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: deactivateDoor
-      value: 
-      objectReference: {fileID: 711507636}
-    - target: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_Name
-      value: Nerf Area (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: particleOnActivate
-      value: 
-      objectReference: {fileID: 1187725664104204, guid: e72fa107921dd25409f42aa89e711a3a,
-        type: 2}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: duration
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-  m_IsPrefabAsset: 0
---- !u!4 &480906050 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 480906049}
---- !u!1 &480906051 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 480906049}
 --- !u!4 &486093253 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4456103506183794, guid: 7ecd61f77fe9caf4e849aa0e1a39e1bf,
@@ -18104,88 +17907,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4456103506183794, guid: 7ecd61f77fe9caf4e849aa0e1a39e1bf,
     type: 2}
   m_PrefabInternal: {fileID: 545899449}
---- !u!1001 &546624958
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2059598468}
-    m_Modifications:
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 8.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 7.3499985
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_Name
-      value: Nerf Area (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: nerfType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: otherNerfArea
-      value: 
-      objectReference: {fileID: 480906051}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: deactivateDoor
-      value: 
-      objectReference: {fileID: 711507636}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: particleOnActivate
-      value: 
-      objectReference: {fileID: 1187725664104204, guid: e72fa107921dd25409f42aa89e711a3a,
-        type: 2}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: duration
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-  m_IsPrefabAsset: 0
---- !u!1 &546624959 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 546624958}
---- !u!4 &546624960 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 546624958}
 --- !u!1 &547841040
 GameObject:
   m_ObjectHideFlags: 0
@@ -18560,88 +18281,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 555995957}
   m_Mesh: {fileID: 4300000, guid: 185caa3f4cb5c8043b9ed5bea34e777c, type: 3}
---- !u!1001 &556914408
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2059598468}
-    m_Modifications:
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 7.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 96.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_Name
-      value: Nerf Area (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: nerfType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: otherNerfArea
-      value: 
-      objectReference: {fileID: 2146034744}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: deactivateDoor
-      value: 
-      objectReference: {fileID: 419477608}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: particleOnActivate
-      value: 
-      objectReference: {fileID: 1187725664104204, guid: e72fa107921dd25409f42aa89e711a3a,
-        type: 2}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: duration
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-  m_IsPrefabAsset: 0
---- !u!1 &556914409 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 556914408}
---- !u!4 &556914410 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 556914408}
 --- !u!1 &559159696
 GameObject:
   m_ObjectHideFlags: 0
@@ -20670,12 +20309,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114844915970258278, guid: 57384a37973bb5245b27d6fff89773a1,
+        type: 2}
+      propertyPath: deactivateDoor
+      value: 
+      objectReference: {fileID: 419477608}
+    - target: {fileID: 114844915970258278, guid: 57384a37973bb5245b27d6fff89773a1,
+        type: 2}
+      propertyPath: otherNerfArea
+      value: 
+      objectReference: {fileID: 2055714421}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57384a37973bb5245b27d6fff89773a1, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &662925366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4542037224180030, guid: 57384a37973bb5245b27d6fff89773a1,
+    type: 2}
+  m_PrefabInternal: {fileID: 662925365}
+--- !u!1 &662925367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1732802041970670, guid: 57384a37973bb5245b27d6fff89773a1,
     type: 2}
   m_PrefabInternal: {fileID: 662925365}
 --- !u!1 &664288854
@@ -31998,9 +31652,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114867884718013400, guid: 637c1875b8857a141bd0830802dec031,
+        type: 2}
+      propertyPath: deactivateDoor
+      value: 
+      objectReference: {fileID: 711507636}
+    - target: {fileID: 114867884718013400, guid: 637c1875b8857a141bd0830802dec031,
+        type: 2}
+      propertyPath: otherNerfArea
+      value: 
+      objectReference: {fileID: 864229548}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 637c1875b8857a141bd0830802dec031, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &857075324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1544133945145536, guid: 637c1875b8857a141bd0830802dec031,
+    type: 2}
+  m_PrefabInternal: {fileID: 857075323}
 --- !u!1 &860221398
 GameObject:
   m_ObjectHideFlags: 0
@@ -32102,12 +31771,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114844915970258278, guid: 57384a37973bb5245b27d6fff89773a1,
+        type: 2}
+      propertyPath: deactivateDoor
+      value: 
+      objectReference: {fileID: 711507636}
+    - target: {fileID: 114844915970258278, guid: 57384a37973bb5245b27d6fff89773a1,
+        type: 2}
+      propertyPath: otherNerfArea
+      value: 
+      objectReference: {fileID: 857075324}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57384a37973bb5245b27d6fff89773a1, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &864229547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4542037224180030, guid: 57384a37973bb5245b27d6fff89773a1,
+    type: 2}
+  m_PrefabInternal: {fileID: 864229546}
+--- !u!1 &864229548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1732802041970670, guid: 57384a37973bb5245b27d6fff89773a1,
     type: 2}
   m_PrefabInternal: {fileID: 864229546}
 --- !u!1 &869040103
@@ -38682,8 +38366,6 @@ Transform:
   - {fileID: 470703391}
   - {fileID: 1234200103}
   - {fileID: 443937772}
-  - {fileID: 58430138}
-  - {fileID: 96771661}
   m_Father: {fileID: 1952566391}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65675,83 +65357,6 @@ Transform:
   m_Father: {fileID: 1518466357}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1996437205
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2059598468}
-    m_Modifications:
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 182.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: otherNerfArea
-      value: 
-      objectReference: {fileID: 217448940}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: deactivateDoor
-      value: 
-      objectReference: {fileID: 217448940}
-    - target: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_Name
-      value: Nerf Area (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: nerfType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: particleOnActivate
-      value: 
-      objectReference: {fileID: 1187725664104204, guid: e72fa107921dd25409f42aa89e711a3a,
-        type: 2}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: duration
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-  m_IsPrefabAsset: 0
---- !u!4 &1996437206 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 1996437205}
 --- !u!1001 &1999280229
 Prefab:
   m_ObjectHideFlags: 0
@@ -67322,12 +66927,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114858269346427764, guid: 9e5ff6018c3cad24195cd6a68678bc16,
+        type: 2}
+      propertyPath: deactivateDoor
+      value: 
+      objectReference: {fileID: 419477608}
+    - target: {fileID: 114858269346427764, guid: 9e5ff6018c3cad24195cd6a68678bc16,
+        type: 2}
+      propertyPath: otherNerfArea
+      value: 
+      objectReference: {fileID: 662925367}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e5ff6018c3cad24195cd6a68678bc16, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &2055714420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4121202667038516, guid: 9e5ff6018c3cad24195cd6a68678bc16,
+    type: 2}
+  m_PrefabInternal: {fileID: 2055714419}
+--- !u!1 &2055714421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495238690307594, guid: 9e5ff6018c3cad24195cd6a68678bc16,
     type: 2}
   m_PrefabInternal: {fileID: 2055714419}
 --- !u!1 &2057608363
@@ -67680,11 +67300,6 @@ Transform:
   - {fileID: 1115184198}
   - {fileID: 119916841}
   - {fileID: 864229547}
-  - {fileID: 546624960}
-  - {fileID: 480906050}
-  - {fileID: 556914410}
-  - {fileID: 2146034743}
-  - {fileID: 1996437206}
   m_Father: {fileID: 1952566391}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -70690,85 +70305,3 @@ Transform:
   m_Father: {fileID: 897268795}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1001 &2146034742
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2059598468}
-    m_Modifications:
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -7.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 96.09998
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: otherNerfArea
-      value: 
-      objectReference: {fileID: 556914409}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: deactivateDoor
-      value: 
-      objectReference: {fileID: 419477608}
-    - target: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-      propertyPath: m_Name
-      value: Nerf Area (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: nerfType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: particleOnActivate
-      value: 
-      objectReference: {fileID: 1187725664104204, guid: e72fa107921dd25409f42aa89e711a3a,
-        type: 2}
-    - target: {fileID: 114278599689542368, guid: 857610b4ee9224747be7a4ab07a91a09,
-        type: 2}
-      propertyPath: duration
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 857610b4ee9224747be7a4ab07a91a09, type: 2}
-  m_IsPrefabAsset: 0
---- !u!4 &2146034743 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4356883725632860, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 2146034742}
---- !u!1 &2146034744 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1663141928514744, guid: 857610b4ee9224747be7a4ab07a91a09,
-    type: 2}
-  m_PrefabInternal: {fileID: 2146034742}

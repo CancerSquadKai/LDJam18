@@ -261,6 +261,9 @@ MonoBehaviour:
   damage: 1
   hitParticle: {fileID: 1409649687448970, guid: 8e801de2c99267c478a8efcb8ca6f0c1,
     type: 2}
+  hitWallParticle: {fileID: 0}
+  bumpForce: 1
+  bumpDuration: 0.05
 --- !u!114 &114999247009786942
 MonoBehaviour:
   m_ObjectHideFlags: 1
