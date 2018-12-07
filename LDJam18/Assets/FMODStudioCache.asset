@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114165761889102946}
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   EditorEvents:
   - {fileID: 114068415310353518}
   - {fileID: 114680672293934864}
@@ -30,9 +30,9 @@ MonoBehaviour:
   - {fileID: 114999535811441518}
   - {fileID: 114729202154478904}
   - {fileID: 114801738941929606}
-  MasterBankRef: {fileID: 114244657327705400}
+  MasterBankRef: {fileID: 114144584207255882}
   StringsBankRef: {fileID: 114165761889102946}
-  stringsBankWriteTime: 636795350082754773
+  stringsBankWriteTime: 636797225890596357
   cacheVersion: 2
 --- !u!114 &114003443075880914
 MonoBehaviour:
@@ -78,7 +78,7 @@ MonoBehaviour:
   Path: event:/SFX_Beetle_Die_02
   guid: bb1ba24ed87d894b837508385a6fc6de
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -100,7 +100,7 @@ MonoBehaviour:
   Path: event:/SFX_Beetle_Die_03
   guid: af66986a0246f24b9ba40dc9d991748e
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
   Path: event:/SFX_Bumper_01
   guid: 0fa25dc6370e204cb11f99bf2381db87
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -130,6 +130,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 60
   Length: 400
+--- !u!114 &114144584207255882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\ProjPerso\Unity\LudumDare18\LDJam18\Assets\StreamingAssets\Desktop\Master
+    Bank.bank
+  lastModified: 636797225890576406
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &114165761889102946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\StreamingAssets\Desktop\Master Bank.strings.bank
-  lastModified: 636795350082754773
+  lastModified: 636797225890596357
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -205,7 +222,7 @@ MonoBehaviour:
   Path: event:/SFX_Beetle_Die_01
   guid: 93ac35d52a651c4d93b01941fba8b4c7
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -333,7 +350,7 @@ MonoBehaviour:
   Path: event:/SFX_Beetle_Explosion
   guid: c31d76384a916944a79fe3ee2f70aea0
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -341,6 +358,21 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 40
   Length: 1800
+--- !u!114 &114435331940897094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114474997127619948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,12 +402,12 @@ MonoBehaviour:
   Path: event:/Music
   guid: 750fca1717d1ec4fa06196a11a37e9ea
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114932936752018100}
+  - {fileID: 114435331940897094}
   MinDistance: 0
   MaxDistance: 0
   Length: 128000
@@ -408,7 +440,7 @@ MonoBehaviour:
   Path: event:/Mortar_Shot_01
   guid: 8105e5c6d6a9e54eaac3832ce68612ad
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -460,7 +492,7 @@ MonoBehaviour:
   Path: event:/HBB_SFX_Upgrade_03
   guid: 485cead20e78ea4b90d745b315c6dd6b
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -512,7 +544,7 @@ MonoBehaviour:
   Path: event:/SFX_Beetle_Die_04
   guid: b8a5a28cc02b3b45870ed78335d7d823
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -534,7 +566,7 @@ MonoBehaviour:
   Path: event:/SFX_Shot
   guid: ffff7913ec1cef4e91ed9024ff2eece4
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -586,7 +618,7 @@ MonoBehaviour:
   Path: event:/DoorOpen
   guid: 2c047d7ca9a39e43b4e552a2b319301c
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -668,7 +700,7 @@ MonoBehaviour:
   Path: event:/SFX_Melee
   guid: b754c85d6f2f584692e28bdc0b4bcbbe
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -690,7 +722,7 @@ MonoBehaviour:
   Path: event:/SFX_Dash
   guid: b9b29878f1609e43b15ced3aab2cbc90
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -742,7 +774,7 @@ MonoBehaviour:
   Path: event:/Mortar_EXplosion_01
   guid: 6d3231a64d95364bae2dd5b5666ffc89
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -764,7 +796,7 @@ MonoBehaviour:
   Path: event:/SFX_Dash_Refill
   guid: deaa3785e31e754ebe3068eaed7de1dd
   Banks:
-  - {fileID: 114244657327705400}
+  - {fileID: 114144584207255882}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
