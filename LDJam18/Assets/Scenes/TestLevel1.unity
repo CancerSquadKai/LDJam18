@@ -87818,13 +87818,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1879311886}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.27311984, y: 0, z: 0, w: 0.96198004}
   m_LocalPosition: {x: 4.79, y: 0, z: 7.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1041051835}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 31.7, y: 0, z: 0}
 --- !u!215 &1879311888
 ReflectionProbe:
   m_ObjectHideFlags: 0
@@ -87839,7 +87839,7 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 128
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 299.14755, y: 46.01924, z: 422.71753}
+  m_BoxSize: {x: 299.14755, y: 238.22, z: 422.71753}
   m_BoxOffset: {x: 10.161148, y: -7.8589706, z: 175.40195}
   m_NearClip: 0.3
   m_FarClip: 1000
