@@ -270,6 +270,7 @@ Transform:
   - {fileID: 4137904661693474}
   - {fileID: 4041506568449806}
   - {fileID: 4591786545010078}
+  - {fileID: 4866727058476006}
   m_Father: {fileID: 4921020979730532}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -280,7 +281,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568854050349086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.8164206, y: -2.8648376, z: -4.641555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4921020979730532}
@@ -297,8 +298,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4921020979730532}
-  m_RootOrder: 1
+  m_Father: {fileID: 4688783172641816}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4921020979730532
 Transform:
@@ -311,7 +312,6 @@ Transform:
   m_LocalScale: {x: 200, y: 200, z: 200}
   m_Children:
   - {fileID: 4688783172641816}
-  - {fileID: 4866727058476006}
   m_Father: {fileID: 4720854391554164}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -573,8 +573,10 @@ MonoBehaviour:
   currentLife: 15
   isPlayer: 0
   isInvulnerableToBullet: 0
+  toDisable: []
   particleOnHit: {fileID: 1658037520801412, guid: 5562c006680ca7847880b65aec8b061e,
     type: 2}
+  particleOnPlayerDeath: {fileID: 0}
   invFramesWhenHit: 0
 --- !u!114 &114925350119467386
 MonoBehaviour:
