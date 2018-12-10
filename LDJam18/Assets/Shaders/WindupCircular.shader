@@ -25,8 +25,6 @@
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-			// make fog work
-			#pragma multi_compile_fog
 
             #include "Utils.cginc"
 			#include "UnityCG.cginc"
@@ -56,9 +54,6 @@
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv;
-
-
-				UNITY_TRANSFER_FOG(o,o.vertex);
 				return o;
 			}
 
