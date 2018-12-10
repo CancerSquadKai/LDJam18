@@ -163,7 +163,20 @@ public class AvatarModel
 
         if(velocity.magnitude > 0.125f)
         {
-            direction = velocity.normalized;
+            //direction =
+            //    Vector3.RotateTowards(
+            //       direction,
+            //       velocity.normalized,
+            //       Time.fixedDeltaTime * Mathf.PI * 2f,
+            //       1f);
+            float current_angle = Mathf.Atan2(direction.y, direction.x);
+            float target_angle  = Mathf.Atan2(velocity.normalized.y, velocity.normalized.x);
+            float delta_angle = Mathf.Abs(Mathf.DeltaAngle(current_angle * Mathf.Rad2Deg, target_angle * Mathf.Rad2Deg) * Mathf.Deg2Rad);
+            float angle = Mathf.MoveTowardsAngle(
+                current_angle * Mathf.Rad2Deg,
+                target_angle  * Mathf.Rad2Deg,
+                Time.fixedDeltaTime * (delta_angle * Mathf.Rad2Deg * 16f)) * Mathf.Deg2Rad;
+            direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         }
     }
     

@@ -123,7 +123,7 @@ public class AvatarController : MonoBehaviour, IBumpable
 				Vector2 left_stick_input = Vector2.zero;
 				left_stick_input.x = Input.GetAxisRaw("Horizontal");
 				left_stick_input.y = Input.GetAxisRaw("Vertical");
-				model.input_movement = left_stick_input;
+                model.input_movement = Vector2.ClampMagnitude(left_stick_input, 1f);
 			}
 
 			{
@@ -138,17 +138,18 @@ public class AvatarController : MonoBehaviour, IBumpable
                         model.input_shoot = right_stick_input;
                         model.input_shoot.Normalize();
                     }
+                    else
+                    {
+                        model.input_shoot = model.input_movement.normalized;
+                    }
 
                 }
                 else
                 {
-                    shoot.canShoot      = Input.GetMouseButton(1);
-                    if (shoot.canShoot)
-                    {
-                        model.input_shoot.x = Input.mousePosition.x - Screen.width * 0.5f;
-                        model.input_shoot.y = Input.mousePosition.y - Screen.height * 0.5f;
-                        model.input_shoot.Normalize();
-                    }
+                    shoot.canShoot      = Input.GetMouseButton(0);
+                    model.input_shoot.x = Input.mousePosition.x - Screen.width * 0.5f;
+                    model.input_shoot.y = Input.mousePosition.y - Screen.height * 0.5f;
+                    model.input_shoot.Normalize();
                 }
 				view.UpdateAiming(shoot.canShoot);
 
@@ -179,7 +180,7 @@ public class AvatarController : MonoBehaviour, IBumpable
                 if (inputMode == InputMode.GAMEPAD)
                     rt_new = Input.GetAxisRaw("RT") > _rt_step;
                 else
-                    rt_new = Input.GetMouseButtonDown(0);
+                    rt_new = Input.GetMouseButtonDown(1);
                 bool rt_down = !_rt && rt_new;
 				bool rt_up = _rt && !rt_new;
 				if (rt_down)
@@ -190,7 +191,7 @@ public class AvatarController : MonoBehaviour, IBumpable
 					_rt_down_time + config.slash[model.slash_level].input_bufer_duration > can_slash_time)
 				{
 					// slash
-					var attack_slash_new = new AttackArc(Mathf.Atan2(model.direction.y, model.direction.x));
+					var attack_slash_new = new AttackArc(Mathf.Atan2(model.input_shoot.y, model.input_shoot.x));
 					SetAttackPhase(ref attack_slash_new, Attack.Phase.WINDUP);
 					attack_slash_group.Add(attack_slash_new);
 				}
@@ -199,9 +200,9 @@ public class AvatarController : MonoBehaviour, IBumpable
 
 			// orientation
 			if (
-				!shoot.canShoot ||
-				attack_slash_group.Count > 0 ||
-				model.dash.progress_position < 1.0f
+				(!shoot.canShoot && attack_slash_group.Count <= 0) ||
+                model.dash.progress_position < 1.0f
+				
 			)
 				oriented_direction.rotation =
 					Quaternion.LookRotation(
@@ -299,7 +300,7 @@ public class AvatarController : MonoBehaviour, IBumpable
 					view.OnAttack();
 
 					// Play arcwindup anim
-					var windup_view = Instantiate(config.prefab_windup_arc_view, this.oriented_direction);
+					var windup_view = Instantiate(config.prefab_windup_arc_view, this.oriented_shoot);
 					windup_view.transform.position = transform.position;
 					windup_view.transform.localRotation = Quaternion.Euler(90, 0, 0);
 					windup_view.Init(
@@ -326,7 +327,7 @@ public class AvatarController : MonoBehaviour, IBumpable
 						{
 							Vector3 dir = (enemy.transform.position - transform.position).normalized;
 							float angle_to_target = Mathf.Atan2(dir.z, dir.x);
-							float avatar_angle = Mathf.Atan2(model.direction.y, model.direction.x);
+							float avatar_angle = Mathf.Atan2(model.input_shoot.y, model.input_shoot.x);
 
 							target_in_attack_range = false;
 							target_in_attack_range |=
@@ -369,7 +370,9 @@ public class AvatarController : MonoBehaviour, IBumpable
 		model.UpdatePhysics(Time.fixedDeltaTime);
 
         if (model.input_movement.magnitude < 0.25f && shoot.canShoot)
-            model.direction = model.input_shoot.normalized;
+        {
+            model.direction = model.input_shoot;
+        }
 
         rigidbody.velocity = new Vector3(
 			model.velocity.x,
