@@ -29,6 +29,7 @@ public class AvatarController : MonoBehaviour, IBumpable
     public string AttackEvent = "event:/SFX_Melee";
     FMOD.Studio.EventInstance AttackSnd;
 
+	[SerializeField] ParticleSystem hitParticle;
 
 
     private new Rigidbody rigidbody;
@@ -350,7 +351,9 @@ public class AvatarController : MonoBehaviour, IBumpable
 									config.slash[model.slash_level].bump_duration
 								);
 
-								Shaker.instance.Shake(config.slash[model.slash_level].bump_duration, config.slash[model.slash_level].bump_distance / 40f);
+								Shaker.instance.Shake(config.slash[model.slash_level].bump_duration * 1.5f, config.slash[model.slash_level].bump_distance / 20f);
+
+								hitParticle.Play();
 
 								var life = enemy.life;
 								if (life)

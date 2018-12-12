@@ -59,7 +59,7 @@ public class Mortar : MonoBehaviour
 			{
 				Vector3 toPlayer = player.transform.position - targetPos;
 
-				Debug.Log("To Player : " + toPlayer);
+				//Debug.Log("To Player : " + toPlayer);
 				if(toPlayer.magnitude < attackRange)
 				{
 					player.Bump(toPlayer.normalized, bumpDistance, bumpDuration);

@@ -63,7 +63,7 @@ public class Life : MonoBehaviour
 
 	void CheckLife()
 	{
-		Debug.Log("CurrentLife : " + currentLife);
+		//Debug.Log("CurrentLife : " + currentLife);
 		if(currentLife <= 0)
 		{
 			if(isPlayer)

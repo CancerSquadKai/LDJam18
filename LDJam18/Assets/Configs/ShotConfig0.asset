@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: ShotConfig0
   m_EditorClassIdentifier: 
   prefab: {fileID: 1931944200294284, guid: cec2f243f258c4b40b7f013221773c54, type: 2}
-  cooldown: 0.075
+  cooldown: 0.125

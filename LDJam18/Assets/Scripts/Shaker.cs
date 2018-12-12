@@ -43,7 +43,7 @@ public class Shaker : MonoBehaviour
 	{
 		if (duration > 0 && !isShaking)
 		{
-			Debug.Log("Shaking !");
+			//Debug.Log("Shaking !");
 			pendingShakeDuration += duration;
 			StartCoroutine(DoShake(intensity));
 		}

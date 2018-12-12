@@ -45,16 +45,21 @@ public class BulletContact : MonoBehaviour
 			}
 		}
 
-		TrailRenderer childTrail = GetComponentInChildren<TrailRenderer>();
-		if(childTrail != null)
+		EnemyKillDetection enemyD = other.GetComponent<EnemyKillDetection>();
+
+		if(enemyD == null)
 		{
-			childTrail.time /= 1.5f;
-			GetComponent<BulletMovement>().enabled = false;
-			StartCoroutine(Shrink(0.2f, childTrail));
-		}
-		else
-		{
-			Destroy(gameObject);
+			TrailRenderer childTrail = GetComponentInChildren<TrailRenderer>();
+			if(childTrail != null)
+			{
+				childTrail.time /= 1.5f;
+				GetComponent<BulletMovement>().enabled = false;
+				StartCoroutine(Shrink(0.2f, childTrail));
+			}
+			else
+			{
+				Destroy(gameObject);
+			}
 		}
 	}
 
