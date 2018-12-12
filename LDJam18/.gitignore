@@ -39,3 +39,4 @@ sysinfo.txt
 *.log
 [Aa]ssets/FMODStudioCache.asset
 [Aa]ssets/FMODStudioCache.asset.meta
+*.bank.meta
