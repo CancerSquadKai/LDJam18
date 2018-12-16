@@ -44,182 +44,121 @@ public struct AttackArc
     }
 }
 
-public class BasicEnemyController : MonoBehaviour, IBumpable
+/// <summary>
+/// Basic enemy state
+/// </summary>
+public enum BeetleState
 {
+    FOLOWING, // Folows the target until entering attack range
+    ANTICIPATING_ATTACK,
+    ACTIVATING_ATTACK,
+    DYING
+}
 
-    /// <summary>
-    /// Basic enemy state
-    /// </summary>
-    public enum State
-    {
-        FOLOWING, // Folows the target until entering attack range
-        ATTACKING // Windup, attack target if in attack range, recover then back to folowing.
-    }
-
+public class BasicEnemyController : EnemyController<BeetleState>
+{
     public BasicEnemyConfig config;
-
-    public AvatarController target;
-    public State            state;
-    public Attack           attack;
     public Vector3          folow_origin;
     public float rng;
-
-    public float acceleration_bump;
-    public Vector3 velocity_bump;
-
+    
 	[SerializeField] GameObject deathParticle;
 
-    private new Rigidbody rigidbody;
-
-    public Life life;
     public Animator      animator;
-
-    private void Awake()
-    {
-        rigidbody = GetComponent<Rigidbody>();
-        life = GetComponent<Life>();
-    }
     
-    public void Start()
+    protected override void Start()
     {
+        base.Start();
         if(life)
             life.currentLife = life.maxLife = config.health;
-        if (!target)
-            target = FindObjectOfType<AvatarController>();
-        StateReset();
     }
 
-    public void Update()
+    protected override BeetleState StateUpdate(BeetleState state, float dt)
     {
-        float dt = Time.deltaTime;
-        Vector3 position = transform.position;
         switch (state)
         {
-            case State.FOLOWING:
+            case BeetleState.FOLOWING:
                 {
-
-                    // Move
-                    Vector3 position_new = MoveTowardTarget(config.speed_movement * dt, rng);
-                    if (!float.IsNaN(position_new.x) && velocity_bump.magnitude <= 0.0625f)
+                    if (life && life.currentLife <= 0)
                     {
-                        position_new = Vector3.MoveTowards(position, position_new, config.speed_movement * dt);
-
-                        Vector3 direction = position_new - position;
-                        if(direction.magnitude > 0.01f)
-                        {
-							direction.y = 0f;
-                            direction = direction.normalized;
-                            transform.rotation = Quaternion.RotateTowards(
-                                transform.rotation,
-                                Quaternion.LookRotation(
-                                    direction,
-                                    Vector3.up
-                                ),
-                                270 * dt
-                            );
-                        }
-
-                        position = position_new;
-                    }
-                    // Check if can attack
-                    float dist_to_target =
+                        state = BeetleState.ANTICIPATING_ATTACK;
+                    } else
+                    {
+                        // Check if can attack
+                        float dist_to_target =
                         Vector3.Distance(
-                            position,
+                            transform.position,
                             target.transform.position
                         );
 
-                    bool reached_agro_range = dist_to_target <= config.attack_agro_range;
-                    if (reached_agro_range)
-                    {
-                        SetState(State.ATTACKING);
+                        bool reached_agro_range = dist_to_target <= config.attack_agro_range;
+                        if (reached_agro_range)
+                        {
+                            state = BeetleState.ANTICIPATING_ATTACK;
+                        }
                     }
                 }
                 break;
-            case State.ATTACKING:
+            case BeetleState.ANTICIPATING_ATTACK:
                 {
-                    // Advance attack phases
-                    attack.phase_lifetime += dt;
-                    switch (attack.phase)
+                    if (state_lifetime >= config.attack_windup_duration)
                     {
-                        case Attack.Phase.WINDUP:
-                            {
-                                if(attack.phase_lifetime >= config.attack_windup_duration)
-                                {
-                                    SetAttackPhase(Attack.Phase.ACTIVE);
-                                }
-                            }
-                            break;
-                        case Attack.Phase.ACTIVE:
-                            {
-                                SetAttackPhase(Attack.Phase.RECOVERY);
-                            }
-                            break;
-                        case Attack.Phase.RECOVERY:
-                            {
-                                if (life && life.currentLife <= 0)
-                                {
-                                    transform.position += -Vector3.up * dt * 4.0f;
-                                }
-                                if (attack.phase_lifetime >= config.attack_recovery_duration)
-                                {
-                                    SetAttackPhase(Attack.Phase.COMPLETED);
-                                }
-                            }
-                            break;
+                        state = BeetleState.ACTIVATING_ATTACK;
+                    }
+                }
+                break;
+            case BeetleState.ACTIVATING_ATTACK:
+                {
+                    state = BeetleState.DYING;
+                }
+                break;
+            case BeetleState.DYING:
+                {
+                    if(state_lifetime > 2f)
+                    {
+                        Destroy(gameObject);
                     }
                 }
                 break;
         }
-
-        velocity_bump = Vector3.MoveTowards(
-            velocity_bump,
-            Vector3.zero,
-            acceleration_bump * dt
-        );
-
-        //position += velocity_bump * dt;
-        rigidbody.velocity = velocity_bump;
-        if (rigidbody != null)
-            rigidbody.position = position;
-
-        if(life && life.currentLife <= 0 && state != State.ATTACKING)
-            SetState(State.ATTACKING);
+        return state;
     }
-
-    public void StateReset()
+    
+    protected override Movement MovementUpdate(Movement movement, Vector3 target, float dt)
     {
-        if (life && life.currentLife > 0)
-            SetState(State.FOLOWING);
-        else
-		{
-            Destroy(gameObject);
-		}
-    }
-
-    public void SetState(State state)
-    {
-        this.state = state;
         switch (state)
         {
-            case State.FOLOWING:
+            case BeetleState.FOLOWING:
+                {
+                    // Move
+                    Vector3 position_new = MoveTowardTarget(movement.position, target, config.speed_movement * dt, rng);
+                    if (!float.IsNaN(position_new.x) && bump.velocity.magnitude <= 0.0625f)
+                    {
+                        position_new = Vector3.MoveTowards(movement.position, position_new, config.speed_movement * dt);
+                    }
+
+                    movement.position = position_new;
+                }
+                break;
+            case BeetleState.DYING:
+                {
+                    movement.position_offset +=  -Vector3.up * state_lifetime * state_lifetime;
+                }
+                break;
+        }
+        return movement;
+    }
+
+    protected override void OnStateEnter(BeetleState state)
+    {
+        switch (state)
+        {
+            case BeetleState.FOLOWING:
                 {
                     folow_origin= transform.position;
                     rng = Random.Range(-1.0f, 1.0f);
                 }
                 break;
-        }
-        if (state == State.ATTACKING)
-        {
-            SetAttackPhase(Attack.Phase.WINDUP);
-        }
-    }
-
-    public void SetAttackPhase(Attack.Phase phase)
-    {
-        attack.SetPhase(phase);
-        switch (phase)
-        {
-            case Attack.Phase.WINDUP:
+            case BeetleState.ANTICIPATING_ATTACK:
                 {
                     // Play windup anim
                     var windup_view = Instantiate(config.prefab_windup_circular_view, transform);
@@ -235,16 +174,16 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                     }
                 }
                 break;
-            case Attack.Phase.ACTIVE:
+            case BeetleState.ACTIVATING_ATTACK:
                 {
                     if (animator)
                         animator.SetBool("Vibrate", false);
 
-					GameObject go = Instantiate(deathParticle, transform.position, deathParticle.transform.rotation);
-					Destroy(go, 5f);
+                    GameObject go = Instantiate(deathParticle, transform.position, deathParticle.transform.rotation);
+                    Destroy(go, 5f);
 
-					// Todo : hit people in range
-					float dist_to_target =
+                    // Todo : hit people in range
+                    float dist_to_target =
                         Vector3.Distance(
                             transform.position,
                             target.transform.position
@@ -263,44 +202,31 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                     }
                 }
                 break;
-            case Attack.Phase.RECOVERY:
+            case BeetleState.DYING:
                 {
                     // Play recovery anim
                     if (animator)
                         animator.SetTrigger("UseExplode");
                 }
                 break;
-            case Attack.Phase.COMPLETED:
-                {
-                    if (life && life.currentLife <= 0)
-					{
-                        Destroy(gameObject);
-					}
-                    StateReset();
-                    if (animator)
-                        animator.SetTrigger("Done");
-                }
-                break;
         }
     }
 
-    public Vector3 MoveTowardTarget(float speed, float rng)
+    public Vector3 MoveTowardTarget(Vector3 current, Vector3 target, float speed, float rng)
     {
-        Vector3 target_position  = target.transform.position;
-        Vector3 current_position = transform.position;
         Vector3 folow_origin     = this.folow_origin;
 
-        Vector3 direction = (target_position - folow_origin).normalized;
+        Vector3 direction = (target - folow_origin).normalized;
 
         float dot = Vector3.Dot(
-                current_position - folow_origin,
+                current - folow_origin,
                 direction
             );
 
-        float diameter = Vector3.Distance(target_position, folow_origin);
+        float diameter = Vector3.Distance(target, folow_origin);
         if(dot < 0 || dot > diameter)
         {
-            return Vector3.MoveTowards(current_position, target_position, speed);
+            return Vector3.MoveTowards(current, target, speed);
         }
 
         float radius = diameter * 0.5f;
@@ -312,12 +238,5 @@ public class BasicEnemyController : MonoBehaviour, IBumpable
                     folow_origin + direction * length * diameter +
                     direction_clockwise_perpendicular * p * radius * rng;
         return new_pos;
-    }
-
-    public void Bump(Vector3 direction, float distance, float duration)
-    {
-        acceleration_bump = (2 * distance) / (duration * duration);
-        Vector3 impulse_bump = direction * ((2 * distance) / duration);
-        velocity_bump = impulse_bump;
     }
 }

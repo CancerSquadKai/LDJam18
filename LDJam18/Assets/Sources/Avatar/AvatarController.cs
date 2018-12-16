@@ -315,7 +315,7 @@ public class AvatarController : MonoBehaviour, IBumpable
 			case Attack.Phase.ACTIVE:
 				{
 
-					var enemy_group = FindObjectsOfType<BasicEnemyController>();
+					var enemy_group = FindObjectsOfType<EnemyController>();
 					foreach (var enemy in enemy_group)
 					{
 						float dist_to_target =
