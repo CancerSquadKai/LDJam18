@@ -11,9 +11,13 @@ ModelImporter:
     2100006: THREE
     2100008: ONE
     2100010: TWO
+    2100012: THREE.003
+    2100014: ONE.004
+    2100016: TWO.003
     2300000: //RootNode
     3300000: //RootNode
     4300000: Corner.001
+    4300002: Corner.000
     7400000: Corner.001|Corner|Take 001|BaseLayer
     7400002: Corner.001|Corner|Take 001|BaseLayer.001
     7400004: Corner.001|Cube.001|Take 001|BaseLayer
@@ -70,7 +74,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1.005
+    previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
