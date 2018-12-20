@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicEnemyConfig
   m_EditorClassIdentifier: 
   health: 10
-  speed_movement: 25
+  speed_movement: 17
   attack_agro_range: 3
   attack_range: 6
   attack_windup_duration: 1
@@ -21,4 +22,4 @@ MonoBehaviour:
   attack_bump_duration: 0.25
   attack_damage: 10
   prefab_windup_circular_view: {fileID: 114845534869268682, guid: 99d5689e4df308b418f9311e1df782a3,
-    type: 2}
+    type: 3}
