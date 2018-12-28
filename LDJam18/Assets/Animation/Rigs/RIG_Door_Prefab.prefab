@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 589405393}
   - component: {fileID: 1054557908}
   m_Layer: 0
-  m_Name: RIG_Door
+  m_Name: RIG_Door_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -657,6 +657,32 @@ Transform:
   m_Father: {fileID: 589405393}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2988697107732620796
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981144042460019151}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5, y: 2, z: 6.082261}
+  m_Center: {x: -2.0698478, y: 0.03, z: 0.059955135}
+--- !u!65 &4591504768635607802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981144044207294971}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5, y: 2, z: 6.082261}
+  m_Center: {x: -2.0698478, y: 0.03, z: 0.059955135}
 --- !u!1001 &159521602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -899,6 +925,12 @@ PrefabInstance:
 --- !u!4 &3613005059450423809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3613005060145712769, guid: f8bd3be046cc0cd4bacd41476a86da5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 697812096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7981144044207294971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7981144043560406395, guid: f8bd3be046cc0cd4bacd41476a86da5e,
     type: 3}
   m_PrefabInstance: {fileID: 697812096}
   m_PrefabAsset: {fileID: 0}
@@ -1414,6 +1446,12 @@ PrefabInstance:
 --- !u!4 &3613005061191760437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3613005060145712769, guid: f8bd3be046cc0cd4bacd41476a86da5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1101624500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7981144042460019151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7981144043560406395, guid: f8bd3be046cc0cd4bacd41476a86da5e,
     type: 3}
   m_PrefabInstance: {fileID: 1101624500}
   m_PrefabAsset: {fileID: 0}

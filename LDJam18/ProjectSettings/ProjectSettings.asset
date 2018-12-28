@@ -618,7 +618,7 @@ PlayerSettings:
   facebookStatus: 1
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 6
   cloudProjectId: 79ab22e4-5510-4767-a257-16ef9b6ded5e
   framebufferDepthMemorylessMode: 0
   projectName: LDJam18

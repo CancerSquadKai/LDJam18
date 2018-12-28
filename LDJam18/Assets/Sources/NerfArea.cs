@@ -10,7 +10,8 @@ public class NerfArea : MonoBehaviour
 
 	[Space]
 
-	public GameObject deactivateDoor;
+	public Animator doorAnimator;
+
 	public GameObject otherNerfArea;
 	[SerializeField] GameObject particleOnActivate;
 	[SerializeField] ParticleSystem statueParticleOnActivate;
@@ -155,9 +156,9 @@ public class NerfArea : MonoBehaviour
 			{
 				otherNerfArea.SetActive(false);
 			}
-			if(deactivateDoor != null)
+			if(doorAnimator != null)
 			{
-				deactivateDoor.SetActive(false);
+				doorAnimator.SetBool("IsOpen", true);
 			}
 		}
     }

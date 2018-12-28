@@ -80,8 +80,9 @@ public class BasicEnemyController : EnemyController<BeetleState>
                 {
                     if (life && life.currentLife <= 0)
                     {
-                        state = BeetleState.ANTICIPATING_ATTACK;
-                    } else
+                        state = BeetleState.DYING;
+                    }
+					else
                     {
                         // Check if can attack
                         float dist_to_target =
@@ -108,7 +109,7 @@ public class BasicEnemyController : EnemyController<BeetleState>
                 break;
             case BeetleState.ACTIVATING_ATTACK:
                 {
-                    state = BeetleState.DYING;
+                    state = BeetleState.FOLOWING;
                 }
                 break;
             case BeetleState.DYING:

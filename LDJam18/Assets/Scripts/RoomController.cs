@@ -11,7 +11,9 @@ public class RoomController : MonoBehaviour
 
 	[Space]
 
-	[SerializeField] GameObject door;
+	[SerializeField] TrapToggle traps;
+	[SerializeField] Animator doorAnimator;
+	[SerializeField] string boolParameterName = "IsOpen";
 	[SerializeField] float shakeDurationOnOpen = 2f;
 	[SerializeField] float shakeIntensity = 0.2f;
 	public List<EnemyKillDetection> enemies = new List<EnemyKillDetection>();
@@ -46,9 +48,13 @@ public class RoomController : MonoBehaviour
 
 			if(enemyAmount == 0)
 			{
+				if(traps != null)
+				{
+					traps.ToggleTraps();
+				}
 				Shaker.instance.Shake(2f, 0.35f);
-				door.SetActive(false);
-
+				//door.SetActive(false);
+				doorAnimator.SetBool(boolParameterName, true);
 				DoorSnd = FMODUnity.RuntimeManager.CreateInstance(DoorOpenEvent);
 				DoorSnd.start();
 			}

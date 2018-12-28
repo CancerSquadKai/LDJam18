@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class CloseDoorOnTrigger : MonoBehaviour
 {
-	[SerializeField] GameObject door;
+	[FMODUnity.EventRef]
+	public string DoorOpenEvent = "event:/DoorOpen";
+	FMOD.Studio.EventInstance DoorSnd;
+
+	[Space]
+
+	[SerializeField] Animator doorAnimator;
 	[SerializeField] string tagName = "Player";
 	[SerializeField] bool openDoor = false;
 	//[SerializeField] Animator doorAnim; LATER
@@ -16,7 +22,13 @@ public class CloseDoorOnTrigger : MonoBehaviour
 		{
 			if(other.tag == tagName)
 			{
-				door.SetActive(!openDoor);
+				if(openDoor)
+				{
+					DoorSnd = FMODUnity.RuntimeManager.CreateInstance(DoorOpenEvent);
+					DoorSnd.start();
+				}
+
+				doorAnimator.SetBool("IsOpen", openDoor);
 				closed = true;
 				Shaker.instance.Shake(1f, 0.3f);
 			}
