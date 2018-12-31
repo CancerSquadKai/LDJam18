@@ -18,7 +18,7 @@ public class TrapToggle : MonoBehaviour
 
 	public void ToggleTraps()
 	{
-		Debug.Log("Toggled : " + toggled);
+		//Debug.Log("Toggled : " + toggled);
 		toggled = !toggled;
 		foreach (BulletTrap trap in traps)
 		{

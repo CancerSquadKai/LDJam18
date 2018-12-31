@@ -33,7 +33,7 @@ public class BulletTrap : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		
+		timer = timeBetweenBursts;
 	}
 
 	public IEnumerator BurstTrigger(int ind)
