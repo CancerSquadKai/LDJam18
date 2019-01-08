@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9f8732a79928084589d1b2f3d561fcc, type: 3}
-  m_Name: EliteBeetleConfig 1
+  m_Name: EliteBeetleConfig 2
   m_EditorClassIdentifier: 
-  health: 32
-  speed_movement: 14.5
-  attack_agro_range: 6.5
-  attack_range: 13
-  attack_windup_duration: 1.75
+  health: 35
+  speed_movement: 15
+  attack_agro_range: 7
+  attack_range: 14
+  attack_windup_duration: 1.5
   attack_recovery_duration: 1
   attack_bump_distance: 4
   attack_bump_duration: 0.25

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f8732a79928084589d1b2f3d561fcc, type: 3}
   m_Name: BeetleConfig 1
   m_EditorClassIdentifier: 
-  health: 15
-  speed_movement: 22
-  attack_agro_range: 4
-  attack_range: 8
+  health: 14
+  speed_movement: 19
+  attack_agro_range: 3.5
+  attack_range: 7
   attack_windup_duration: 1
   attack_recovery_duration: 1
   attack_bump_distance: 4
